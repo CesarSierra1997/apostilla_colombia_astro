@@ -1,0 +1,167 @@
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* slider1 */
+
+#slidersportfolio{
+  margin: 20px;
+
+}
+
+.slick-slide div {
+  text-align: center;
+  padding: 5px;
+  transition: transform 0.4s ease;
+}
+
+.slick-slide:hover div {
+  transform: scale(1.1);
+}
+
+.slick-slide i:hover {
+  transform: rotate(10deg);
+}
+
+/* iconos del slider */
+.iconosJx {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; 
+  height: 50px; 
+}
+
+/* slider2 */
+.slider-container {
+  font-size: 10px;
+}
+
+/*Toggle para temas claro y oscuro*/
+:root {
+  --background-color: #f85823; /* similar a bg-gray-50 */
+  --text-color: black;
+  --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
+  --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
+}
+
+.dark {
+  --background-color: #0f0f1f; /* similar a dark:bg-gray-950 */
+  --text-color: beige;
+  --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
+  --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
+}
+
+/* Para el cuerpo */
+body {
+  background-color: var(--background-color);
+  background-image: var(--gradient-light);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: var(--background-color);
+  background-image: var(--gradient-dark);
+  color: var(--text-color);
+}
+
+
+  
+/*pug fixed del nav en PC*/
+.pug_love{
+  position: fixed;
+  width: 50px;
+  height: auto;
+  top: -2px;
+  right: 450px;
+  display: block; 
+}
+
+/* Ocultar en dispositivos móviles */
+@media (max-width: 768px) {
+   .pug_love {
+       display: none; /* Ocultar en pantallas pequeñas */
+   }
+}
+
+.perro_coffe{
+  display: block; 
+}
+
+@media (max-width: 510px) {
+   .perro_coffe {
+    width: 30%;
+   }
+}
+
+
+/*Boton WhatsApp*/
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: -1px 2px 6px rgb(0, 0, 0);
+  transition: background-color 0.3s, transform 0.3s;
+  position: fixed;
+  bottom: 30px; 
+  right: 20px; 
+  
+}
+
+.btn-whatsapp:hover {
+  background-color: rgba(3, 156, 72, 0.781);
+  transform: scale(1.2);
+}
+
+
+/*Gradiente del titulo*/
+@keyframes gradient-shift {
+  0% {
+    background-position: 10% 50%;
+  }
+  50% {
+    background-position: 80% 50%;
+  }
+  100% {
+    background-position: 10% 50%;
+  }
+}
+
+#titulo {
+  background: linear-gradient(90deg, rgba(178,104,227,1) 0%, rgba(252,55,55,1) 50%, rgba(255,190,100,1) 100%);
+  background-size: 200% 200%; /* Para permitir el desplazamiento del gradiente */
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  padding: 0.1em 0; 
+  line-height: 1.2; 
+  animation: gradient-shift 3s ease infinite; /* Duración de la animación */
+}
+
+/*Descipcion titulo*/
+.description {
+  font-size: 1.25rem; /* text-xl */
+  color: #2d3748; /* text-gray-800 */
+  max-width: 75%; /* md:w-3/4 */
+}
+
+.description strong {
+  color: #f59e0b; /* text-yellow-500 */
+  font-weight: 600; /* font-semibold */
+}
+
+@media (prefers-color-scheme: dark) {
+  .description {
+    color: #e2e8f0; /* dark:text-gray-300 */
+  }
+  
+  .description strong {
+    color: #f97316; /* dark:[&>strong]:text-orange-500 */
+  }
+}
