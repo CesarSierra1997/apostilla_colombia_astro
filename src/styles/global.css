@@ -69,34 +69,6 @@ body {
 }
 
 
-  
-/*pug fixed del nav en PC*/
-.pug_love{
-  position: fixed;
-  width: 50px;
-  height: auto;
-  top: -2px;
-  right: 450px;
-  display: block; 
-}
-
-/* Ocultar en dispositivos móviles */
-@media (max-width: 768px) {
-   .pug_love {
-       display: none; /* Ocultar en pantallas pequeñas */
-   }
-}
-
-.perro_coffe{
-  display: block; 
-}
-
-@media (max-width: 510px) {
-   .perro_coffe {
-    width: 30%;
-   }
-}
-
 
 /*Boton WhatsApp*/
 .btn-whatsapp {

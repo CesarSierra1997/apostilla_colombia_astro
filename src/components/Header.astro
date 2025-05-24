@@ -1,31 +1,33 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import apostillaLogo from '../assets/logo_sin_fondo.png';
+
 
 const navItems = [
   {
     title: "Inicio",
     label: "Inicio",
-    url: "/#inicio",
+    url: "/#home",
   },
   {
     title: "Apostilla",
     label: "apostilla",
-    url: "/#proyectos",
+    url: "/#apostilla",
   },
   {
     title: "Traducción",
-    label: "traducciones",
-    url: "/#sobre-mi",
+    label: "traduccion",
+    url: "/#traduccion",
   },
   {
     title: "Otros servicios",
-    label: "otrosServicios",
-    url: "/#sobre-mi",
+    label: "otros_servicios",
+    url: "/#otros_servicios",
   },
   {
     title: "Quienes somos",
-    label: "contacto",
-    url: "/#contacto",
+    label: "quienes_somos",
+    url: "/#quienes_somos",
   },
   
 ]
@@ -37,6 +39,7 @@ const navItems = [
   <nav
     class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
+    <!-- <img src={apostillaLogo.src} alt="ApostillaCol" class="h-8 left-10 top-2 "> -->
     {
       navItems.map((link) => (
         <a

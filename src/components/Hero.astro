@@ -1,0 +1,204 @@
+---
+// import { Image } from 'astro:assets';
+import apostillaLogo from '../assets/logo_claro.png';
+import slider1 from '../assets/images/slider/slider_1.jpg';
+import slider2 from '../assets/images/slider/slider_2.jpg';
+import slider3 from '../assets/images/slider/slider_1.jpg';
+import backgroundastro from '../assets/background.svg'
+---
+
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden py-10">
+  <!-- Background with gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-blue-50/90 via-white/50 to-white dark:from-gray-900/90 dark:via-gray-900/50 dark:to-gray-950 -z-10"></div>
+
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <!-- Logo + Background SVG superposition -->
+      <div class="mb-8 relative flex justify-center items-center w-full max-w-sm mx-auto aspect-square" id="logo-container">
+        <img 
+          src={backgroundastro.src}
+          alt="Decorativo"
+          class="absolute inset-0 w-full h-full object-contain opacity-9 scale-50"
+          id="background-svg"
+        />
+        <img 
+          src={apostillaLogo.src}
+          alt="Apostilla Colombia Traducciones Oficiales"
+          class="relative z-10 w-full h-full object-contain opacity-0 scale-50"
+          id="logo-image"
+        />
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-bold mb-6 opacity-0" id="main-title">
+        <span class="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+          Apostilla Colombia Traducciones Oficiales
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl mb-8 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto opacity-0" id="main-description">
+        Expertos en legalización internacional de documentos y traducciones oficiales. 
+        <span class="font-semibold text-blue-600 dark:text-blue-400">Más de 10 años</span> facilitando trámites en Colombia.
+      </p>
+
+      <div class="flex flex-col md:flex-row gap-4 justify-center mb-12 opacity-0" id="cta-buttons">
+        <a href="#servicios" class="inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+          Nuestros Servicios
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="#contacto" class="inline-flex items-center px-8 py-3 text-lg font-semibold text-blue-600 bg-white border-2 border-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl dark:bg-transparent dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-900/30">
+          Cotizar Ahora
+        </a>
+      </div>
+
+      <!-- Modern Slider -->
+      <div class="swiper-container relative max-w-4xl mx-auto opacity-0" id="main-slider">
+        <div class="swiper-wrapper">
+          {[slider1, slider2, apostillaLogo].map((img, i) => (
+            <div class="swiper-slide" key={i}>
+              <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src={img.src}
+                  alt={`Slide ${i + 1}`}
+                  class="w-full h-[400px] object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                  <h3 class="text-white text-2xl font-bold">{`Servicio Destacado ${i + 1}`}</h3>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  import 'swiper/css/effect-fade';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Intro animations para SVG y logo con pop-in y destello
+  gsap.to('#background-svg', {
+    opacity: 1,
+    scale: 5,
+    duration: 0.8,
+    ease: 'power3.out',
+  });
+
+  gsap.to('#logo-image', {
+    opacity: 1,
+    scale: 1,
+    duration: 0.9,
+    delay: 0.5,
+    ease: 'back.out(1.7)',
+  });
+
+  gsap.to('#main-title', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 1,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#main-description', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 1.3,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#cta-buttons', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 1.6,
+    ease: 'power3.out'
+  });
+
+  gsap.to('#main-slider', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 1.9,
+    ease: 'power3.out'
+  });
+
+  // Initialize Swiper
+  new Swiper('.swiper-container', {
+    modules: [Navigation, Pagination, Autoplay, EffectFade],
+    effect: 'fade',
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+<style>
+  .swiper-container {
+    padding-bottom: 50px;
+  }
+
+  :global(#logo-image){
+    top: 0;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    background: theme('colors.blue.600');
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    opacity: 1;
+    background: linear-gradient(to right, theme('colors.blue.600'), theme('colors.purple.600'));
+  }
+
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    color: theme('colors.white');
+    /* background: theme('colors.blue.600'); */
+    width: 40px;
+    height: 60px;
+    /* border-radius: 50%; */
+    transition: all 0.3s ease;
+  }
+
+  :global(.swiper-button-next:hover),
+  :global(.swiper-button-prev:hover) {
+    background: theme('colors.purple.200');
+    transform: scale(1.2);
+  }
+
+  :global(.swiper-button-next::after),
+  :global(.swiper-button-prev::after) {
+    font-size: 1.5rem;
+  }
+</style>
