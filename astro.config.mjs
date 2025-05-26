@@ -1,22 +1,23 @@
 import { defineConfig } from 'astro/config';
-
 import tailwind from "@astrojs/tailwind";
 import react from '@astrojs/react';
+import robotsTxt from "astro-robots-txt";
+import sitemap from "@astrojs/sitemap"; // 
 
-import robotsTxt from "astro-robots-txt"
-
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), robotsTxt(), react()],
-  site: 'https://porfolio.dev/',
+  integrations: [
+    tailwind(),
+    react(),
+    robotsTxt(),
+    sitemap() // 
+  ],
+  site: 'https://apostillacolombia.com.co', // 
 
   vite: {
     resolve: {
       alias: {
-        '@': '/src', // El alias '@' apuntará a la carpeta 'src'
+        '@': '/src',
       },
     },
   },
-})
-
-
+});

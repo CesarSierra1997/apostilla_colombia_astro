@@ -7,27 +7,63 @@ const currentYear = new Date().getFullYear()
   </div>
 
   <!-- Footer -->
-  <footer
-    class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
-  >
-    <div
-      class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-    >
-      <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-        >© {currentYear}
-        <a href="https://cesarsierraweb.com/" class="hover:underline">Cesar Sierra Web</a> 
-      </span>
-      <ul
-        class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-      >
-        <li>
-          <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
-        </li>
-        <li>
-          <a id="contacto" href="mailto:cesarmallungo@gmail.com" class="hover:underline"
-            >Contacto</a
-          >
-        </li>
+<footer class="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 pt-12 px-6 lg:px-0">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-zinc-300 dark:border-zinc-700 pb-8">
+
+    <!-- Información de la empresa -->
+    <div>
+      <h2 class="text-lg font-semibold mb-4">Apostilla Colombia Traducciones Oficiales</h2>
+      <!-- Mapa de ubicación -->
+<div class="mt-2 max-w-6xl mx-auto">
+  <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden border border-zinc-300 dark:border-zinc-700 shadow-lg mx-6 md:mx-0">
+    <iframe
+      title="Ubicación Apostilla Colombia"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.801306700781!2d-74.2311556852369!3d4.705733396574047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f85cc777e0b4f%3A0x9d5428c260bb1dd4!2sCra.%2010%20%2312-32%2C%20Mosquera%2C%20Cundinamarca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1716575956541!5m2!1ses!2sco"
+      width="100%"
+      height="130"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+
+      <p class="text-sm leading-relaxed">
+        Empresa legalmente constituida ante la Cámara de Comercio de Bogotá.<br />
+        Matrícula Mercantil No. 2133438.<br />
+        Verificable en el RUES: <a href="https://www.rues.org.co" class="text-blue-600 hover:underline">www.rues.org.co</a>
+      </p>
+    </div>
+
+    <!-- Información de contacto -->
+    <div>
+      <h2 class="text-lg font-semibold mb-4">Contacto</h2>
+      <ul class="text-sm space-y-2">
+        <li><strong>Dirección:</strong> Carrera 10 No. 12-32, Mosquera, Cundinamarca (Correspondencia)</li>
+        <li><strong>Código Postal:</strong> 111321, Colombia</li>
+        <li><strong>Teléfonos:</strong> <a href="tel:+573213254326" class="hover:underline">321 325 4326</a>, <a href="tel:+573125082845" class="hover:underline">312 508 2845</a></li>
+        <li><strong>Correo:</strong> <a href="mailto:apostillamos@gmail.com" class="hover:underline">apostillamos@gmail.com</a></li>
+        <li><strong>Chat de atención:</strong> 7:00 a.m. - 7:00 p.m.</li>
       </ul>
     </div>
-  </footer>
+
+    <!-- Enlaces útiles -->
+    <div>
+      <h2 class="text-lg font-semibold mb-4">Enlaces útiles</h2>
+      <ul class="text-sm space-y-2">
+        <li><a href="/#quienes_somos" class="hover:underline">Sobre nosotros</a></li>
+        <li><a href="/politica-de-privacidad" class="hover:underline">Política de privacidad</a></li>
+        <li><a href="/condiciones-de-uso" class="hover:underline">Condiciones de uso</a></li>
+        <li><a href="/webSite-map" class="hover:underline">Mapa del sitio</a></li>
+        <li><a href="https://apostillacolombia.com.co/" class="hover:underline">Versión anterior (finaliza dic/25)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Pie final -->
+  <div class="mt-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-4 text-sm text-zinc-600 dark:text-zinc-400">
+    <span>© <span id="current-year">{new Date().getFullYear()}</span> Apostilla Colombia Traducciones Oficiales. Todos los derechos reservados.</span>
+    <span>Horario de atención: Lunes a jueves de 8:00 a.m. a 5:00 p.m. / Viernes de 7:00 a.m. a 4:00 p.m.</span>
+  </div>
+</footer>
