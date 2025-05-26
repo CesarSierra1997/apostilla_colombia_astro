@@ -38,7 +38,7 @@ const idiomas = [
           Ofrecemos servicios de traducción oficial con traductores certificados para todos sus documentos. Nuestras traducciones son aceptadas por entidades gubernamentales y organizaciones internacionales.
         </p>
         
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-transparent">
           <h3 class="text-xl font-semibold mb-4">Tipos de documentos que traducimos:</h3>
           <ul class="space-y-2">
             <li>• Documentos académicos</li>
@@ -52,7 +52,7 @@ const idiomas = [
 
       <div class="grid gap-4">
         {idiomas.map(idioma => (
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg transition-transform hover:scale-105">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg transition-transform hover:scale-105 border border-gray-200 dark:border-transparent">
             <div class="flex items-center gap-4">
               <span class="text-4xl">{idioma.bandera}</span>
               <div>
