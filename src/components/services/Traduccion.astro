@@ -1,0 +1,68 @@
+---
+const idiomas = [
+  {
+    nombre: "Inglés",
+    bandera: "🇺🇸",
+    descripcion: "Traducción oficial inglés-español / español-inglés"
+  },
+  {
+    nombre: "Alemán",
+    bandera: "🇩🇪",
+    descripcion: "Traducción oficial alemán-español / español-alemán"
+  },
+  {
+    nombre: "Francés",
+    bandera: "🇫🇷",
+    descripcion: "Traducción oficial francés-español / español-francés"
+  },
+  {
+    nombre: "Italiano",
+    bandera: "🇮🇹",
+    descripcion: "Traducción oficial italiano-español / español-italiano"
+  },
+  {
+    nombre: "Portugués",
+    bandera: "🇵🇹",
+    descripcion: "Traducción oficial portugués-español / español-portugués"
+  }
+];
+---
+
+<section class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20" id="traduccion">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12">Traducciones Oficiales</h2>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div>
+        <p class="text-lg mb-6">
+          Ofrecemos servicios de traducción oficial con traductores certificados para todos sus documentos. Nuestras traducciones son aceptadas por entidades gubernamentales y organizaciones internacionales.
+        </p>
+        
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold mb-4">Tipos de documentos que traducimos:</h3>
+          <ul class="space-y-2">
+            <li>• Documentos académicos</li>
+            <li>• Documentos legales</li>
+            <li>• Documentos comerciales</li>
+            <li>• Documentos personales</li>
+            <li>• Certificados y diplomas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid gap-4">
+        {idiomas.map(idioma => (
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">{idioma.bandera}</span>
+              <div>
+                <h4 class="text-xl font-semibold">{idioma.nombre}</h4>
+                <p class="text-gray-600 dark:text-gray-300">{idioma.descripcion}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

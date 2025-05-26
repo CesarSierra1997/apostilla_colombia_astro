@@ -1,0 +1,48 @@
+---
+const res = await fetch('http://localhost:4321/api/reseñas'); // URL completa
+const data = await res.json();
+const reviews = data.reviews; // Accedemos al array de reseñas directamente
+---
+
+<section class="py-8 px-4 rounded-xl shadow-md" style="background-color: var(--background-color); color: var(--text-color);">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-8">
+      ⭐⭐⭐⭐⭐ Reseñas de <span class="text-[#4285F4]">Google</span>
+    </h2>
+
+    {Array.isArray(reviews) && reviews.length > 0 ? (
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {reviews.map((review) => (
+          <div
+            class="flex flex-col p-5 bg-white dark:bg-[#1a1a2f] rounded-lg shadow hover:shadow-lg transition-shadow duration-300 hover:scale-[1.02]"
+          >
+            <div class="flex items-center mb-3">
+              <img
+                src={review.profile_photo_url}
+                alt={review.author_name}
+                class="w-12 h-12 rounded-full border-2 border-gray-300 dark:border-gray-600"
+              />
+              <div class="ml-3">
+                <p class="font-semibold">{review.author_name}</p>
+                <p class="text-sm opacity-70">{review.relative_time_description}</p>
+              </div>
+            </div>
+            <p class="text-sm mb-3 line-clamp-5">{review.text}</p>
+            <div class="flex justify-between items-center mt-auto">
+              <div class="text-yellow-500 font-semibold">⭐ {review.rating} / 5</div>
+              <a
+                href={review.author_url}
+                target="_blank"
+                class="text-blue-600 dark:text-blue-400 hover:underline text-sm"
+              >
+                Ver en Google
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-center opacity-70">No hay reseñas disponibles.</p>
+    )}
+  </div>
+</section>
