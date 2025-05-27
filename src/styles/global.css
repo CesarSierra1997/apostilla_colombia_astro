@@ -5,11 +5,12 @@
 
 /*Toggle para temas claro y oscuro*/
 :root {
-  --background-color: #ffffff; /* similar a bg-gray-50 */
-  --text-color: black;
+  --background-color: rgb(255, 255, 255);
+  --text-color: beige;
   --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
   --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
 }
+
 
 .dark {
   --background-color: #0f0f1f; /* similar a dark:bg-gray-950 */

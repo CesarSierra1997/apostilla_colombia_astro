@@ -1,15 +1,14 @@
 ---
-import Reseñas from '../services/Reseñas.astro';
-import Formulario from "../services/Formulario.astro";
+import Resenas from '../services/Resenas.astro';
 import Est from "../services/Estadisticas.astro";
 
 ---
 
-<section class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20" id="quienes_somos" >
-  <div class="max-w-6xl mx-auto">
+<section class="py-8 px-4 bg-gray-50 dark:bg-gray-900/20 mt-1 mb-1 rounded-xl shadow-xl" id="quienes_somos" >
+  <div class="max-w-6xl mx-auto h-auto">
     <h2 class="text-4xl font-bold text-center mb-12">Quiénes Somos</h2>
 
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-5">
       <div>
         <img
           src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
@@ -64,10 +63,8 @@ import Est from "../services/Estadisticas.astro";
       </div>      
     </div>
 
-
-    <Reseñas />
-    <Formulario />
     <Est />
+    <Resenas />
 
 
   </div>

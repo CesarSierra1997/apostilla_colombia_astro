@@ -1,11 +1,13 @@
 ---
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
-import OtrosServicios from "../components/services/OtrosServicios.astro";
+import TamitesyServicios from "../components/services/TramitesyServicios.astro";
 import Traduccion from "../components/services/Traduccion.astro";
 import Apostilla from "../components/services/Apostilla.astro";
 import QuienesSomos from "../components/services/QuienesSomos.astro";
+import Formulario from "../components/services/Formulario.astro";
 import HeroAP from "../components/Hero.astro"
+
 
 import "@/styles/global.css"; 
 
@@ -28,15 +30,17 @@ const { description, title } = Astro.props
     <title>{title}</title>
   </head>
 
-  <body id="theme-body" class="relative text-black dark:text-white min-h-screen flex flex-col">
+  <body id="theme-body">
     <Header />
     <slot />
     <HeroAP />
     
     <Apostilla />
     <Traduccion />
-    <OtrosServicios />
+    <TamitesyServicios />
     <QuienesSomos />
+    <Formulario />
+    
 
     <Footer />
 
