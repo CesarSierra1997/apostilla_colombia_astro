@@ -1,5 +1,6 @@
 ---
-const res = await fetch('http://localhost:4321/api/reseñas'); // URL completa
+const baseUrl = import.meta.env.SITE || 'http://localhost:4321';
+const res = await fetch(`${baseUrl}/api/resenas`);
 const data = await res.json();
 const reviews = data.reviews; // Accedemos al array de reseñas directamente
 ---
