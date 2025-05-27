@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/apostill/public_html/v2/
+    - /bin/cp -R dist/* $DEPLOYPATH
