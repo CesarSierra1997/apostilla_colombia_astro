@@ -3,20 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/*Toggle para temas claro y oscuro*/
+/* Toggle para temas claro y oscuro */
 :root {
-  --background-color: rgb(255, 255, 255); /* Background color for light theme */
-  --text-color: rgb(33, 33, 33); /* Dark text color for better contrast on light background */
-  --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
-  --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
+  --background-color: rgb(255, 255, 255);
+  --text-color: #1a1a1a; /* Cambiado de beige a un gris oscuro para mejor contraste */
+  --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, 
+    rgba(217, 216, 255, 0.3), 
+    rgba(255, 255, 255, 0.95)
+  );
+  --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, 
+    rgba(120, 119, 198, 0.15), 
+    rgba(15, 15, 31, 0.95)
+  );
 }
 
-
 .dark {
-  --background-color: #0f0f1f; /* Background color for dark theme */
-  --text-color: rgb(255, 255, 255); /* Light text color for better contrast on dark background */
-  --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
-  --gradient-dark: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
+  --background-color: #0f0f1f;
+  --text-color: #ffffff; /* Cambiado de beige a blanco puro para mejor contraste */
+  --gradient-light: var(--gradient-light);
+  --gradient-dark: var(--gradient-dark);
 }
 
 /* Para el cuerpo */
@@ -25,12 +30,15 @@ body {
   background-image: var(--gradient-light);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh; /* Asegura que el gradiente cubra toda la pantalla */
+  overflow-x: hidden; /* Previene scroll horizontal en móviles */
 }
 
 .dark body {
   background-color: var(--background-color);
   background-image: var(--gradient-dark);
   color: var(--text-color);
+  backdrop-filter: brightness(0.9); /* Oscurece ligeramente el fondo en modo oscuro */
 }
 
 

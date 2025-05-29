@@ -1,4 +1,4 @@
-// src/pages/api/reseñas.ts
+// src/pages/api/resenas.ts
 import type { APIRoute } from 'astro';
 
 const API_KEY = import.meta.env.GOOGLE_API_KEY;
