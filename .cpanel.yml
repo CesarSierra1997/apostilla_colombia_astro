@@ -1,5 +1,24 @@
----
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/apostill/public_html/v2/
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - echo "Limpiando instalación anterior..."
+    - rm -rf /home/apostill/tmp-deploy
+    - mkdir -p /home/apostill/tmp-deploy
+
+    - echo "Clonando el repositorio..."
+    - git clone --depth=1 . /home/apostill/tmp-deploy
+
+    - cd /home/apostill/tmp-deploy
+
+    - echo "Instalando dependencias..."
+    - npm ci
+
+    - echo "Construyendo el proyecto..."
+    - npm run build
+
+    - echo "Desplegando contenido de dist/ a /home/apostill/public_html/v2/"
+    - rsync -av --delete dist/ /home/apostill/public_html/v2/
+
+    - echo "Limpieza final..."
+    - rm -rf /home/apostill/tmp-deploy
+
+    - echo "✅ Despliegue completado correctamente."

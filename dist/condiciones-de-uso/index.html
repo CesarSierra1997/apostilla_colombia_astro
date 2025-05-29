@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="es"> <head><meta charset="UTF-8"><meta name="description" content="Apostilla Colombia Traducciones Oficiales"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.5.4"><title>Apostilla Colombia</title><link rel="stylesheet" href="/_astro/condiciones-de-uso.BVg6QIMY.css">
+<link rel="stylesheet" href="/_astro/index.x0gYdHtS.css"></head> <body id="theme-body" class="relative text-black dark:text-white min-h-screen flex flex-col"> <header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2" data-astro-cid-3ef6ksr2> <nav class="flex px-3 text-sm font-medium rounded-full text-gray-100 dark:text-gray-200 justify-center items-center" data-astro-cid-3ef6ksr2> <!-- <img src={apostillaLogo.src} alt="ApostillaCol" class="h-8 left-10 top-2 "> --> <a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500" aria-label="Inicio" href="/#home" data-astro-cid-3ef6ksr2> Inicio </a><a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500" aria-label="apostilla" href="/#apostilla" data-astro-cid-3ef6ksr2> Apostilla </a><a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500" aria-label="traduccion" href="/#traduccion" data-astro-cid-3ef6ksr2> Traducción </a><a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500" aria-label="otros_servicios" href="/#otros_servicios" data-astro-cid-3ef6ksr2> Otros servicios </a><a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500" aria-label="quienes_somos" href="/#quienes_somos" data-astro-cid-3ef6ksr2> Quienes somos </a> <div class="relative ml-1 mr-1" data-astro-cid-x3pjskd3> <button id="theme-toggle-btn" class="appearance-none border-none flex hover:scale-125 transition" data-astro-cid-x3pjskd3 data-astro-transition-persist="astro-ko5uysgj-1"> <span class="sr-only" data-astro-cid-x3pjskd3>Elige el tema</span> <svg id="light" class="theme-toggle-icon size-5 transition-all" data-astro-cid-x3pjskd3="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path> <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path> </svg> <svg id="dark" class="theme-toggle-icon absolute size-5 transition-all" data-astro-cid-x3pjskd3="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path> </svg> <svg id="system" class="theme-toggle-icon absolute size-5 transition-all" data-astro-cid-x3pjskd3="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z"></path> <path d="M7 20h10"></path> <path d="M9 16v4"></path> <path d="M15 16v4"></path> </svg> </button> <div id="themes-menu" class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-gray-800/90 text-gray-200 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md" data-astro-cid-x3pjskd3 data-astro-transition-persist="astro-d5hlxqxh-2"> <ul data-astro-cid-x3pjskd3> <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-astro-cid-x3pjskd3> Light </li><li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-astro-cid-x3pjskd3> Dark </li><li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-astro-cid-x3pjskd3> System </li> </ul> </div> </div>  <script>
+  let remove = null
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
+  const themesMenu = document.getElementById("themes-menu")
+
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "system"
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
+  }
+
+  const updateIcon = (themePreference) => {
+    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
+      element.style.scale = element.id === themePreference ? "1" : "0"
+    })
+  }
+
+  const updateTheme = () => {
+    if (remove != null) {
+      remove()
+    }
+    matchMedia.addEventListener("change", updateTheme)
+    remove = () => {
+      matchMedia.removeEventListener("change", updateTheme)
+    }
+
+    const themePreference = getThemePreference()
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMedia.matches)
+
+    updateIcon(themePreference)
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+  }
+
+  updateTheme()
+
+  document.addEventListener("click", () => themesMenu.classList.remove("open"))
+
+  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
+    e.stopPropagation()
+    const isClosed = !themesMenu.classList.contains("open")
+    themesMenu.classList[isClosed ? "add" : "remove"]("open")
+  })
+
+  document.querySelectorAll(".themes-menu-option").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
+      updateTheme()
+    })
+  })
+
+  document.addEventListener('astro:after-swap', () => {
+    updateTheme();
+    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+  })
+</script> </nav> </header> <script type="module">document.addEventListener("astro:page-load",()=>{const s=document.querySelectorAll("section"),n=document.querySelectorAll("header nav a"),r=e=>{e.forEach(c=>{c.isIntersecting&&n.forEach(o=>{o.getAttribute("aria-label")==c.target.id?o.classList.add("text-blue-500"):o.classList.remove("text-blue-500")})})},t=new IntersectionObserver(r,{root:null,rootMargin:"0px",threshold:.3});s.forEach(e=>{t.observe(e)}),document.onvisibilitychange=()=>{document.visibilityState==="hidden"?t.disconnect():s.forEach(e=>{t.observe(e)})}});</script>   <main class="bg-[#0f172a] min-h-screen mt-5"> <article class="max-w-4xl mx-auto px-6 py-12 text-zinc-200"><header class="text-center mb-12"><h1 class="text-4xl font-bold text-white">📄 Condiciones de Uso</h1><p class="text-sm text-zinc-400 mt-2">Apostilla Colombia • Última actualización: Mayo 2025</p></header><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">1. Aceptación de Términos</h2><p class="text-zinc-300">Al acceder y utilizar nuestro sitio web <strong>apostillacolombia.com.co</strong>, usted acepta cumplir con los presentes términos y condiciones de uso. Si no está de acuerdo con alguna parte de estos términos, le recomendamos no utilizar nuestros servicios digitales.</p></section><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">2. Servicios Prestados</h2><p class="text-zinc-300">Apostilla Colombia ofrece servicios de asesoría, gestión de apostilla, legalizaciones, traducciones oficiales y otros servicios jurídicos. No somos una entidad gubernamental. Actuamos como intermediarios privados para facilitar trámites ante autoridades competentes.</p></section><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">3. Uso del Sitio</h2><ul class="list-disc pl-6 text-zinc-300 space-y-1"><li>El usuario se compromete a proporcionar información veraz y completa.</li><li>Está prohibido el uso del sitio para fines ilegales o no autorizados.</li><li>No se permite intentar acceder a sistemas o bases de datos sin autorización.</li><li>El usuario acepta no enviar contenido malicioso o con virus.</li></ul></section><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">4. Propiedad Intelectual</h2><p class="text-zinc-300">Todo el contenido del sitio web (textos, gráficos, logos, íconos, imágenes y software) es propiedad de Apostilla Colombia o de sus respectivos autores, y está protegido por las leyes de derechos de autor y propiedad industrial.</p></section><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">5. Responsabilidad</h2><p class="text-zinc-300">Aunque trabajamos para ofrecer información clara y actualizada, Apostilla Colombia no garantiza que el contenido del sitio esté libre de errores u omisiones. No nos hacemos responsables por daños derivados del uso incorrecto de la información o servicios ofrecidos.</p></section><section class="mb-10"><h2 class="text-2xl font-semibold text-white mb-2">6. Modificaciones</h2><p class="text-zinc-300">Apostilla Colombia se reserva el derecho de modificar en cualquier momento estas condiciones. Las nuevas versiones serán publicadas en esta página con la fecha de actualización correspondiente.</p></section><section><h2 class="text-2xl font-semibold text-white mb-2">7. Contacto</h2><p class="text-zinc-300 mb-2">Para preguntas sobre estos términos, puede contactarnos:</p><ul class="list-disc pl-6 text-zinc-300 space-y-1"><li>📧 Correo: <a href="mailto:apostillamos@gmail.com" class="text-blue-400 hover:underline">apostillamos@gmail.com</a></li><li>📞 Teléfonos: <a href="tel:+573213254326" class="hover:underline text-blue-400">+57 321 325 4326</a>, <a href="tel:+573125082845" class="hover:underline text-blue-400">+57 312 508 2845</a></li></ul></section></article> </main>  <div class="flex-grow"> <!-- empuja el footer hacia abajo --> </div> <!-- Footer --> <footer class="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 pt-12 px-6 lg:px-0"> <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-zinc-300 dark:border-zinc-700 pb-8"> <!-- Información de la empresa --> <div> <h2 class="text-lg font-semibold mb-4">Apostilla Colombia Traducciones Oficiales</h2> <!-- Mapa de ubicación --> <div class="mt-2 max-w-6xl mx-auto"> <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden border border-zinc-300 dark:border-zinc-700 shadow-lg mx-6 md:mx-0"> <iframe title="Ubicación Apostilla Colombia" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.801306700781!2d-74.2311556852369!3d4.705733396574047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f85cc777e0b4f%3A0x9d5428c260bb1dd4!2sCra.%2010%20%2312-32%2C%20Mosquera%2C%20Cundinamarca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1716575956541!5m2!1ses!2sco" width="100%" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div> </div> <p class="text-sm leading-relaxed">
+Empresa legalmente constituida ante la Cámara de Comercio de Bogotá.<br>
+Matrícula Mercantil No. 2133438.<br>
+Verificable en el RUES: <a href="https://www.rues.org.co" class="text-blue-600 hover:underline">www.rues.org.co</a> </p> </div> <!-- Información de contacto --> <div> <h2 class="text-lg font-semibold mb-4">Contacto</h2> <ul class="text-sm space-y-2"> <li><strong>Dirección:</strong> Carrera 10 No. 12-32, Mosquera, Cundinamarca (Correspondencia)</li> <li><strong>Código Postal:</strong> 111321, Colombia</li> <li><strong>Teléfonos:</strong> <a href="tel:+573213254326" class="hover:underline">321 325 4326</a>, <a href="tel:+573125082845" class="hover:underline">312 508 2845</a></li> <li><strong>Correo:</strong> <a href="mailto:apostillamos@gmail.com" class="hover:underline">apostillamos@gmail.com</a></li> <li><strong>Chat de atención:</strong> 7:00 a.m. - 7:00 p.m.</li> </ul> </div> <!-- Enlaces útiles --> <div> <h2 class="text-lg font-semibold mb-4">Enlaces útiles</h2> <ul class="text-sm space-y-2"> <li><a href="/#quienes_somos" class="hover:underline">Sobre nosotros</a></li> <li><a href="/politica-de-privacidad" class="hover:underline">Política de privacidad</a></li> <li><a href="/condiciones-de-uso" class="hover:underline">Condiciones de uso</a></li> <li><a href="/webSite-map" class="hover:underline">Mapa del sitio</a></li> <li><a href="https://apostillacolombia.com.co/" class="hover:underline">Versión anterior (finaliza dic/25)</a></li> </ul> </div> </div> <!-- Pie final --> <div class="mt-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-4 text-sm text-zinc-600 dark:text-zinc-400"> <span>© <span id="current-year">2025</span> Apostilla Colombia Traducciones Oficiales. Todos los derechos reservados.</span> <span>Horario de atención: Lunes a jueves de 8:00 a.m. a 5:00 p.m. / Viernes de 7:00 a.m. a 4:00 p.m.</span> </div> </footer> </body></html>
