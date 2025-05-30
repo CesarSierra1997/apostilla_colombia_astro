@@ -1,24 +1,28 @@
 deployment:
   tasks:
-    - echo "Limpiando instalación anterior..."
-    - rm -rf /home/apostill/tmp-deploy
-    - mkdir -p /home/apostill/tmp-deploy
-
-    - echo "Clonando el repositorio..."
-    - git clone --depth=1 . /home/apostill/tmp-deploy
-
-    - cd /home/apostill/tmp-deploy
-
+    - echo "Preparando directorio temporal para build..."
+    - export TEMP_DIR=/home/apostill/temp_build_$RANDOM
+    - mkdir -p $TEMP_DIR
+    
+    - echo "Clonando el repositorio en directorio temporal..."
+    - git clone --depth=1 . $TEMP_DIR
+    - cd $TEMP_DIR
+    
     - echo "Instalando dependencias..."
     - npm ci
-
+    
     - echo "Construyendo el proyecto..."
     - npm run build
-
-    - echo "Desplegando contenido de dist/ a /home/apostill/public_html/v2/"
-    - rsync -av --delete dist/ /home/apostill/public_html/v2/
-
+    
+    - echo "Limpiando directorio de destino..."
+    - rm -rf /home/apostill/public_html/v2
+    - mkdir -p /home/apostill/public_html/v2
+    
+    - echo "Copiando solo el contenido de dist/ al directorio de destino..."
+    - cp -r dist/* /home/apostill/public_html/v2/
+    
     - echo "Limpieza final..."
-    - rm -rf /home/apostill/tmp-deploy
-
+    - rm -rf $TEMP_DIR
+    
     - echo "✅ Despliegue completado correctamente."
+    - echo "Sitio ahora disponible en: https://apostillacolombia.com/v2/"
