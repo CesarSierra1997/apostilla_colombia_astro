@@ -1,20 +1,42 @@
 ---
-//  (solo funciona en localhost)
-const res = await fetch('http://localhost:4321/api/resenas');
+let reviews = [];
+let error = null;
 
-//  (funciona en desarrollo y producción)
-// const res = await fetch('https:/apostillacolombia.com.co/v2/api/resenas');
-
-const data = await res.json();
-const reviews = data.reviews; // Accedemos al array de reseñas directamente
+try {
+  //  (solo funciona en localhost)
+  // const res = await fetch('http://localhost:4321/api/resenas');
+  
+  //  (funciona en desarrollo y producción)
+  const res = await fetch('https://apostillacolombia.com.co/resenas.json');
+  
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  
+  const data = await res.json();
+  if (data && Array.isArray(data.reviews)) {
+    reviews = data.reviews;
+  } else {
+    throw new Error('Invalid data format');
+  }
+} catch (err) {
+  console.error('Error fetching reviews:', err);
+  error = 'No se pudieron cargar las reseñas en este momento.';
+}
 
 ---
 
-<section class="py-8 px-4" >
+<section class="py-8 px-4">
   <div class="max-w-5xl mx-auto">
     <h2 class="text-3xl font-bold text-center mb-8">
       ⭐⭐⭐⭐⭐ Reseñas de <span class="text-[#4285F4]">Google</span>
     </h2>
+    
+    {error && (
+      <div class="text-center text-red-500 mb-6">
+        {error}
+      </div>
+    )}
 
     {Array.isArray(reviews) && reviews.length > 0 ? (
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
