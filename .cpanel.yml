@@ -1,28 +1,31 @@
 deployment:
   tasks:
-    - echo "Preparando directorio temporal para build..."
-    - export TEMP_DIR=/home/apostill/temp_build_$RANDOM
-    - mkdir -p $TEMP_DIR
-    
-    - echo "Clonando el repositorio en directorio temporal..."
-    - git clone --depth=1 . $TEMP_DIR
-    - cd $TEMP_DIR
-    
-    - echo "Instalando dependencias..."
+    - echo "🚀 Iniciando despliegue Astro en cPanel..."
+
+    - TEMP_DIR="/home/apostill/temp_build_$$"
+    - echo "📁 Creando directorio temporal: $TEMP_DIR"
+    - mkdir -p "$TEMP_DIR"
+
+    - echo "🔄 Clonando el repositorio..."
+    - git clone --depth=1 . "$TEMP_DIR"
+
+    - cd "$TEMP_DIR"
+
+    - echo "📦 Instalando dependencias..."
     - npm ci
-    
-    - echo "Construyendo el proyecto..."
+
+    - echo "🛠️ Ejecutando build de Astro..."
     - npm run build
-    
-    - echo "Limpiando directorio de destino..."
-    - rm -rf /home/apostill/public_html/v2
-    - mkdir -p /home/apostill/public_html/v2
-    
-    - echo "Copiando solo el contenido de dist/ al directorio de destino..."
-    - cp -r dist/* /home/apostill/public_html/v2/
-    
-    - echo "Limpieza final..."
-    - rm -rf $TEMP_DIR
-    
-    - echo "✅ Despliegue completado correctamente."
-    - echo "Sitio ahora disponible en: https://apostillacolombia.com/v2/"
+
+    - DEST_DIR="/home/apostill/public_html/v2"
+    - echo "🧹 Limpiando directorio de destino: $DEST_DIR"
+    - rm -rf "$DEST_DIR"
+    - mkdir -p "$DEST_DIR"
+
+    - echo "📂 Copiando contenido de dist/ a $DEST_DIR"
+    - cp -r dist/* "$DEST_DIR/"
+
+    - echo "🧼 Eliminando directorio temporal..."
+    - rm -rf "$TEMP_DIR"
+
+    - echo "✅ ¡Despliegue completado! Sitio disponible en: https://apostillacolombia.com/v2/"
