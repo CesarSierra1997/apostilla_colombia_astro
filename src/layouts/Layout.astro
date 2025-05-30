@@ -35,14 +35,23 @@ const { description, title } = Astro.props
     <slot />
     <HeroAP />
     
-    <Apostilla />
-    <Traduccion />
-    <TramitesyServicios />
-    <QuienesSomos />
-    <Formulario />
+    <section id="apostilla" class="dark:text-white dark:bg-gray-900/10">
+      <Apostilla />
+    </section>
+    <section id="traduccion" class="dark:text-white dark:bg-gray-900/10">
+      <Traduccion />
+    </section>
+    <section id="otros_servicios" class="dark:text-white dark:bg-gray-900/10">
+      <TramitesyServicios />
+    </section>
+    <section id="quienes_somos" class="dark:text-white dark:bg-gray-900/10">
+      <QuienesSomos />
+    </section>
+    <section id="formulario1" class="dark:text-white dark:bg-gray-900/10">
+      <Formulario />
+    </section>
     
-
     <Footer />
-
+    
   </body>
 </html>

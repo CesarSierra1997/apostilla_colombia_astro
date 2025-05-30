@@ -1,31 +1,13 @@
 deployment:
   tasks:
-    - echo "🚀 Iniciando despliegue Astro en cPanel..."
-
-    - TEMP_DIR="/home/apostill/temp_build_$$"
-    - echo "📁 Creando directorio temporal: $TEMP_DIR"
-    - mkdir -p "$TEMP_DIR"
-
-    - echo "🔄 Clonando el repositorio..."
-    - git clone --depth=1 . "$TEMP_DIR"
-
-    - cd "$TEMP_DIR"
-
-    - echo "📦 Instalando dependencias..."
-    - npm ci
-
-    - echo "🛠️ Ejecutando build de Astro..."
-    - npm run build
+    - echo "🚀 Desplegando Astro en modo estático..."
 
     - DEST_DIR="/home/apostill/public_html/v2"
-    - echo "🧹 Limpiando directorio de destino: $DEST_DIR"
+    - echo "🧹 Limpiando destino: $DEST_DIR"
     - rm -rf "$DEST_DIR"
     - mkdir -p "$DEST_DIR"
 
-    - echo "📂 Copiando contenido de dist/ a $DEST_DIR"
+    - echo "📂 Copiando archivos de dist/ a $DEST_DIR"
     - cp -r dist/* "$DEST_DIR/"
 
-    - echo "🧼 Eliminando directorio temporal..."
-    - rm -rf "$TEMP_DIR"
-
-    - echo "✅ ¡Despliegue completado! Sitio disponible en: https://apostillacolombia.com/v2/"
+    - echo "✅ ¡Despliegue completado! Sitio activo en https://apostillacolombia.com/v2/"

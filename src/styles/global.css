@@ -38,14 +38,17 @@ body {
   background-color: var(--background-color);
   background-image: var(--gradient-dark);
   color: var(--text-color);
-  backdrop-filter: brightness(0.9); /* Oscurece ligeramente el fondo en modo oscuro */
 }
 
+/* Sección específica para el modo oscuro para asegurar la propagación en móviles */
+.dark-section {
+  color: var(--text-color);
+}
 
 
 /*Boton WhatsApp*/
 .btn-whatsapp {
-  display: inline-flex;
+  display: inline-flex !important; /* Asegurar que siempre sea visible */
   align-items: center;
   justify-content: center;
   width: 60px;
@@ -57,7 +60,12 @@ body {
   position: fixed;
   bottom: 30px; 
   right: 20px; 
-  z-index: 1
+  z-index: 100 !important;
+}
+
+.dark .btn-whatsapp {
+  display: inline-flex !important; /* Asegurar que siempre sea visible en modo oscuro */
+  box-shadow: -1px 2px 6px rgba(255, 255, 255, 0.2); /* Sombra más visible en modo oscuro */
 }
 
 .btn-whatsapp:hover {

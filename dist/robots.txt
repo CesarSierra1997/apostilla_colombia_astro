@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://apostillacolombia.com.co/sitemap-index.xml
