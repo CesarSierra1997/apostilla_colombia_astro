@@ -1,18 +1,31 @@
 ---
-import apostillaLogo from "../../assets/images/logo_claro.webp";
+import apostilla from "../../assets/images/slider/slider_1.webp";
+import legalizacion from "../../assets/images/slider/slider_2.webp";
+import documentos from "../../assets/images/slider/slider_3.webp";
 ---
 
-<section class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20 rounded-xl shadow-xl" id="apostilla">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-8">Apostilla de Documentos</h2>
-    
+<section
+  class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20 mt-1 rounded-xl shadow-xl"
+  id="apostilla"
+>
+  <div class="max-w-7xl mx-auto">
+    <h2
+      class="text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+    >
+      Apostilla de documentos
+    </h2>
+
     <div class="grid md:grid-cols-2 gap-8 items-center">
       <div>
         <p class="text-lg mb-6">
-          Realizamos la apostilla de sus documentos de manera rápida y segura. La apostilla es un certificado que autentifica el origen de un documento público para que tenga validez internacional.
+          Realizamos la apostilla de sus documentos de manera rápida y segura.
+          La apostilla es un certificado que autentifica el origen de un
+          documento público para que tenga validez internacional.
         </p>
-        
-        <h3 class="text-2xl font-semibold mb-4">Documentos que apostillamos:</h3>
+
+        <h3 class="text-2xl font-semibold mb-4">
+          Documentos que apostillamos:
+        </h3>
         <ul class="list-disc list-inside space-y-2 mb-6">
           <li>Diplomas y certificados académicos</li>
           <li>Certificados de nacimiento, matrimonio y defunción</li>
@@ -22,23 +35,32 @@ import apostillaLogo from "../../assets/images/logo_claro.webp";
           <li>Certificados médicos</li>
         </ul>
 
-        <div class="mt-12 bg-blue-50 dark:bg-blue-900/30 p-8 rounded-xl border border-blue-100 dark:border-blue-800">
+        <div
+          class="mt-12 bg-blue-50 dark:bg-blue-900/30 p-8 rounded-xl border border-blue-100 dark:border-blue-800"
+        >
           <h4 class="text-xl font-semibold mb-2">¿Por qué elegirnos?</h4>
           <ul class="space-y-2">
+            <li>✓ Servicio 100% Online</li>
             <li>✓ Trámite express en 24 horas</li>
             <li>✓ Asesoría personalizada</li>
-            <li>✓ Más de 10 años de experiencia</li>
+            <li>✓ Más de 18 años de experiencia</li>
             <li>✓ Servicio puerta a puerta</li>
           </ul>
         </div>
       </div>
-      
-      <div class="relative">
+
+      <div class="flex flex-wrap gap-4 justify-center">
         <img
-          src={apostillaLogo.src}
+          src={apostilla.src}
           alt="Apostilla de documentos"
-          class="rounded-lg shadow-xl w-full h-auto"
+          class="rounded-lg shadow-xl w-full max-w-xs md:max-w-md object-cover"
         />
+        <img
+          src={legalizacion.src}
+          alt="Apostilla de documentos"
+          class="rounded-lg shadow-xl w-full max-w-xs md:max-w-md object-cover"
+        />
+
       </div>
     </div>
   </div>
