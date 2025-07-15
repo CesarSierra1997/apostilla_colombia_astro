@@ -3,39 +3,50 @@ import SunIcon from "./icons/Sun.astro"
 import MoonIcon from "./icons/Moon.astro"
 import SystemIcon from "./icons/System.astro"
 
-const THEMES = ["Light", "Dark", "System"]
+const THEMES = [
+  { label: "☀️ Claro", value: "light" },
+  { label: "🌙 Oscuro", value: "dark" },
+  { label: "🖥️ Sistema", value: "system" },
+]
+
 ---
 
 <div class="relative ml-1 mr-1">
   <button
     transition:persist
     id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
+    class="top-link-color appearance-none border-none flex hover:scale-125 transition"
   >
     <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
+    <span class="relative flex items-center justify-center w-5 h-5">
+      <SunIcon id="light" class="theme-toggle-icon size-5 transition-all absolute" />
+      <MoonIcon
+        id="dark"
+        class="theme-toggle-icon absolute size-5 transition-all"
+      />
+      <SystemIcon
+        id="system"
+        class="theme-toggle-icon absolute size-5 transition-all"
+      />
+    </span>
   </button>
   <div
     transition:persist
     id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-gray-800/90 text-gray-200 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
   >
     <ul>
       {
         THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
-            {theme}
+          <li
+            class="themes-menu-option top-link-color px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+            data-theme={theme.value}
+          >
+            {theme.label}
           </li>
         ))
       }
+      
     </ul>
   </div>
 </div>
@@ -57,6 +68,12 @@ const THEMES = ["Light", "Dark", "System"]
       opacity: 1;
     }
   }
+  
+  /* Asegurar buena visibilidad del texto en ambos modos */
+  .themes-menu-option {
+    font-weight: 500;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
 </style>
 
 <script is:inline>
@@ -76,7 +93,15 @@ const THEMES = ["Light", "Dark", "System"]
 
   const updateIcon = (themePreference) => {
     document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
+      element.style.scale = element.id === themePreference ? "1" : "0";
+      // Asegurarse de que los iconos sean visibles en cualquier modo
+      if (element.id === themePreference) {
+        element.style.opacity = "1";
+        element.style.visibility = "visible";
+      } else {
+        element.style.opacity = "0";
+        element.style.visibility = "hidden";
+      }
     })
   }
 
@@ -111,9 +136,11 @@ const THEMES = ["Light", "Dark", "System"]
 
   document.querySelectorAll(".themes-menu-option").forEach((element) => {
     element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
+  const theme = e.target.getAttribute("data-theme")
+  localStorage.setItem("theme", theme)
+  updateTheme()
+})
+
   })
 
   document.addEventListener('astro:after-swap', () => {
