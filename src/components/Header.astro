@@ -35,13 +35,13 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-100 dark:text-gray-200 justify-center items-center"
+    id="nav-bar"
+    class="flex px-2 text-sm font-medium rounded-full justify-center items-center"
   >
-    <!-- <img src={apostillaLogo.src} alt="ApostillaCol" class="h-8 left-10 top-2 "> -->
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block px-2 py-2 transition hover:text-purple-500 dark:hover:text-blue-500"
           aria-label={link.label}
           href={link.url}
         >
@@ -51,6 +51,25 @@ const navItems = [
     }
     <ThemeToggle />
   </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll("nav a");
+  
+      function updateLinkColor() {
+        if (window.scrollY === 0) {
+          links.forEach(link => link.classList.add("top-link-color"));
+        } else {
+          links.forEach(link => link.classList.remove("top-link-color"));
+        }
+      }
+  
+      // Ejecutar al cargar y al hacer scroll
+      updateLinkColor();
+      window.addEventListener("scroll", updateLinkColor);
+    });
+  </script>
+  
+  
 </header>
 
 <script>
