@@ -43,6 +43,27 @@ body {
 /* Sección específica para el modo oscuro para asegurar la propagación en móviles */
 .dark-section {
   color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: var(--gradient-dark);
+}
+
+/* Reglas específicas para dispositivos móviles para garantizar el modo oscuro */
+@media (max-width: 768px) {
+  .dark body,
+  .dark section {
+    background-color: var(--background-color) !important;
+    background-image: var(--gradient-dark) !important;
+    color: var(--text-color) !important;
+  }
+  
+  .dark [id="apostilla"],
+  .dark [id="traduccion"],
+  .dark [id="otros_servicios"],
+  .dark [id="quienes_somos"],
+  .dark [id="formulario1"] {
+    background-color: var(--background-color) !important;
+    background-image: var(--gradient-dark) !important;
+  }
 }
 
 
