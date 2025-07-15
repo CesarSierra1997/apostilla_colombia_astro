@@ -5,7 +5,7 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap"; // 
 
 export default defineConfig({
-  base: "/v2",
+  base: "",
   integrations: [
     tailwind(),
     react(),
