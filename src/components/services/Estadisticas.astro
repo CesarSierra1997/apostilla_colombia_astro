@@ -7,10 +7,10 @@ const stats = [
 ];
 ---
 
-<section class="py-10 px-4" id="garantia">
+<section class="py-20 px-4" id="garantia">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h4 class="text-3xl md:text-3xl font-bold text-white tracking-tight">
+      <h4 class="text-3xl md:text-3xl font-bold tracking-tight">
         📈 Resultados que hablan por nosotros
       </h4>
       <p class="mt-4 text-zinc-400 text-lg max-w-2xl mx-auto">
@@ -24,14 +24,14 @@ const stats = [
       {
         stats.map((stat, i) => (
           <div
-            class="stat-card flex flex-col items-center justify-center bg-zinc-800/80 rounded-2xl p-8 border border-zinc-700 shadow-xl opacity-0 translate-y-6 transition-all duration-400 ease-out hover:scale-[1.05] hover:shadow-2xl hover:border-indigo-500 hover:bg-zinc-800/90"
-            style={`transition-delay: ${i * 150}ms`}
+            class="stat-card flex flex-col items-center justify-center bg-fuchsia-500/30 rounded-2xl p-8 border border-indigo-500 shadow-xl opacity-0 translate-y-6 transition-all duration-400 ease-out hover:scale-[1.05] hover:shadow-2xl hover:border-white hover:bg-violet-500/50"
+            style={`transition-delay: ${i * 120}ms`}
           >
             <div class="text-5xl mb-4 animate-pulse-slow">{stat.icon}</div>
-            <h3 class="text-3xl font-extrabold text-white leading-tight">
+            <h3 class="text-3xl font-extrabold text-white leading-tight animate-pulse-slow">
               {stat.value}
             </h3>
-            <p class="text-zinc-400 mt-2 text-base text-center leading-snug break-words">
+            <p class="text-white mt-2 text-base text-center leading-snug break-words animate-pulse-slow">
               {stat.label}
             </p>
           </div>

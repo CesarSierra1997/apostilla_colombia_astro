@@ -1,12 +1,16 @@
 deployment:
   tasks:
-    - echo "🚀 Desplegando Astro en modo estático..."
+    - echo "🚀 Desplegando Astro (build ya generado en local)..."
 
+    # Ruta absoluta del destino en cPanel
     - DEST_DIR="/home/apostill/public_html/v2"
+
+    # Limpieza del directorio de destino
     - echo "🧹 Limpiando destino: $DEST_DIR"
     - rm -rf "$DEST_DIR"
     - mkdir -p "$DEST_DIR"
 
+    # Copia de archivos generados (build local)
     - echo "📂 Copiando archivos de dist/ a $DEST_DIR"
     - cp -r dist/* "$DEST_DIR/"
 

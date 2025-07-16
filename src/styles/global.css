@@ -6,7 +6,7 @@
 /* Toggle para temas claro y oscuro */
 :root {
   --background-color: rgb(255, 255, 255);
-  --text-color: #1a1a1a; /* Cambiado de beige a un gris oscuro para mejor contraste */
+  --text-color: #1a1a1a; /* Gris oscuro para mejor contraste en modo claro */
   --gradient-light: radial-gradient(ellipse 80% 80% at 50% -20%, 
     rgba(217, 216, 255, 0.3), 
     rgba(255, 255, 255, 0.95)
@@ -15,6 +15,10 @@
     rgba(120, 119, 198, 0.15), 
     rgba(15, 15, 31, 0.95)
   );
+  --menu-bg-light: rgba(255, 255, 255, 0.9);
+  --menu-bg-dark: rgba(15, 15, 31, 0.9);
+  --menu-text-light: #333333;
+  --menu-text-dark: #ffffff;
 }
 
 .dark {
@@ -48,7 +52,7 @@ body {
 }
 
 /* Reglas específicas para dispositivos móviles para garantizar el modo oscuro */
-@media (max-width: 768px) {
+@media (min-width: 20px) {
   .dark body,
   .dark section {
     background-color: var(--background-color) !important;

@@ -28,20 +28,23 @@ const idiomas = [
 ];
 ---
 
-<section class="py-20 px-4 bg-gray-100 dark:bg-gray-900/20 mt-1 rounded-xl shadow-xl" id="traduccion">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-12">Traducciones Oficiales</h2>
+<section
+  class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20 mt-1 rounded-xl shadow-xl"
+  id="traduccion"
+>
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-16">Traducciones oficiales</h2>
 
     <div class="grid md:grid-cols-2 gap-8 mb-12">
       <div>
-        <p class="text-lg mb-6 text-gray-800 dark:text-gray-200">
+        <p class="text-lg mb-6">
           Ofrecemos servicios de traducción oficial con traductores certificados
           para todos sus documentos. Nuestras traducciones son aceptadas por
           entidades gubernamentales y organizaciones internacionales.
         </p>
 
         <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+          class="bg-white bg-purple-600/30 border-purple-900 p-6 rounded-lg shadow-lg border"
         >
           <h3 class="text-xl font-semibold mb-4">
             Tipos de documentos que traducimos:
@@ -56,15 +59,22 @@ const idiomas = [
         </div>
       </div>
 
+  
+
       <div class="grid gap-4">
+    <hr/>
+      <h3 class="text-xl font-semibold mb-4 text-purple-700 ">
+        idiomas disponibles:
+      </h3>
+
         {
           idiomas.map((idioma) => (
-            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg transition-transform hover:scale-105">
+            <div class="bg-purple-700/30 border-purple-900 p-4 rounded-lg shadow-lg transition-transform hover:scale-105 border">
               <div class="flex items-center gap-4">
                 <span class="text-4xl">{idioma.bandera}</span>
                 <div>
                   <h4 class="text-xl font-semibold">{idioma.nombre}</h4>
-                  <p class="text-gray-800 dark:text-gray-300">
+                  <p class="text-gray-100">
                     {idioma.descripcion}
                   </p>
                 </div>
