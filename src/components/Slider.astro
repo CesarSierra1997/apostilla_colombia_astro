@@ -1,10 +1,10 @@
 ---
-import slider1 from '../assets/images/slider/slider_1.webp';
-import slider2 from '../assets/images/slider/slider_2.webp';
-import slider3 from '../assets/images/slider/slider_3.webp';
-import slider4 from '../assets/images/slider/slider_4.webp';
-import slider5 from '../assets/images/slider/slider_5.webp';
-import slider6 from '../assets/images/slider/slider_6.webp';
+import slider1 from "../assets/images/slider/slider_1.webp";
+import slider2 from "../assets/images/slider/slider_2.webp";
+import slider3 from "../assets/images/slider/slider_3.webp";
+import slider4 from "../assets/images/slider/slider_4.webp";
+import slider5 from "../assets/images/slider/slider_5.webp";
+import slider6 from "../assets/images/slider/slider_6.webp";
 
 const slides = [
   { img: slider1, text: "Apostillas en tiempo récord" },
@@ -18,16 +18,23 @@ const slides = [
 
 <div class="swiper-container max-w-4xl mx-auto opacity-0" id="main-slider">
   <div class="swiper-wrapper">
-    {slides.map(({ img, text }, i) => (
-      <div class="swiper-slide">
-        <div class="relative overflow-hidden rounded-xl shadow-2xl">
-          <img src={img.src} alt={`Slide ${i + 1}`} class="w-full h-[400px] object-cover" />
-          <div class="absolute bottom-0 w-full bg-black/60 text-white text-lg text-left font-semibold px-4 pb-5 py-2">
-            {text}
+    {
+      slides.map(({ img, text }, i) => (
+        <div class="swiper-slide">
+          <div class="relative overflow-hidden rounded-xl shadow-2xl">
+            <img
+              src={img.src}
+              alt={`Slide ${i + 1}`}
+              class="w-full h-[400px] object-cover"
+              loading="lazy"
+            />
+            <div class="absolute bottom-0 w-full bg-black/60 text-white text-lg text-left font-semibold px-4 pb-5 py-2">
+              {text}
+            </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 
   <div class="swiper-pagination"></div>
@@ -36,34 +43,35 @@ const slides = [
 </div>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import Swiper from 'swiper';
-  import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
-  import 'swiper/css/effect-fade';
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+  import "swiper/css/effect-fade";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.fromTo('#main-slider',
+  gsap.fromTo(
+    "#main-slider",
     { opacity: 0, y: 50 },
     {
       opacity: 1,
       y: 0,
       duration: 2,
-      ease: 'power3.out',
+      ease: "power3.out",
       scrollTrigger: {
-        trigger: '#main-slider',
-        start: 'top 70%',
-      }
-    }
+        trigger: "#main-slider",
+        start: "top 70%",
+      },
+    },
   );
 
-  new Swiper('.swiper-container', {
+  new Swiper(".swiper-container", {
     modules: [Navigation, Pagination, Autoplay, EffectFade],
-    effect: 'fade',
+    effect: "fade",
     slidesPerView: 1,
     loop: true,
     autoplay: {
@@ -71,12 +79,12 @@ const slides = [
       disableOnInteraction: false,
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 </script>
