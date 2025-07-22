@@ -8,7 +8,6 @@ import SliderHero from "../components/Slider.astro";
   id="home"
   class="relative min-h-screen flex items-center justify-center overflow-hidden py-10"
 >
-
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto text-center">
       <!-- Logo + Background SVG superposition -->
@@ -18,15 +17,19 @@ import SliderHero from "../components/Slider.astro";
       >
         <img
           src={backgroundastro.src}
-          alt="Decorativo"
+          alt=""
           class="absolute inset-0 w-full h-full object-contain opacity-0 scale-0"
           id="background-svg"
+          loading="lazy"
+          title="Fondo decorativo - Apostilla Colombia"
         />
         <img
           src={apostillaLogo.src}
-          alt="Apostilla Colombia Traducciones Oficiales"
+          alt="Logo de Apostilla Colombia"
           class="relative z-10 w-full h-full object-contain opacity-0 scale-50"
           id="logo-image"
+          loading="lazy"
+          title="Logo Apostilla Colombia Traducciones Oficiales"
         />
       </div>
 
@@ -42,11 +45,11 @@ import SliderHero from "../components/Slider.astro";
         class="text-xl md:text-2xl mb-8 dark:text-gray-700 max-w-3xl mx-auto text-white-900 opacity-0"
         id="main-description"
       >
-        Expertos en legalización internacional de documentos y traducciones
-        oficiales.
+        Expertos en legalización, apostilla de documentos, homologación de
+        titulos y traducciones oficiales.
         <span class="font-semibold text-blue-600 dark:text-blue-400"
-          >Más de 15 años</span
-        > facilitando trámites en Colombia.
+          >Más de 18 años</span
+        > gestionando trámites en Colombia y el mundo .
       </p>
 
       <div
