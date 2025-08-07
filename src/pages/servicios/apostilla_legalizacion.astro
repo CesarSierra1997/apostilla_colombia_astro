@@ -1,0 +1,238 @@
+---
+import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
+import Layout from "../../layouts/Layout.astro";
+
+const tramites = [
+  {
+    titulo: "Títulos de Universidad",
+    valor: "Desde $80.000",
+    documentos: [
+      "Diploma de grado",
+      "Acta de grado",
+      "Certificado de Calificaciones",
+      "Plan de Estudios",
+    ],
+    tramites: ["Legalización ante el MEN", "Apostilla ante el MRE"],
+    tiempo: "3 a 5 días hábiles",
+  },
+  {
+    titulo: "Título de Bachiller",
+    valor: "Desde $120.000",
+    documentos: [
+      "Diploma de bachiller",
+      "Acta de grado",
+      "Certificado de Notas",
+      "Constancia de Estudios",
+    ],
+    tramites: [
+      "Tramite de legalización Sec. Edu Distrital",
+      "Tramite de legalización SAC",
+      "Apostilla ante el MRE",
+    ],
+    tiempo: "15 días calendario",
+  },
+  {
+    titulo: "Antecedentes",
+    valor: "Desde $80.000",
+    documentos: [
+      "Antecedentes Judiciales - Policía",
+      "Antecedentes Disciplinarios - Procuraduría",
+      "Antecedentes Fiscales - Contraloría",
+    ],
+    tramites: ["Solicitud y Validación", "Trámite de apostilla MRE"],
+    tiempo: "1 día hábil (Policía)",
+  },
+  {
+    titulo: "Registro Civil",
+    valor: "Desde $80.000",
+    documentos: [
+      "Registro Civil: Nacimiento, Matrimonio, Defunción",
+      "Expedidos por notaria (Código)",
+      "Expedidos por Registraduría (PDF)",
+    ],
+    tramites: ["Validación SNR", "Legalización RNEC", "Trámite de apostilla MRE"],
+    tiempo: ["1 día hábil (Notaria)", "\n15 días calendario (Registraduría)",]
+  },
+  {
+    titulo: "Otros Servicios de Apostilla",
+    valor: "Desde $120.000",
+    documentos: [
+      "Certificado Medico",
+      "Partida de Bautismo",
+      "Informe General de Conductor",
+      "Escrituras, sentencias",
+    ],
+    tramites: ["Solicitud, Validación y Legalización", "Trámite de apostilla MRE"],
+    tiempo: "Depende del documento",
+  },
+  {
+    titulo: "Traduccion Oficial",
+    valor: "Desde $120.000",
+    documentos: [
+      "Traduccion Oficial Apostillada",
+      "Traduccion Oficial Certificada",
+    ],
+    tramites: ["Gestión y Validación", "Legalización SNR", "Trámite de apostilla MRE"],
+    tiempo: "1 a 2 días hábiles",
+  },
+];
+---
+
+<Layout
+  title="Apostilla Legalización de Documentos"
+  description="Legalización y apostilla de documentos en Colombia"
+>
+  <section
+    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-10 text-center"
+  >
+    <div class="max-w-6xl mx-auto px-4 space-y-4">
+      <h1 class="text-5xl font-bold text-center mb-10 mt-10">
+        Apostilla de Documentos en Colombia
+      </h1>
+      <p class="text-lg md:text-xl opacity-90">
+        ✅ Servicio Rápido | ✅ +18 Años de Experiencia | ✅ Asesoría
+        Personalizada
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-6">
+        <a
+          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20apostillar%20documentos.%20¿Me%20pueden%20ayudar%3F"
+          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
+          target="_blank"
+        >
+          📱 WhatsApp - CONSULTA GRATIS
+        </a>
+        <a
+          href="tel:+573213254326"
+          class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-[#1e3c72] transition"
+        >
+          📞 Llamar: 321 325 4326
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
+            >⚡</span
+          >
+          <span>Respuesta en 5 minutos</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
+            >🎯</span
+          >
+          <span>100% Efectividad</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
+            >🚀</span
+          >
+          <span>Entrega en 24-48h</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apostilla y legalización de documentos -->
+  <section class="bg-gray-100 py-16 text-center">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2
+        class="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent mb-5"
+      >
+        Servicios de Apostilla y Legalización
+      </h2>
+      <p class="text-lg md:text-xl opacity-90 mb-10 text-center">
+        Realizamos el trámite completo de <strong>apostilla</strong> y <strong
+          >legalización</strong
+        > de tus documentos colombianos, según el país donde los necesites. Te ayudamos
+        desde la validación previa, si aplica, hasta la entrega lista para uso en
+        el exterior. ¡Contáctanos y evita complicaciones!
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-5">
+          {
+            tramites.map((item) => (
+              <div class="bg-stone-50/30 rounded-xl shadow-lg p-6 max-w-sm w-full">
+                <h3 class="text-2xl font-semibold text-blue-500 mb-2">
+                  {item.titulo}
+                </h3>
+                <div class="text-xl font-bold text-[#25D366] mb-4">
+                  {item.valor}
+                </div>
+
+                <ul class="text-left space-y-2">
+                  {item.documentos.map((doc) => (
+                    <li class="flex items-center gap-2">
+                      <span class="text-[#25D366] font-bold">•</span> {doc}
+                    </li>
+                  ))}
+                </ul>
+
+                <hr class="m-5" />
+
+                <ul class="text-left space-y-2">
+                  {item.tramites.map((tramite) => (
+                    <li class="flex items-center gap-2">
+                      <span class="text-[#25D366] font-bold">✓</span> {tramite}
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 mt-5">
+                  ⏱{" "}
+                  <span>
+                    Tiempo estimado: <strong>{item.tiempo}</strong>
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="m-10">
+        <a
+          href="https://wa.me/573213254326?text=Quiero%20conocer%20precios%20exactos%20para%20apostillar%20mis%20documentos"
+          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
+          target="_blank"
+        >
+          💬 Cotizar Mi Caso Específico
+        </a>
+      </div>
+
+      <p class="text-lg md:text-xl opacity-90 mb-10 text-justify">
+        Si necesitas usar tus documentos colombianos en el exterior, nosotros te
+        ayudamos con todo el proceso de <strong>apostilla</strong> y <strong
+          >legalización</strong
+        >, según el país donde los vayas a presentar. Para países que hacen
+        parte del <a
+          href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
+          target="_blank"
+          rel="noopener noreferrer">Convenio de La Haya</a
+        >, se realiza el proceso de apostilla; para otros países, aplicamos el
+        proceso de legalización.
+        <br /><br />
+        Además, algunos documentos requieren validaciones previas, como títulos universitarios
+        o de bachillerato, registros civiles, certificados médicos, partidas de bautismo,
+        antecedentes, escrituras o sentencias, entre otros. Nosotros te guiamos y
+        gestionamos cada paso necesario para que tu documento esté completamente
+        listo para ser usado fuera del país, sin complicaciones.
+      </p>
+    </div>
+  </section>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a
+    href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
+    class="btn-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    id="wp-button"
+  >
+    <Wp />
+  </a>
+</Layout>
