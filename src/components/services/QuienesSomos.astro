@@ -2,6 +2,21 @@
 import Resenas from '../services/Resenas.astro';
 import Est from "../services/Estadisticas.astro";
 
+import quienesSomos_img1 from "../../assets/images/quienes_somos/oficina_1.webp";
+import quienesSomos_img2 from "../../assets/images/quienes_somos/documentos_1.webp";
+import quienesSomos_img3 from "../../assets/images/quienes_somos/foto_2.webp";
+import quienesSomos_img4 from "../../assets/images/quienes_somos/oficina_3.webp";
+
+const slides = [
+  { img: quienesSomos_img1, text: "Apostilla Colombia Traducciones Oficiales" },
+  { img: quienesSomos_img3, text: "Responsabilidad y compromiso " },
+  { img: quienesSomos_img2, text: "Efectivo, rápido y seguro" },
+  { img: quienesSomos_img4, text: "Oficina - Sra Feliza Mallungo" },
+
+];
+
+// Duplica las imágenes para efecto de scroll continuo
+const loopSlides = [...slides, ...slides];
 ---
 
 <section 
@@ -16,16 +31,25 @@ id="quienes_somos"
   </h2>
 
     <div class="grid md:grid-cols-2 gap-12 items-center mb-5">
-      <div>
+<div class="relative overflow-hidden">
+  <div class="flex gap-4 animate-scroll-x whitespace-nowrap">
+    {loopSlides.map(({ img, text }) => (
+      <figure class="shrink-0 min-w-[200px] h-48 relative rounded-lg shadow-md overflow-hidden">
         <img
-          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
-          alt="Equipo de trabajo"
-          class="rounded-lg shadow-xl"
-          width="600"
-          height="400"
+          src={img.src}
+          alt={text}
+          class="w-full h-full object-cover"
+          loading="lazy"
         />
-      </div>
-
+        <figcaption class="absolute bottom-0 left-0 w-full text-sm bg-black/50 text-white px-2 py-1">
+          <div class="max-w-sm leading-tight tracking-tight text-sm mx-auto">
+    {text}
+  </div>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</div>
       <div>
         <h3 class="text-2xl font-semibold mb-6">Nuestra Historia</h3>
         <p class="text-lg mb-6">
