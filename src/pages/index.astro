@@ -1,28 +1,45 @@
 ---
 import Wp from "../components/icons/react/WhatsAppButtom.jsx";
-import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout
+<Layout 
   title="Apostilla Colombia Traducciones Oficiales"
-  description="Expertos en legalización, apostilla de documentos, homologación de titulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo."
+  description="Expertos en legalización, apostilla de documentos, homologación de títulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo." 
 >
-  <a
+  <a 
     href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
     class="btn-whatsapp"
     target="_blank"
     rel="noopener noreferrer"
-    on:click={() => {
-      if (typeof gtag !== "undefined") {
-        gtag("event", "conversion", {
-          send_to: "AW-303344726/9D4pCM_R44EYENbY0pAB",
-        });
-      }
-    }}
+    id="wp-button"
   >
     <Wp />
   </a>
+
+  <!-- Script para registrar conversión -->
+  <script is:inline>
+    // Definir gtag como global si no existe
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-303344726');
+
+    // Evento de conversión al hacer clic
+    document.addEventListener("DOMContentLoaded", () => {
+      const wpButton = document.getElementById("wp-button");
+      if (wpButton) {
+        wpButton.addEventListener("click", () => {
+          if (typeof gtag !== "undefined") {
+            gtag("event", "conversion", {
+              send_to: "AW-303344726/9D4pCM_R44EYENbY0pAB",
+            });
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Google Ads gtag -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-303344726"></script>
 </Layout>
