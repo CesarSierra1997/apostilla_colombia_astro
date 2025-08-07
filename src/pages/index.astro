@@ -1,13 +1,28 @@
 ---
 import Wp from "../components/icons/react/WhatsAppButtom.jsx";
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import TramitesyServicios from "../components/services/TramitesyServicios.astro";
+import Traduccion from "../components/services/Traduccion.astro";
+import Apostilla from "../components/services/Apostilla.astro";
+import QuienesSomos from "../components/services/QuienesSomos.astro";
+import Formulario from "../components/services/Formulario.astro";
+import HeroAP from "../components/Hero.astro";
+import Contacto from "../components/Contacto.astro";
 ---
 
-<Layout 
+<Layout
   title="Apostilla Colombia Traducciones Oficiales"
-  description="Expertos en legalización, apostilla de documentos, homologación de títulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo." 
+  description="Expertos en legalización, apostilla de documentos, homologación de títulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo."
 >
-  <a 
+  <HeroAP />
+  <Apostilla />
+  <Traduccion />
+  <TramitesyServicios />
+  <Contacto />
+  <QuienesSomos />
+  <Formulario />
+
+  <a
     href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
     class="btn-whatsapp"
     target="_blank"
@@ -19,13 +34,6 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- Script para registrar conversión -->
   <script is:inline>
-    // Definir gtag como global si no existe
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-303344726');
-
-    // Evento de conversión al hacer clic
     document.addEventListener("DOMContentLoaded", () => {
       const wpButton = document.getElementById("wp-button");
       if (wpButton) {
@@ -39,7 +47,4 @@ import Layout from '../layouts/Layout.astro';
       }
     });
   </script>
-
-  <!-- Google Ads gtag -->
-  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-303344726"></script>
 </Layout>
