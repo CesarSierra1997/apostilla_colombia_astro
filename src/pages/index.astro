@@ -34,6 +34,14 @@ import Contacto from "../components/Contacto.astro";
 
   <!-- Script para registrar conversión -->
   <script is:inline>
+    // Definir gtag como global si no existe
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-303344726");
+
     document.addEventListener("DOMContentLoaded", () => {
       const wpButton = document.getElementById("wp-button");
       if (wpButton) {
