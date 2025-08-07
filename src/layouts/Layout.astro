@@ -1,23 +1,22 @@
 ---
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import TramitesyServicios from "../components/services/TramitesyServicios.astro";
 import Traduccion from "../components/services/Traduccion.astro";
 import Apostilla from "../components/services/Apostilla.astro";
 import QuienesSomos from "../components/services/QuienesSomos.astro";
 import Formulario from "../components/services/Formulario.astro";
-import HeroAP from "../components/Hero.astro"
+import HeroAP from "../components/Hero.astro";
 import Contacto from "../components/Contacto.astro";
 
-
-import "@/styles/global.css"; 
+import "@/styles/global.css";
 
 interface Props {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-const { description, title } = Astro.props
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,22 +28,32 @@ const { description, title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/logo.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-303344726"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-303344726");
+    </script>
   </head>
 
   <body>
     <Header />
     <slot />
     <HeroAP />
-    
-      <Apostilla />
-      <Traduccion />
-      <TramitesyServicios />
-      <Contacto />
-      <QuienesSomos />
-      <Formulario />
-    
+
+    <Apostilla />
+    <Traduccion />
+    <TramitesyServicios />
+    <Contacto />
+    <QuienesSomos />
+    <Formulario />
+
     <Footer />
-    
   </body>
 </html>

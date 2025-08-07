@@ -1,21 +1,28 @@
 ---
-import Wp from "../components/icons/react/WhatsAppButtom.jsx"
-import Layout from '../layouts/Layout.astro';
+import Wp from "../components/icons/react/WhatsAppButtom.jsx";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout 
+<Layout
   title="Apostilla Colombia Traducciones Oficiales"
-  description="Expertos en legalización, apostilla de documentos, homologación de titulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo." 
+  description="Expertos en legalización, apostilla de documentos, homologación de titulos y traducciones oficiales. Más de 18 años gestionando trámites en Colombia y el mundo."
 >
-  <a 
-  href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
-  class="btn-whatsapp"
-  target="_blank"
-  rel="noopener noreferrer"
+  <a
+    href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
+    class="btn-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    on:click={() => {
+      if (typeof gtag !== "undefined") {
+        gtag("event", "conversion", {
+          send_to: "AW-303344726/9D4pCM_R44EYENbY0pAB",
+        });
+      }
+    }}
   >
-  <Wp />
+    <Wp />
   </a>
 </Layout>
