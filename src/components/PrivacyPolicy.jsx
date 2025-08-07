@@ -42,7 +42,6 @@ const PrivacyPolicy = () => {
         <p className="text-zinc-300 mb-2">Como titular, usted tiene derecho a:</p>
         <ul className="list-disc pl-6 text-zinc-300 space-y-1">
           <li>Acceder, actualizar y rectificar sus datos</li>
-          <li>Solicitar prueba de autorización otorgada</li>
           <li>Ser informado sobre el uso de sus datos</li>
           <li>Presentar quejas ante la SIC</li>
           <li>Revocar la autorización o solicitar la supresión de los datos</li>
