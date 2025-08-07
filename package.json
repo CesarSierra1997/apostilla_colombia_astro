@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "rimraf dist && astro check && astro build",
+    "clean": "rimraf dist && rimraf dist.zip",
+    "build": "npm run clean && astro check && astro build",
+    "build:safe": "npm run clean && astro check && astro build --config astro.config.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -28,6 +30,7 @@
     "typescript": "^5.5.2"
   },
   "devDependencies": {
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "terser": "^5.43.1"
   }
 }
