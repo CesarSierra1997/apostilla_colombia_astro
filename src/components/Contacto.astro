@@ -1,0 +1,110 @@
+<section
+  id="contacto"
+  class="py-20 px-4 bg-gray-50 dark:bg-gray-900/20 mt-1 rounded-xl shadow-xl"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-12">Contacto</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Texto / información -->
+      <div>
+        <p class="text-lg mb-6">
+          Si necesitas más información, o quieres iniciar un trámite o servicio,
+          estamos para ayudarte.
+        </p>
+
+        <div class="space-y-4 text-base">
+          <p>
+            <strong>📍 Dirección:</strong> Cra 10 #12-32, Mosquera, Cundinamarca
+            - Colombia (correspondencia)
+          </p>
+          <p>
+            <strong>📞 Teléfono:</strong>
+            <a href="tel:+573213254326" class="text-blue-600 underline"
+              >+57 321 325 4326</a
+            >
+          </p>
+          <p>
+            <strong>📧 Correo:</strong>
+            <a
+              href="mailto:contacto@apostillacolombia.com.co"
+              class="text-blue-600 underline"
+              >contacto@apostillacolombia.com.co</a
+            >
+          </p>
+          <p>
+            <strong>💬 WhatsApp:</strong>
+            <a
+              href="https://wa.me/573213254326?text=Iniciar%20chat"
+              target="_blank"
+              class="text-green-600 underline"
+            >
+              Chatear ahora
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div>
+        <form id="contactoForm" class="space-y-4">
+          <input
+            type="text"
+            id="nombre"
+            placeholder="Tu nombre"
+            class="w-full px-4 py-3 border rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600"
+            required
+          />
+          <input
+            type="email"
+            id="correo"
+            placeholder="Tu correo electrónico"
+            class="w-full px-4 py-3 border rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600"
+            required
+          />
+          <textarea
+            id="mensaje"
+            placeholder="Escribe tu mensaje..."
+            rows="4"
+            class="w-full px-4 py-3 border rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-600"
+            required></textarea>
+          <button
+            type="submit"
+            class="w-full bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-800 transition"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+
+        <!-- Script para enviar datos a WhatsApp -->
+        <script>
+          document
+            .getElementById("contactoForm")
+            ?.addEventListener("submit", function (e) {
+              e.preventDefault();
+        
+              const nombreInput = document.getElementById("nombre") as HTMLInputElement | null;
+              const correoInput = document.getElementById("correo") as HTMLInputElement | null;
+              const mensajeInput = document.getElementById("mensaje") as HTMLTextAreaElement | null;
+        
+              if (!nombreInput || !correoInput || !mensajeInput) {
+                alert("Por favor complete todos los campos.");
+                return;
+              }
+        
+              const nombre = nombreInput.value.trim();
+              const correo = correoInput.value.trim();
+              const mensaje = mensajeInput.value.trim();
+        
+              const numeroWhatsApp = "573213254326";
+              const texto = `Hola, mi nombre es *${nombre}*\nEmail: ${correo}\n\n${mensaje}`;
+              const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+        
+              window.open(url, "_blank");
+            });
+        </script>
+        
+      </div>
+    </div>
+  </div>
+</section>
