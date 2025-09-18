@@ -96,7 +96,7 @@ const tramites = [
 
       <div class="flex flex-wrap justify-center gap-4 mt-6">
         <a
-          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20apostillar%20documentos.%20¿Me%20pueden%20ayudar%3F"
+          href="https://wa.me/573125082845?text=Hola%2C%20necesito%20apostillar%20documentos.%20¿Me%20pueden%20ayudar%3F"
           class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
           target="_blank"
         >
@@ -197,7 +197,7 @@ const tramites = [
       <div class="m-10">
         <a
           href="https://wa.me/573213254326?text=Quiero%20conocer%20precios%20exactos%20para%20apostillar%20mis%20documentos"
-          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
+          class="bg-[#25D366] text-white px-6 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
           target="_blank"
         >
           💬 Cotizar Mi Caso Específico
@@ -227,7 +227,7 @@ const tramites = [
 
   <!-- BOTÓN WHATSAPP FLOTANTE -->
   <a
-    href="https://wa.me/573213162622?text=¡Hola!%20Quisiera%20más%20información."
+    href="https://wa.me/573125082845?text=¡Hola!%20Quisiera%20más%20información."
     class="btn-whatsapp"
     target="_blank"
     rel="noopener noreferrer"
@@ -235,4 +235,28 @@ const tramites = [
   >
     <Wp />
   </a>
+
+  <!-- Script para registrar conversión -->
+  <script is:inline>
+    // Definir gtag como global si no existe
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-303344726");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const wpButton = document.getElementById("wp-button");
+      if (wpButton) {
+        wpButton.addEventListener("click", () => {
+          if (typeof gtag !== "undefined") {
+            gtag("event", "conversion", {
+              send_to: "AW-303344726/9D4pCM_R44EYENbY0pAB",
+            });
+          }
+        });
+      }
+    });
+  </script>
 </Layout>
