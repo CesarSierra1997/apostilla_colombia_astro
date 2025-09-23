@@ -235,28 +235,4 @@ const tramites = [
   >
     <Wp />
   </a> -->
-
-  <!-- Script para registrar conversión -->
-  <script is:inline>
-    // Definir gtag como global si no existe
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "AW-303344726");
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const wpButton = document.getElementById("wp-button");
-      if (wpButton) {
-        wpButton.addEventListener("click", () => {
-          if (typeof gtag !== "undefined") {
-            gtag("event", "conversion", {
-              send_to: "AW-303344726/9D4pCM_R44EYENbY0pAB",
-            });
-          }
-        });
-      }
-    });
-  </script>
 </Layout>
