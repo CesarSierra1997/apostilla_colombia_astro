@@ -39,20 +39,62 @@ const serviciosUniversitarios = [
         ],
     },
     {
+        titulo: "Certificados Universitarios",
+        valor: "Desde $150.000",
+        documentos: [
+            "Certificado de Existencia y Representación Legal",
+            "Certificado de Programa",
+        ],
+        tramites: ["1 Certificado","Gestión de Certificado MEN", "Apostilla MRE"],
+        tiempo: "10 días",
+        icon: "🎯",
+        requisitos: [
+            "Dipoma de grado",
+            "Escaner con buena resolución",
+            "Enviar Diploma en PDF",
+        ],
+    },
+    {
         titulo: "Paquete Documentos",
         valor: "Desde $350.000",
         documentos: [
-            "Diploma pregrado o postgrado",
-            "Acta de grado",
-            "Sabana de notas",
-            "Plan de estudios",
-            "Certificados académicos",
+            "Ideal para trámites individuales o pequeños (hasta 5 documentos)",
         ],
         tramites: ["Legalización MEN", "Apostilla MRE"],
         tiempo: "5-8 días hábiles",
         icon: "🎯",
         requisitos: [
             "A partir de 5 documentos",
+            "Escaner con buena resolución",
+            "Enviar documentos en PDF",
+        ],
+    },
+    {
+        titulo: "Paquete Aliados",
+        valor: "Desde $650.000",
+        documentos: [
+            "Pensado para grupos de estudiantes o aliados estratégicos (10 documentos o más)",
+        ],
+        tramites: ["Legalización MEN", "Apostilla MRE"],
+        tiempo: "10 días hábiles",
+        icon: "🎯",
+        requisitos: [
+            "A partir de 10 documentos",
+            "Escaner con buena resolución",
+            "Enviar documentos en PDF",
+        ],
+    },
+    {
+        titulo: "Paquete Empresas",
+        valor: "Desde $1.200.000",
+        documentos: [
+            "Optimizado para empresas e instituciones (20+ documentos con gestión personalizada)",
+        ],
+        tramites: ["Legalización MEN", "Apostilla MRE", "Planilla Personalizada"],
+        tiempo: "12 días hábiles",
+        icon: "🎯",
+        requisitos: [
+            "A partir de 20 documentos",
             "Escaner con buena resolución",
             "Enviar documentos en PDF",
         ],
@@ -174,7 +216,7 @@ const paisesDestino = [
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div
-                    class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                    class="bg-gradient-to-br from-blue-50/50 to-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
                 >
                     <div class="text-5xl mb-4">🎓</div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">
