@@ -32,7 +32,7 @@ const serviciosUniversitarios = [
         ],
         tramites: ["Legalización MEN", "Apostilla MRE"],
         tiempo: "3 a 5 días hábiles",
-        icon: "📚",
+        icon: "📜",
         requisitos: [
             "Escaner con buena resolución",
             "Enviar documentos en PDF",
@@ -47,7 +47,7 @@ const serviciosUniversitarios = [
         ],
         tramites: ["1 Certificado","Gestión de Certificado MEN", "Apostilla MRE"],
         tiempo: "10 días",
-        icon: "🎯",
+        icon: "📑",
         requisitos: [
             "Dipoma de grado",
             "Escaner con buena resolución",
@@ -62,7 +62,7 @@ const serviciosUniversitarios = [
         ],
         tramites: ["Legalización MEN", "Apostilla MRE"],
         tiempo: "5-8 días hábiles",
-        icon: "🎯",
+        icon: "📚",
         requisitos: [
             "A partir de 5 documentos",
             "Escaner con buena resolución",
@@ -77,7 +77,7 @@ const serviciosUniversitarios = [
         ],
         tramites: ["Legalización MEN", "Apostilla MRE"],
         tiempo: "10 días hábiles",
-        icon: "🎯",
+        icon: "💼",
         requisitos: [
             "A partir de 10 documentos",
             "Escaner con buena resolución",
@@ -92,7 +92,7 @@ const serviciosUniversitarios = [
         ],
         tramites: ["Legalización MEN", "Apostilla MRE", "Planilla Personalizada"],
         tiempo: "12 días hábiles",
-        icon: "🎯",
+        icon: "📦",
         requisitos: [
             "A partir de 20 documentos",
             "Escaner con buena resolución",
@@ -216,9 +216,9 @@ const paisesDestino = [
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div
-                    class="bg-gradient-to-br from-blue-50/50 to-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                    class="bg-gradient-to-br from-blue-100 to-indigo-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
                 >
-                    <div class="text-5xl mb-4">🎓</div>
+                    <div class="text-5xl text-gray-500 mb-4"><i class="fa-solid fa-award"></i></div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">
                         Conocemos el proceso MEN
                     </h3>
@@ -230,23 +230,23 @@ const paisesDestino = [
                 </div>
 
                 <div
-                    class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                    class="bg-gradient-to-br from-purple-100 to-pink-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
                 >
-                    <div class="text-5xl mb-4">🏛️</div>
+                    <div class="text-5xl text-gray-500 mb-4"><i class="fa-solid fa-building-columns"></i></div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">
                         Experiencia con universidades
                     </h3>
                     <p class="text-gray-600">
-                        Gestionamos documentos de todas las universidades de Colombia.
-                        Sabemos cómo solicitar correctamente cada documento
-                        según la institución y necesidad.
+                        Gestionamos documentos de todas las universidades de
+                        Colombia. Sabemos cómo solicitar correctamente cada
+                        documento según la institución y necesidad.
                     </p>
                 </div>
 
                 <div
-                    class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                    class="bg-gradient-to-br from-green-100 to-teal-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
                 >
-                    <div class="text-5xl mb-4">🌍</div>
+                    <div class="text-5xl text-gray-500 mb-4"><i class="fa-solid fa-globe"></i></div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">
                         Conocemos requisitos internacionales
                     </h3>
@@ -278,10 +278,10 @@ const paisesDestino = [
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
                 {
                     serviciosUniversitarios.map((servicio) => (
-                        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 p-6 border-t-4 border-blue-500">
+                        <div class="bg-gray-100/80 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 p-6 border-t-4 border-blue-500">
                             <div class="text-5xl mb-3">{servicio.icon}</div>
 
-                            <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                            <h3 class="text-2xl font-bold mb-2">
                                 {servicio.titulo}
                             </h3>
 
@@ -344,24 +344,6 @@ const paisesDestino = [
                     ))
                 }
             </div>
-
-            <!-- <div
-                class="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white"
-            >
-                <p class="text-xl md:text-2xl font-bold mb-4">
-                    ¿Necesitas apostillar tus documentos universitarios?
-                </p>
-                <p class="text-lg mb-6 opacity-90">
-                    Cotiza tu caso específico y recibe asesoría personalizada
-                </p>
-                <a
-                    href="https://wa.me/573213254326?text=Quiero%20cotizar%20la%20apostilla%20de%20mis%20documentos%20universitarios"
-                    class="inline-block bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-[#20ba57] transition-all transform hover:scale-105 animate-pulse"
-                    target="_blank"
-                >
-                    💬 Cotizar Ahora por WhatsApp
-                </a>
-            </div> -->
         </div>
     </section>
 
@@ -383,7 +365,7 @@ const paisesDestino = [
                 <div class="text-center">
                     <div
                         class="relative bg-gradient-to-br from-blue-500 to-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
-                             shadow-[0_0_20px_5px_rgba(59,130,246,0.7),0_0_40px_10px_rgba(59,130,246,0.5)]"
+                             shadow-[0_0_10px_3px_rgba(59,130,246,0.7),0_0_20px_8px_rgba(59,130,246,0.5)]"
                     >
                         1
                     </div>
@@ -399,7 +381,7 @@ const paisesDestino = [
                 <div class="text-center">
                     <div
                         class="relative bg-gradient-to-br from-purple-500 to-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
-                             shadow-[0_0_20px_5px_rgba(168,85,247,0.7),0_0_40px_10px_rgba(168,85,247,0.5)]"
+                             shadow-[0_0_10px_5px_rgba(168,85,247,0.7),0_0_20px_8px_rgba(168,85,247,0.5)]"
                     >
                         2
                     </div>
@@ -414,8 +396,8 @@ const paisesDestino = [
 
                 <div class="text-center">
                     <div
-                        class="relative bg-gradient-to-br from-indigo-500 to-indigo-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
-                             shadow-[0_0_20px_5px_rgba(79,70,229,0.7),0_0_40px_10px_rgba(79,70,229,0.5)]"
+                        class="relative bg-gradient-to-br from-orange-300 to-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(253,186,106,0.7),0_0_20px_8px_rgba(250,190,70,0.5)]"
                     >
                         3
                     </div>
@@ -431,7 +413,7 @@ const paisesDestino = [
                 <div class="text-center">
                     <div
                         class="relative bg-gradient-to-br from-green-500 to-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
-                             shadow-[0_0_20px_5px_rgba(34,197,94,0.7),0_0_40px_10px_rgba(34,197,94,0.5)]"
+                             shadow-[0_0_10px_5px_rgba(34,197,94,0.7),0_0_20px_8px_rgba(34,197,94,0.5)]"
                     >
                         4
                     </div>
@@ -448,19 +430,19 @@ const paisesDestino = [
             <div class="text-center mt-12">
                 <a
                     href="https://wa.me/apostillacolombia?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20de%20apostilla%20de%20mis%20documentos%20universitarios"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Abrir chat de WhatsApp — Consulta VIP"
-                  class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-300 hover:-translate-y-1 hover:scale-[1.02] focus:outline-none"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Abrir chat de WhatsApp — Iniciar Proceso"
+                    class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-[1.2] focus:outline-none"
                 >
-                  <!-- background glow: light (default) vs dark -->
+                    <!-- background glow: light (default) vs dark -->
                     <span
-                        class="absolute inset-0 -z-30 rounded-full opacity-90 blur-2xl
+                        class="absolute inset-0 -z-20 rounded-full opacity-90 blur-lg
                                bg-gradient-to-r from-pink-50 via-purple-50 to-cyan-50
                                dark:opacity-75 dark:bg-gradient-to-r dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400"
                     ></span>
-              
-                  <!-- soft ping (light) / strong neon (dark) -->
+
+                    <!-- soft ping (light) / strong neon (dark) -->
                     <span
                         class="absolute inset-0 -z-20 rounded-full pointer-events-none
                                opacity-40 animate-pulse
@@ -471,14 +453,14 @@ const paisesDestino = [
                                opacity-0 dark:opacity-75 dark:blur-3xl
                                dark:bg-gradient-to-r dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400 dark:animate-pulse"
                     ></span>
-              
-                  <!-- visible outline that adapts to theme -->
+
+                    <!-- visible outline that adapts to theme -->
                     <span
                         class="absolute inset-0 z-0 rounded-full pointer-events-none
                                border-2 border-gray-200 dark:border-white/25"
                     ></span>
-              
-                  <!-- subtle decorative dots (contrast for light/dark) -->
+
+                    <!-- subtle decorative dots (contrast for light/dark) -->
                     <span
                         class="absolute z-0 left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full
                                bg-gray-300 dark:bg-white/60 opacity-90"
@@ -487,16 +469,16 @@ const paisesDestino = [
                         class="absolute z-0 right-6 top-1/3 w-2.5 h-2.5 rounded-full
                                bg-indigo-100 dark:bg-white/70 opacity-80 animate-bounce"
                     ></span>
-              
-                  <!-- icon (kept as you requested) -->
+
+                    <!-- icon (kept as you requested) -->
                     <span
                         class="relative z-10 flex items-center justify-center rounded-full p-3 shadow-lg
                                bg-white dark:bg-black/12"
                     >
-                    <Wp />
-                  </span>
-              
-                  <!-- copy: text color adapts to theme -->
+                        <Wp />
+                    </span>
+
+                    <!-- copy: text color adapts to theme -->
                     <span class="relative z-10 leading-tight text-left">
                         <span class="block"
                             >✨ <span class="font-black">Iniciar Proceso</span
@@ -505,12 +487,65 @@ const paisesDestino = [
                         <span class="block text-sm opacity-90"
                             >Respuesta prioritaria • 100% en línea</span
                         >
-                  </span>
+                    </span>
                 </a>
-              </div>
+            </div>
         </div>
     </section>
 
+    <!-- GOOGLE TESTIMONIOS -->
+    <section class="bg-white py-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Nuestros clientes nos califican con
+            <span
+              class="text-yellow-400 bg-clip-text drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]"
+            >
+              4.9/5 en Google
+            </span>
+          </h2>
+          <p class="text-gray-600 mb-12 text-lg">
+            La mejor puntuación en servicios de apostilla y legalización en Colombia
+          </p>
+      
+          <!-- Enlace envolviendo el bloque -->
+          <a
+            href="https://g.page/r/CevWgjAI6b1oEAE/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-yellow-600 drop-shadow-[0_0_4px_rgba(250,204,21,0.8)] text-white rounded-2xl px-8 py-6 shadow-lg transition transform hover:scale-105 hover:shadow-xl"
+          >
+            <!-- SVG de Google -->
+            <svg
+              role="img"
+              viewBox="0 0 24 24"
+              class="w-10 h-10"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Google</title>
+              <path
+                fill="currentColor"
+                d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 
+                1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 
+                8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 
+                1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 
+                12.173 12c3.573 0 6.267-1.173 8.373-3.36 
+                2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+              />
+            </svg>
+      
+            <!-- Texto calificación -->
+            <div class="text-left">
+              <p class="text-3xl font-extrabold leading-none">
+                4.9/5 <span class="text-5xl text-sm">⭐⭐⭐⭐⭐</span>
+              </p>
+              <p class="text-sm font-medium">Basado en reseñas de Google</p>
+            </div>
+          </a>
+        </div>
+    </section>
+      
+      
     <!-- UNIVERSIDADES CON LAS QUE TRABAJAMOS -->
     <section class="bg-white py-16">
         <div class="max-w-6xl mx-auto px-4">
@@ -526,16 +561,16 @@ const paisesDestino = [
             </p>
 
             <div
-                class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8"
+                class="bg-gradient-to-br from-blue-300/10 to-purple-500/30 rounded-2xl p-8"
             >
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                     {
                         universidadesPopulares
                             .slice(0, -1)
                             .map((universidad) => (
-                                <div class="flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
-                                    <span class="text-2xl">🎓</span>
-                                    <span class="font-semibold text-gray-700">
+                                <div class="flex items-center gap-3 bg-gray-400/30 rounded-lg p-3 shadow-sm">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                    <span class="font-semibold ">
                                         {universidad}
                                     </span>
                                 </div>
@@ -558,7 +593,7 @@ const paisesDestino = [
                     </div>
                 </div>
             </div>
-<!-- 
+            <!-- 
             <div class="text-center mt-8">
                 <p class="text-gray-600 text-lg mb-4">
                     ¿Tu universidad no está en la lista? ¡No te preocupes!
@@ -593,9 +628,9 @@ const paisesDestino = [
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                 {
                     paisesDestino.map((destino) => (
-                        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center transform hover:scale-105">
-                            <div class="text-5xl mb-3">{destino.emoji}</div>
-                            <h3 class="font-bold text-gray-800 mb-2">
+                        <div class="bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center transform hover:scale-105">
+                            <div class="text-5xl text-gray-800 mb-3">{destino.emoji}</div>
+                            <h3 class="font-bold mb-2">
                                 {destino.pais}
                             </h3>
                             <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">
@@ -637,7 +672,7 @@ const paisesDestino = [
 
             <div class="space-y-4">
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
@@ -645,7 +680,7 @@ const paisesDestino = [
                         ¿Qué documentos universitarios necesito apostillar para
                         estudiar en el exterior?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
+                    <p class="mt-4  leading-relaxed">
                         Generalmente necesitas: diploma de grado, acta de grado,
                         certificado de notas completo y plan de estudios. Sin
                         embargo, los requisitos específicos varían según el país
@@ -655,40 +690,38 @@ const paisesDestino = [
                 </details>
 
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
                     >
                         ¿Cuánto tiempo tarda el proceso de apostilla del MEN?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
+                    <p class="mt-4 leading-relaxed">
                         El proceso completo (legalización ante el MEN +
                         apostilla ante el MRE) toma entre 3 y 5 días hábiles,
-                        una vez tenemos todos los documentos originales en
-                        nuestras manos. Nosotros gestionamos todo el proceso por
+                        solo debes escanear tus documentos y enviarlos en PDF. Nosotros gestionamos todo el proceso por
                         ti.
                     </p>
                 </details>
 
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
                     >
                         ¿Necesito ir personalmente a alguna parte?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
-                        No. Solo necesitas enviarnos tus documentos originales
-                        (o nosotros podemos recogerlos). Nosotros realizamos
-                        todos los trámites ante el MEN y el MRE, y te entregamos
-                        los documentos apostillados donde nos indiques.
+                    <p class="mt-4 leading-relaxed">
+                        No. Solo necesitas enviarnos tus documentos de manera digital, en PDF. Nosotros realizamos
+                        todos los trámites ante el MEN y el MRE, posteriormente te enviamos
+                        los documentos apostillados, listos para presentarlos en el exterior e imprimirlos cuando los necesites.
                     </p>
                 </details>
 
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
@@ -696,7 +729,7 @@ const paisesDestino = [
                         ¿Puedo apostillar documentos de cualquier universidad
                         colombiana?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
+                    <p class="mt-4 leading-relaxed">
                         Sí, trabajamos con todas las universidades de Colombia,
                         tanto públicas como privadas. Conocemos los
                         procedimientos específicos de cada institución.
@@ -704,14 +737,14 @@ const paisesDestino = [
                 </details>
 
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
                     >
                         ¿Qué pasa si mi título es de hace muchos años?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
+                    <p class="mt-4 leading-relaxed">
                         No hay problema. Los títulos antiguos también pueden ser
                         apostillados. El proceso puede requerir pasos
                         adicionales de verificación con la universidad, pero
@@ -720,14 +753,14 @@ const paisesDestino = [
                 </details>
 
                 <details
-                    class="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+                    class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
                 >
                     <summary
                         class="font-bold text-lg text-gray-800 cursor-pointer"
                     >
                         ¿La apostilla tiene fecha de vencimiento?
                     </summary>
-                    <p class="mt-4 text-gray-600 leading-relaxed">
+                    <p class="mt-4 leading-relaxed">
                         No, la apostilla en sí no tiene fecha de vencimiento.
                         Sin embargo, algunos países o instituciones pueden
                         solicitar que la apostilla tenga menos de ciertos meses
@@ -739,104 +772,136 @@ const paisesDestino = [
         </div>
     </section>
 
-    <!-- CALL TO ACTION FINAL -->
-  <section class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        ¿Listo para apostillar tus<br />documentos universitarios?
-      </h2>
-      <p class="text-xl md:text-2xl mb-8 opacity-90">
-        Más de 18 años ayudando a profesionales colombianos a cumplir sus sueños en el exterior
-      </p>
+    <!-- INFORMACIÓN IMPORTANTE -->
+    <section class="bgdark:bg-wthite/30 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div
+                class="bg-gradient-to-br from-blue-100/60 to-purple-100/60 rounded-2xl p-8 md:p-12"
+            >
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800"
+                >
+                    Información importante sobre apostilla de documentos
+                    universitarios
+                </h2>
 
-      <div class="flex flex-wrap justify-center gap-4 mb-8">
-        <a
-          href="https://wa.me/573213254326?text=¡Hola!%20Quiero%20apostillar%20mis%20documentos%20universitarios"
-          class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
-          target="_blank"
-        >
-          💬 Escribir por WhatsApp
-        </a>
-        <a
-          href="tel:+573213254326"
-          class="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-700 transition-all transform hover:scale-110"
-        >
-          📞 Llamar: 321 325 4326
-        </a>
-      </div>
+                <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+                    <p class="text-justify leading-relaxed">
+                        Si necesitas usar tus <strong
+                            >documentos universitarios colombianos en el
+                            exterior</strong
+                        >, ya sea para estudiar un posgrado, convalidar tu
+                        título o trabajar como profesional, nosotros te ayudamos
+                        con todo el proceso de <strong
+                            >apostilla y legalización</strong
+                        >
+                        ante el Ministerio de Educación Nacional (MEN) y el Ministerio
+                        de Relaciones Exteriores (MRE).
+                    </p>
 
-      <div class="flex flex-wrap justify-center gap-6 mt-8">
-        <div class="flex items-center gap-2">
-          <span class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl">⚡</span>
-          <span class="text-lg">Respuesta inmediata</span>
+                    <p class="text-justify leading-relaxed">
+                        Para países que hacen parte del <a
+                            href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:text-blue-800 font-semibold underline"
+                        >
+                            Convenio de La Haya
+                        </a>, se realiza el proceso de <strong>apostilla</strong
+                        >. Para otros países, aplicamos el proceso de <strong
+                            >legalización consular</strong
+                        >.
+                    </p>
+
+                    <p class="text-justify leading-relaxed">
+                        Todos los documentos académicos universitarios requieren
+                        una <strong
+                            >validación previa ante el Ministerio de Educación
+                            Nacional (MEN)</strong
+                        > antes de poder ser apostillados. Este proceso incluye la
+                        verificación de la autenticidad del documento y la validación
+                        de la firma de la autoridad universitaria que lo emitió.
+                        Nosotros gestionamos este paso completo por ti.
+                    </p>
+
+                    <p class="text-justify leading-relaxed">
+                        Además, te guiamos sobre qué documentos específicos
+                        necesitas según tu
+                        <strong>universidad de destino</strong> y el <strong
+                            >país</strong
+                        > donde vas a estudiar o trabajar, ya que los requisitos
+                        pueden variar. Por ejemplo, para estudios de posgrado en
+                        España generalmente se requiere diploma, notas y plan de
+                        estudios; mientras que para Canadá o Australia pueden pedir
+                        documentación adicional.
+                    </p>
+
+                    <p class="text-justify leading-relaxed">
+                        Nuestro servicio incluye todo el proceso: desde la
+                        solicitud de documentos ante tu universidad (si es
+                        necesario), la legalización ante el MEN, hasta la
+                        apostilla final ante el MRE. Tú solo nos envías los
+                        documentos y nosotros nos encargamos de todo el trámite,
+                        sin complicaciones.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl">🎯</span>
-          <span class="text-lg">100% Efectividad</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl">🚀</span>
-          <span class="text-lg">Proceso rápido y seguro</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INFORMACIÓN IMPORTANTE -->
-  <section class="bgdark:bg-wthite/30 py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">
-        Información importante sobre apostilla de documentos universitarios
-        </h2>
-        
-        <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
-          <p class="text-justify leading-relaxed">
-            Si necesitas usar tus <strong>documentos universitarios colombianos en el exterior</strong>, 
-            ya sea para estudiar un posgrado, convalidar tu título o trabajar como profesional, 
-            nosotros te ayudamos con todo el proceso de <strong>apostilla y legalización</strong> 
-            ante el Ministerio de Educación Nacional (MEN) y el Ministerio de Relaciones Exteriores (MRE).
-          </p>
-
-          <p class="text-justify leading-relaxed">
-            Para países que hacen parte del <a 
-              href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 font-semibold underline">
-              Convenio de La Haya
-            </a>, se realiza el proceso de <strong>apostilla</strong>. Para otros países, 
-            aplicamos el proceso de <strong>legalización consular</strong>.
-          </p>
-
-          <p class="text-justify leading-relaxed">
-            Todos los documentos académicos universitarios requieren una <strong>validación 
-            previa ante el Ministerio de Educación Nacional (MEN)</strong> antes de poder ser 
-            apostillados. Este proceso incluye la verificación de la autenticidad del documento 
-            y la validación de la firma de la autoridad universitaria que lo emitió. 
-            Nosotros gestionamos este paso completo por ti.
-          </p>
-
-          <p class="text-justify leading-relaxed">
-            Además, te guiamos sobre qué documentos específicos necesitas según tu 
-            <strong>universidad de destino</strong> y el <strong>país</strong> donde vas a estudiar 
-            o trabajar, ya que los requisitos pueden variar. Por ejemplo, para estudios de posgrado 
-            en España generalmente se requiere diploma, notas y plan de estudios; mientras que 
-            para Canadá o Australia pueden pedir documentación adicional.
-          </p>
-
-          <p class="text-justify leading-relaxed">
-            Nuestro servicio incluye todo el proceso: desde la solicitud de documentos ante tu 
-            universidad (si es necesario), la legalización ante el MEN, hasta la apostilla final 
-            ante el MRE. Tú solo nos envías los documentos y nosotros nos encargamos de todo 
-            el trámite, sin complicaciones.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+    </section>
 
     <!-- CALL TO ACTION FINAL -->
+    <section
+        class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-16"
+    >
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                ¿Listo para apostillar tus<br />documentos universitarios?
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                Más de 18 años ayudando a profesionales colombianos a cumplir
+                sus sueños en el exterior
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <a
+                    href="https://wa.me/aspotillacolombia?text=¡Hola!%20Quiero%20apostillar%20mis%20documentos%20universitarios"
+                    class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
+                    target="_blank"
+                >
+                    💬 Escribir por WhatsApp
+                </a>
+                <a
+                    href="tel:+573213254326"
+                    class="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-700 transition-all transform hover:scale-110"
+                >
+                    📞 Llamar: 321 325 4326
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 mt-8">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+                        >⚡</span
+                    >
+                    <span class="text-lg">Respuesta inmediata</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span
+                        class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+                        >🎯</span
+                    >
+                    <span class="text-lg">100% Efectividad</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span
+                        class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+                        >🚀</span
+                    >
+                    <span class="text-lg">Proceso rápido y seguro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </Layout>
