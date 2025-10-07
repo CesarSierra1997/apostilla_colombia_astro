@@ -369,7 +369,7 @@ const paisesDestino = [
                     >
                         1
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">
+                    <h3 class="font-bold text-xl mb-2">
                         Contacto
                     </h3>
                     <p>
@@ -385,7 +385,7 @@ const paisesDestino = [
                     >
                         2
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">
+                    <h3 class="font-bold text-xl mb-2">
                         Cotización
                     </h3>
                     <p>
@@ -401,7 +401,7 @@ const paisesDestino = [
                     >
                         3
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">
+                    <h3 class="font-bold text-xl mb-2">
                         Gestión
                     </h3>
                     <p>
@@ -417,10 +417,10 @@ const paisesDestino = [
                     >
                         4
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-gray-800">
+                    <h3 class="font-bold text-xl mb-2 ">
                         Entrega
                     </h3>
-                    <p class="text-gray-600">
+                    <p>
                         Recibes tus documentos apostillados listos para usar en
                         el exterior
                     </p>
@@ -428,68 +428,55 @@ const paisesDestino = [
             </div>
 
             <div class="text-center mt-12">
-                <a
-                    href="https://wa.me/apostillacolombia?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20de%20apostilla%20de%20mis%20documentos%20universitarios"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Abrir chat de WhatsApp — Iniciar Proceso"
-                    class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-[1.2] focus:outline-none"
+            <a
+                href="https://wa.me/573213254326?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20de%20apostilla%20de%20mis%20documentos%20universitarios"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir chat de WhatsApp — Iniciar Proceso"
+                class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-105 focus:outline-none group"
+            >
+                <!-- Fondo base con gradiente -->
+                <span
+                    class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 via-purple-100 to-cyan-100 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400"
+                ></span>
+        
+                <!-- Glow exterior - simplificado para móvil -->
+                <span
+                    class="absolute -inset-2 rounded-full bg-gradient-to-r from-pink-200 via-purple-200 to-cyan-200 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400 opacity-50 blur-md animate-pulse"
+                ></span>
+        
+                <!-- Borde visible -->
+                <span
+                    class="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-white/30"
+                ></span>
+        
+                <!-- Decoración: puntos -->
+                <span
+                    class="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gray-400 dark:bg-white/70 opacity-80"
+                ></span>
+                <span
+                    class="absolute right-6 top-1/3 w-2.5 h-2.5 rounded-full bg-purple-300 dark:bg-white/80 opacity-70 animate-bounce"
+                ></span>
+        
+                <!-- Icono de WhatsApp -->
+                <span
+                    class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white dark:bg-black/20 shadow-lg"
                 >
-                    <!-- background glow: light (default) vs dark -->
-                    <span
-                        class="absolute inset-0 -z-20 rounded-full opacity-90 blur-lg
-                               bg-gradient-to-r from-pink-50 via-purple-50 to-cyan-50
-                               dark:opacity-75 dark:bg-gradient-to-r dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400"
-                    ></span>
-
-                    <!-- soft ping (light) / strong neon (dark) -->
-                    <span
-                        class="absolute inset-0 -z-20 rounded-full pointer-events-none
-                               opacity-40 animate-pulse
-                               bg-white/60 dark:bg-transparent dark:opacity-0"
-                    ></span>
-                    <span
-                        class="absolute -inset-1 -z-25 rounded-full pointer-events-none
-                               opacity-0 dark:opacity-75 dark:blur-3xl
-                               dark:bg-gradient-to-r dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400 dark:animate-pulse"
-                    ></span>
-
-                    <!-- visible outline that adapts to theme -->
-                    <span
-                        class="absolute inset-0 z-0 rounded-full pointer-events-none
-                               border-2 border-gray-200 dark:border-white/25"
-                    ></span>
-
-                    <!-- subtle decorative dots (contrast for light/dark) -->
-                    <span
-                        class="absolute z-0 left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full
-                               bg-gray-300 dark:bg-white/60 opacity-90"
-                    ></span>
-                    <span
-                        class="absolute z-0 right-6 top-1/3 w-2.5 h-2.5 rounded-full
-                               bg-indigo-100 dark:bg-white/70 opacity-80 animate-bounce"
-                    ></span>
-
-                    <!-- icon (kept as you requested) -->
-                    <span
-                        class="relative z-10 flex items-center justify-center rounded-full p-3 shadow-lg
-                               bg-white dark:bg-black/12"
-                    >
-                        <Wp />
+                    <Wp />
+                </span>
+        
+                <!-- Texto del botón -->
+                <span class="relative z-10 leading-tight text-left">
+                    <span class="block">
+                        ✨ <span class="font-black">Iniciar Proceso</span>
                     </span>
-
-                    <!-- copy: text color adapts to theme -->
-                    <span class="relative z-10 leading-tight text-left">
-                        <span class="block"
-                            >✨ <span class="font-black">Iniciar Proceso</span
-                            ></span
-                        >
-                        <span class="block text-sm opacity-90"
-                            >Respuesta prioritaria • 100% en línea</span
-                        >
+                    <span class="block text-sm opacity-90">
+                        Respuesta prioritaria • 100% en línea
                     </span>
-                </a>
-            </div>
+                </span>
+            </a>
+        </div>
+            
         </div>
     </section>
 
@@ -543,8 +530,7 @@ const paisesDestino = [
             </div>
           </a>
         </div>
-    </section>
-      
+    </section>      
       
     <!-- UNIVERSIDADES CON LAS QUE TRABAJAMOS -->
     <section class="bg-white py-16">
