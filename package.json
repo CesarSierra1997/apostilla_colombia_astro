@@ -2,15 +2,15 @@
   "name": "apostilla_colombia",
   "type": "module",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "clean": "rimraf dist && rimraf dist.zip",
-    "build": "npm run clean && astro check && astro build",
-    "build:safe": "npm run clean && astro check && astro build --config astro.config.mjs",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
+"scripts": {
+  "dev": "astro dev",
+  "start": "astro dev",
+  "clean": "rimraf dist && rimraf dist.zip",
+  "build": "pnpm run clean && astro check && astro build",
+  "build:safe": "pnpm run clean && astro check && astro build --config astro.config.mjs",
+  "preview": "astro preview",
+  "astro": "astro"
+},
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/react": "^3.6.2",
