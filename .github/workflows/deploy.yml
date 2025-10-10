@@ -3,33 +3,54 @@ name: Deploy Astro to cPanel via FTP
 on:
   push:
     branches:
-      - main
+      - main  # se ejecuta cada vez que haces push a "main"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 🧩 1. Descargar el código
       - name: Descargar código fuente
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'   # usa caché optimizada de pnpm
-
+      # ⚙️ 2. Instalar pnpm antes que Node para evitar el error
       - name: Instalar pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.12.3  # o la versión que tengas localmente
+          version: 9.12.3
 
+      # 🧱 3. Instalar Node.js y habilitar caché para pnpm
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # ⚡ 4. Restaurar caché de dependencias (más rápido en builds futuros)
+      - name: Restaurar caché de dependencias
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      # 📦 5. Instalar dependencias con pnpm
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
+      # 🏗️ 6. Compilar el sitio Astro
       - name: Ejecutar build de Astro
         run: pnpm run build
 
+      # 🧪 (Opcional) Verificar que la carpeta dist se haya generado
+      - name: Verificar build
+        run: ls -la dist
+
+      # 🚀 7. Subir al servidor FTP
       - name: Subir sitio a cPanel vía FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -38,4 +59,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /
-
