@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import ApostillaSelect from "./ApostillaSelect.astro"
 
 const navItems = [
   {
@@ -8,11 +9,6 @@ const navItems = [
     // url: "#home", uso correcto para rutas adicionales en la base ej: "v2"
     url: "/#home",
 
-  },
-  {
-    title: "Apostilla",
-    label: "apostilla",
-    url: "/#apostilla",
   },
   {
     title: "Traducción",
@@ -36,23 +32,15 @@ const navItems = [
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
-  <nav
-    id="nav-bar"
-    class="flex px-2 text-sm font-medium rounded-full justify-center items-center"
-  >
-    {
-      navItems.map((link) => (
-        <a
-          class="relative block px-2 py-2 transition hover:text-purple-500 dark:hover:text-blue-500"
-          aria-label={link.label}
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
-    <ThemeToggle />
-  </nav>
+<nav id="nav-bar" class="flex px-2 text-sm font-medium rounded-full justify-center items-center">
+  <a href="/#home" class="px-2 py-2">Inicio</a>
+  <ApostillaSelect class="top-link-color" />
+  <a href="/#traduccion" class="px-2 py-2">Traducción</a>
+  <a href="/#otros_servicios" class="px-2 py-2">Otros servicios</a>
+  <a href="/#quienes_somos" class="px-2 py-2">Quiénes somos</a>
+  <ThemeToggle />
+</nav>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const links = document.querySelectorAll("nav a");
