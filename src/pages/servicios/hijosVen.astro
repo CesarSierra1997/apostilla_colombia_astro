@@ -1,0 +1,463 @@
+---
+import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
+import Layout from "../../layouts/Layout.astro";
+
+const opcionesServicio = [
+    {
+        titulo: "Solo Apostilla",
+        valor: "$120.000",
+        descripcion: "Si ya tienes el registro civil reciente de Registraduría",
+        icon: "📋",
+        incluye: [
+            "Validación del registro civil en RNEC",
+            "Gestión completa de apostilla ante el MRE",
+            "Seguimiento en tiempo real del proceso",
+            "Entrega digital inmediata + envío físico opcional",
+        ],
+        requisitos: [
+            "Registro civil reciente (últimos 6 meses)",
+            "Solicitado en cualquier Registraduría Nacional",
+            "Documento en formato digital PDF",
+        ],
+        tiempo: "3-5 días hábiles",
+        popular: false,
+        color: "from-blue-600 to-blue-700",
+    },
+    {
+        titulo: "Gestión Completa",
+        valor: "$250.000",
+        descripcion: "Nosotros gestionamos TODO el proceso por ti",
+        icon: "🎁",
+        incluye: [
+            "Solicitud del registro civil en Registraduría",
+            "Validación completa ante RNEC",
+            "Gestión de apostilla ante el MRE",
+            "Seguimiento especializado para tu caso",
+            "Entrega digital + envío físico opcional",
+            "Te proporcionamos el formato de poder autorizado",
+        ],
+        requisitos: [
+            "Cédula de ciudadanía de papá y mamá",
+            "Poder de autorización (te enviamos el formato)",
+            "Si el hijo es menor de edad, estos documentos son obligatorios",
+        ],
+        tiempo: "15-20 días hábiles",
+        popular: true,
+        color: "from-green-600 to-green-700",
+    },
+];
+
+const beneficios = [
+    {
+        icon: "🎯",
+        titulo: "Experiencia Comprobada",
+        descripcion: "+18 años tramitando documentos de colombianos hijos de venezolanos. Conocemos cada detalle del proceso.",
+    },
+    {
+        icon: "✅",
+        titulo: "100% de Efectividad",
+        descripcion: "Todos nuestros trámites se completan exitosamente. No cobramos si no entregamos.",
+    },
+    {
+        icon: "🛡️",
+        titulo: "Garantía Total",
+        descripcion: "Seguimiento paso a paso. Sabrás exactamente en qué etapa está tu documento.",
+    },
+];
+
+const problemasComunas = [
+    "Me dijeron que este trámite es muy complicado",
+    "No sé si mi documento va a ser aceptado",
+    "He contactado varios lugares y nadie me da confianza",
+    "Tengo miedo de perder mi dinero y tiempo",
+];
+
+const garantias = [
+    {
+        icon: "✅",
+        titulo: "Garantía de Entrega",
+        descripcion: "Si no entregamos tu documento apostillado, te devolvemos el 100% de tu dinero. Simple.",
+    },
+    {
+        icon: "📱",
+        titulo: "Comunicación Constante",
+        descripcion: "No te dejamos en la incertidumbre. Actualizaciones por WhatsApp en cada paso del proceso.",
+    },
+    {
+        icon: "🔒",
+        titulo: "Seguridad Total",
+        descripcion: "Tus documentos son manejados con máxima confidencialidad por profesionales certificados.",
+    },
+    {
+        icon: "⚡",
+        titulo: "Respuesta Rápida",
+        descripcion: "Respondemos en menos de 1 hora durante horario laboral. Tu tiempo es valioso.",
+    },
+];
+---
+
+<Layout
+    title="Apostilla Registro Civil - Hijos de Padres Venezolanos"
+    description="Especialistas en apostilla de registro civil de nacimiento para colombianos hijos de padres venezolanos. 18 años de experiencia, 100% efectividad."
+>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-8 text-center">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center space-y-6">
+                <div class="inline-block bg-yellow-400 text-blue-900 px-6 py-2 rounded-full font-bold text-sm mb-4">
+                    🇨🇴 ESPECIALISTAS EN DOCUMENTOS DE COLOMBIANOS HIJOS DE VENEZOLANOS 🇻🇪
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                    Apostilla de Registro Civil de Nacimiento<br/>
+                    <span class="text-yellow-300">Para Colombianos Hijos de Padres Venezolanos</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
+                    Trámite especializado con <strong>18 años de experiencia</strong> en casos complejos de doble nacionalidad
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a 
+                        href="https://wa.me/573213254326?text=Necesito%20apostillar%20registro%20civil%20de%20hijo%20de%20venezolanos" 
+                        class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
+                        target="_blank"
+                    >
+                        <span class="text-2xl">💬</span> Asesoría Inmediata por WhatsApp
+                    </a>
+                    <a 
+                        href="tel:+573213254326" 
+                        class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-gray-100 transition-all flex items-center gap-2"
+                    >
+                        <span class="text-2xl">📞</span> 321 325 4326
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA COMÚN -->
+    <section class="py-12 bg-red-50 border-y-4 border-red-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-red-700 mb-4">
+                    ⚠️ ¿Te Identificas con Esta Situación?
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+                {problemasComunas.map((problema) => (
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                        <p class="text-gray-800">❌ <strong>"{problema}"</strong></p>
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-xl font-bold text-red-700">
+                    ¡Entendemos tu preocupación! Por eso somos ESPECIALISTAS en estos casos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ CONFIAR -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                ¿Por Qué Miles de Familias Confían en Nosotros?
+            </h2>
+            <p class="text-center text-xl text-gray-600 mb-12">
+                No somos principiantes. Llevamos <strong>más de 18 años</strong> especializándonos en casos complejos
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {beneficios.map((beneficio) => (
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl shadow-lg text-center border-2 border-blue-200 hover:shadow-2xl transition-shadow">
+                        <div class="text-6xl mb-4">{beneficio.icon}</div>
+                        <h3 class="text-2xl font-bold text-blue-900 mb-3">{beneficio.titulo}</h3>
+                        <p class="text-gray-700 leading-relaxed">{beneficio.descripcion}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS Y PRECIOS -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                Opciones de Servicio Según Tu Caso
+            </h2>
+            <p class="text-center text-xl text-gray-600 mb-12">
+                Elige la opción que mejor se ajuste a tu situación
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                {opcionesServicio.map((opcion) => (
+                    <div class={`bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 ${opcion.popular ? 'ring-4 ring-green-400' : ''}`}>
+                        {opcion.popular && (
+                            <div class="bg-green-600 text-white text-center py-2 font-bold text-sm">
+                                ⭐ MÁS SOLICITADO - SIN PREOCUPACIONES ⭐
+                            </div>
+                        )}
+                        
+                        <div class={`bg-gradient-to-r ${opcion.color} text-white p-6`}>
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">{opcion.icon}</div>
+                                <h3 class="text-2xl font-bold mb-2">{opcion.titulo}</h3>
+                                <div class="text-4xl font-bold">{opcion.valor}</div>
+                                <p class="text-sm opacity-90 mt-2">{opcion.descripcion}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 space-y-6">
+                            <div>
+                                <p class={`font-bold text-lg mb-3 ${opcion.popular ? 'text-green-900' : 'text-blue-900'}`}>
+                                    ✓ Incluye{opcion.popular ? ' TODO' : ''}:
+                                </p>
+                                <ul class="space-y-3">
+                                    {opcion.incluye.map((item) => (
+                                        <li class="flex items-start gap-3">
+                                            <span class="text-green-500 text-xl mt-1">✓</span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div class={`${opcion.popular ? 'bg-green-50 border-green-500' : 'bg-yellow-50 border-yellow-400'} border-l-4 p-4 rounded-r`}>
+                                <p class={`font-bold text-sm mb-2 ${opcion.popular ? 'text-green-800' : 'text-yellow-800'}`}>
+                                    📌 REQUISITOS:
+                                </p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    {opcion.requisitos.map((req) => (
+                                        <li>• {req}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div class={`${opcion.popular ? 'bg-green-50' : 'bg-blue-50'} p-4 rounded-lg text-center`}>
+                                <p class={`text-sm font-bold ${opcion.popular ? 'text-green-900' : 'text-blue-900'}`}>
+                                    ⏱ TIEMPO ESTIMADO
+                                </p>
+                                <p class={`text-2xl font-bold ${opcion.popular ? 'text-green-700' : 'text-blue-700'}`}>
+                                    {opcion.tiempo}
+                                </p>
+                                {opcion.popular && (
+                                    <p class="text-xs text-gray-600 mt-1">(Incluye gestión en Registraduría)</p>
+                                )}
+                            </div>
+
+                            <a 
+                                href={`https://wa.me/573213254326?text=Quiero%20${opcion.popular ? 'la%20GESTIÓN%20COMPLETA' : 'apostillar%20mi%20registro%20civil%20(YA%20TENGO%20EL%20DOCUMENTO)'}%20de%20registro%20civil`}
+                                class={`block w-full ${opcion.popular ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white text-center py-4 rounded-full font-bold text-lg shadow-lg transition-all`}
+                                target="_blank"
+                            >
+                                {opcion.popular ? '¡Quiero Esta Opción!' : 'Solicitar Este Servicio'}
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO PASO A PASO -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                Así Funciona Nuestro Proceso Transparente
+            </h2>
+            <p class="text-center text-xl text-gray-600 mb-12">
+                Cada paso es monitoreado y te mantenemos informado constantemente
+            </p>
+
+            <div class="space-y-6">
+                <div class="flex gap-4 items-start bg-blue-50 p-6 rounded-xl">
+                    <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Contacto y Asesoría Inicial</h3>
+                        <p class="text-gray-700">
+                            Nos escribes por WhatsApp, revisamos tu caso específico y te confirmamos los documentos necesarios según tu situación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-green-50 p-6 rounded-xl">
+                    <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Envío de Documentos y Pago</h3>
+                        <p class="text-gray-700">
+                            Nos envías los documentos digitalmente. Realizas el pago y comenzamos inmediatamente tu trámite.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-purple-50 p-6 rounded-xl">
+                    <div class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-purple-900 mb-2">Gestión y Validación</h3>
+                        <p class="text-gray-700">
+                            Realizamos todo el proceso: solicitud en Registraduría (si aplica), validación RNEC y gestión ante el MRE. 
+                            <strong>Te enviamos actualizaciones en cada etapa.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start bg-yellow-50 p-6 rounded-xl">
+                    <div class="bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-yellow-900 mb-2">Entrega del Documento Apostillado</h3>
+                        <p class="text-gray-700">
+                            Recibes tu registro civil apostillado listo para usar internacionalmente. Formato digital inmediato + envío físico si lo necesitas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GARANTÍAS -->
+    <section class="py-16 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                🛡️ Nuestras Garantías Inquebrantables
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                {garantias.map((garantia) => (
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all">
+                        <div class="text-4xl mb-3">{garantia.icon}</div>
+                        <h3 class="text-xl font-bold mb-2">{garantia.titulo}</h3>
+                        <p class="opacity-90">{garantia.descripcion}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                Preguntas Frecuentes
+            </h2>
+
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+                        ¿Por qué es diferente el trámite para hijos de venezolanos?
+                    </summary>
+                    <p class="mt-4 text-gray-700">
+                        Los registros civiles de colombianos con padres venezolanos requieren validaciones adicionales en la Registraduría Nacional 
+                        debido a la doble nacionalidad y verificación de identidad de los padres. Por eso es fundamental contar con expertos 
+                        que conozcan este proceso específico.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+                        ¿Qué pasa si mi hijo ya es mayor de edad?
+                    </summary>
+                    <p class="mt-4 text-gray-700">
+                        Si el hijo es mayor de 18 años, puede autorizar directamente el trámite con su propia cédula. 
+                        No se requieren documentos de los padres en este caso. Contáctanos para asesoría específica.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+                        ¿Puedo confiar en enviar mis documentos?
+                    </summary>
+                    <p class="mt-4 text-gray-700">
+                        <strong>Absolutamente.</strong> Llevamos 18 años en el mercado, con miles de casos exitosos. 
+                        Todos tus documentos son manejados con protocolos de seguridad y confidencialidad. 
+                        Además, trabajamos con envíos digitales seguros y puedes verificar nuestras referencias.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+                        ¿Qué pasa si hay algún problema con mi documento?
+                    </summary>
+                    <p class="mt-4 text-gray-700">
+                        Antes de iniciar cualquier trámite, realizamos una <strong>revisión previa gratuita</strong> de tu caso. 
+                        Si identificamos algún problema potencial, te lo comunicamos de inmediato y te asesoramos sobre cómo solucionarlo. 
+                        No cobramos hasta estar 100% seguros de que podemos completar exitosamente tu trámite.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+                        ¿Cómo sé que mi documento está siendo procesado?
+                    </summary>
+                    <p class="mt-4 text-gray-700">
+                        Te mantenemos informado mediante WhatsApp en cada etapa: cuando recibimos tu documento, cuando iniciamos validaciones, 
+                        cuando ingresamos a apostilla en el MRE, y cuando está listo. <strong>Transparencia total.</strong>
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL FUERTE -->
+    <section class="py-16 bg-gradient-to-r from-green-600 to-green-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-8">
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                No Sigas Posponiendo Este Trámite Importante
+            </h2>
+            <p class="text-2xl opacity-95">
+                De cada 30 personas que nos consultan, solo 1 inicia el trámite.<br/>
+                <strong>No seas parte de las estadísticas. Toma acción HOY.</strong>
+            </p>
+
+            <div class="bg-white/20 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto">
+                <p class="text-xl mb-6">
+                    ⏰ <strong>Los primeros 5 clientes de esta semana reciben:</strong>
+                </p>
+                <ul class="text-left space-y-3 mb-6">
+                    <li class="flex items-center gap-3">
+                        <span class="text-yellow-300 text-2xl">✓</span>
+                        <span>Revisión de documentos SIN COSTO</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-yellow-300 text-2xl">✓</span>
+                        <span>Asesoría personalizada de 30 minutos</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-yellow-300 text-2xl">✓</span>
+                        <span>Envío nacional GRATIS</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <a 
+                    href="https://wa.me/573213254326?text=Quiero%20información%20sobre%20apostilla%20de%20registro%20civil%20hijo%20venezolanos" 
+                    class="inline-block bg-white text-green-700 px-12 py-5 rounded-full font-bold text-2xl shadow-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
+                    target="_blank"
+                >
+                    💬 Iniciar Mi Trámite AHORA
+                </a>
+                <p class="text-sm opacity-90">
+                    📞 O llámanos directamente: <a href="tel:+573213254326" class="underline font-bold">321 325 4326</a>
+                </p>
+            </div>
+
+            <div class="pt-8 border-t border-white/30">
+                <p class="text-lg opacity-90">
+                    ✅ <strong>Horario de atención:</strong> Lunes a Viernes 8:00 AM - 6:00 PM | Sábados 9:00 AM - 1:00 PM
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-sm opacity-75">
+                © 2025 Apostilla y Legalización de Documentos | Bogotá, Colombia<br/>
+                🔒 Tus documentos están protegidos bajo estrictos protocolos de confidencialidad
+            </p>
+        </div>
+    </footer>
+</Layout>
