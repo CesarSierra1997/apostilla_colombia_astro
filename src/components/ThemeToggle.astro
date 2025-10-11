@@ -33,13 +33,13 @@ const THEMES = [
   <div
     transition:persist
     id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm min-w-[8rem] rounded-md border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden scale-80 top-8 right-0 text-sm min-w-[8rem] rounded-md border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md bg-gray-400/90"
   >
     <ul>
       {
         THEMES.map((theme) => (
           <li
-            class="themes-menu-option bg-gray-400/80 px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+            class="themes-menu-option  px-2 py-1.5 cursor-default  hover:bg-red-600/30 transition-color rounded-sm"
             data-theme={theme.value}
           >
             {theme.label}

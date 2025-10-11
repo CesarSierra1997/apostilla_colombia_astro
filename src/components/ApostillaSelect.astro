@@ -1,25 +1,29 @@
 ---
 const APOSTILLA_OPTIONS = [
-  { 
-    label: "Apostilla Legalización", 
-    url: "/servicios/apostilla_legalizacion" 
+  {
+    label: "Apostilla Legalización",
+    url: "/servicios/apostilla_legalizacion",
   },
-  { 
-    label: "Apostilla Documentos Académicos", 
+  {
+    label: "Apostillar Documentos Académicos",
     hasSubmenu: true,
     submenu: [
       { label: "Universidad", url: "/servicios/universidad" },
-      { label: "Colegio", url: "/servicios/bachiller" }
-    ]
+      { label: "Colegio", url: "/servicios/bachiller" },
+    ],
   },
-  // { 
-  //   label: "Apostilla Documentos Juduiciales", 
-  //   url: "/#apostilla-judicial" 
-  // },
-  // { 
-  //   label: "Apostilla Registro Civil", 
-  //   url: "/#apostilla-exterior" 
-  // },
+  {
+    label: "Apostillar Registro Civil",
+    url: "/servicios/registroCivil",
+  },
+  {
+    label: "Apostillar Antecedentes",
+    url: "/servicios/antecedentes",
+  },
+    {
+    label: "Apostillar Otros Documentos",
+    url: "/servicios/otrosDocumentos",
+  },
 ];
 ---
 
@@ -31,76 +35,85 @@ const APOSTILLA_OPTIONS = [
     aria-expanded="false"
     class="flex items-center gap-2 px-2 py-2 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer"
   >
-    <span>
-      Apostilla
-    </span>
-    <svg 
-      id="apostilla-chevron" 
-      xmlns="http://www.w3.org/2000/svg" 
-      class="w-4 h-4 transition-transform duration-200" 
-      viewBox="0 0 24 24" 
-      fill="none" 
+    <span> Apostilla </span>
+    <svg
+      id="apostilla-chevron"
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-4 h-4 transition-transform duration-200"
+      viewBox="0 0 24 24"
+      fill="none"
       stroke="currentColor"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
     </svg>
   </a>
 
   <div
     id="apostilla-menu"
-    class="absolute left-0 z-20 hidden w-64 mt-2 rounded-md border border-gray-200 dark:border-gray-700 shadow-lg bg-gray-400/90 text-sm p-1"
+    class="absolute left-0 z-20 hidden w-64 mt-2 rounded-md border border-gray-200 shadow-lg bg-gray-400/90 text-sm p-1"
     role="menu"
   >
     <ul id="lista-apostilla">
-      {APOSTILLA_OPTIONS.map((item, index) => (
-        <li role="none" class="relative" id="lista-apostilla">
-          {item.hasSubmenu ? (
-            <>
-              <button
-                id="lista-apostilla"
-                data-submenu-trigger={index}
-                class="w-full flex items-center justify-between px-3 py-2 rounded-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
-              >
-                <span>{item.label}</span>
-                <svg 
-                  class="w-4 h-4 transition-transform duration-200" 
-                  data-submenu-icon={index}
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor"
+      {
+        APOSTILLA_OPTIONS.map((item, index) => (
+          <li role="none" class="relative" id="lista-apostilla">
+            {item.hasSubmenu ? (
+              <>
+                <button
+                  id="lista-apostilla"
+                  data-submenu-trigger={index}
+                  class="w-full flex items-center justify-between px-3 py-2 rounded-sm hover:bg-red-600/30 transition-colors text-left"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-              <div
-                data-submenu={index}
-                class="hidden ml-2 mt-1 space-y-1 pl-2 border-l-2 border-gray-200 dark:border-gray-700"
-              >
-                {item.submenu?.map((subitem) => (
-                  <a
-                    id="lista-apostilla"
-                    role="menuitem"
-                    href={subitem.url}
-                    class="block px-3 py-2 rounded-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm"
+                  <span>{item.label}</span>
+                  <svg
+                    class="w-4 h-4 transition-transform duration-200"
+                    data-submenu-icon={index}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
                   >
-                    {subitem.label}
-                  </a>
-                ))}
-              </div>
-            </>
-          ) : (
-            <a
-              id="lista-apostilla"
-              role="menuitem"
-              href={item.url}
-              class="block px-3 py-2 rounded-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              {item.label}
-            </a>
-          )}
-        </li>
-      ))}
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  data-submenu={index}
+                  class="hidden ml-2 mt-1 space-y-1 pl-2 border-l-2 border-gray-200 dark:border-gray-700"
+                >
+                  {item.submenu?.map((subitem) => (
+                    <a
+                      id="lista-apostilla"
+                      role="menuitem"
+                      href={subitem.url}
+                      class="block px-3 py-2 rounded-sm hover:bg-red-600/30 transition-colors text-sm"
+                    >
+                      {subitem.label}
+                    </a>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <a
+                id="lista-apostilla"
+                role="menuitem"
+                href={item.url}
+                class="block px-3 py-2 rounded-sm hover:bg-red-600/30 transition-colors"
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))
+      }
     </ul>
   </div>
 </div>
@@ -153,7 +166,7 @@ const APOSTILLA_OPTIONS = [
     menu?.classList.toggle("open", isOpen);
     btn?.setAttribute("aria-expanded", String(isOpen));
     if (chevron) chevron.style.transform = isOpen ? "rotate(180deg)" : "";
-    
+
     // Cerrar todos los submenús al cerrar el menú principal
     if (!isOpen) {
       closeAllSubmenus();
@@ -173,12 +186,14 @@ const APOSTILLA_OPTIONS = [
   // Toggle submenu
   const toggleSubmenu = (index: number) => {
     const submenu = document.querySelector(`[data-submenu="${index}"]`);
-    const icon = document.querySelector(`[data-submenu-icon="${index}"]`) as HTMLElement;
-    
+    const icon = document.querySelector(
+      `[data-submenu-icon="${index}"]`,
+    ) as HTMLElement;
+
     if (!submenu) return;
-    
+
     const isSubmenuOpen = openSubmenus.has(index);
-    
+
     if (isSubmenuOpen) {
       openSubmenus.delete(index);
       submenu.classList.remove("open");
@@ -192,9 +207,11 @@ const APOSTILLA_OPTIONS = [
 
   // Cerrar todos los submenús
   const closeAllSubmenus = () => {
-    openSubmenus.forEach(index => {
+    openSubmenus.forEach((index) => {
       const submenu = document.querySelector(`[data-submenu="${index}"]`);
-      const icon = document.querySelector(`[data-submenu-icon="${index}"]`) as HTMLElement;
+      const icon = document.querySelector(
+        `[data-submenu-icon="${index}"]`,
+      ) as HTMLElement;
       submenu?.classList.remove("open");
       if (icon) icon.style.transform = "";
     });
@@ -205,14 +222,15 @@ const APOSTILLA_OPTIONS = [
   const handleScroll = () => {
     if (!text) return;
     const scrolled = window.scrollY > 50;
-    const isDark = document.documentElement.classList.contains('dark');
-    
+    const isDark = document.documentElement.classList.contains("dark");
+
     if (scrolled) {
-      text.className = isDark 
+      text.className = isDark
         ? "text-gray-200 transition-colors duration-300"
         : "text-gray-800 transition-colors duration-300";
     } else {
-      text.className = "text-purple-600 dark:text-purple-400 transition-colors duration-300";
+      text.className =
+        "text-purple-600 dark:text-purple-400 transition-colors duration-300";
     }
   };
 
@@ -227,7 +245,10 @@ const APOSTILLA_OPTIONS = [
   document.querySelectorAll("[data-submenu-trigger]").forEach((trigger) => {
     trigger.addEventListener("click", (e) => {
       e.stopPropagation();
-      const index = parseInt((e.currentTarget as HTMLElement).getAttribute("data-submenu-trigger") || "0");
+      const index = parseInt(
+        (e.currentTarget as HTMLElement).getAttribute("data-submenu-trigger") ||
+          "0",
+      );
       toggleSubmenu(index);
     });
   });
@@ -241,7 +262,11 @@ const APOSTILLA_OPTIONS = [
   });
 
   document.addEventListener("click", (e) => {
-    if (e.target instanceof Element && !menu?.contains(e.target) && !btn?.contains(e.target)) {
+    if (
+      e.target instanceof Element &&
+      !menu?.contains(e.target) &&
+      !btn?.contains(e.target)
+    ) {
       closeMenu();
     }
   });
@@ -255,12 +280,12 @@ const APOSTILLA_OPTIONS = [
 
   // Scroll listener
   window.addEventListener("scroll", handleScroll);
-  
+
   // Theme change listener
   const observer = new MutationObserver(handleScroll);
-  observer.observe(document.documentElement, { 
-    attributes: true, 
-    attributeFilter: ['class'] 
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
   });
 
   // Initial check

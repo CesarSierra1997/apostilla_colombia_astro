@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # fiel vscode
 .vscode/
+
+# ignorar vscode
+.vscode/
