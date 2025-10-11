@@ -1,4 +1,7 @@
 ---
+// temporadas
+import HalloweenParticles from "../components/temporadas/Halloween.astro";
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -75,7 +78,10 @@ const { description, title } = Astro.props;
     <!-- End Google Tag Manager (noscript) -->
 
     <Header />
+
+    <HalloweenParticles/>
     <slot />
+
     <Footer />
   </body>
 </html>
