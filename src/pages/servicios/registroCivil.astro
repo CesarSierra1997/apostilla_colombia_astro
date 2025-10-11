@@ -105,68 +105,6 @@ const beneficios = [
     </div>
   </section>
 
-  <!-- ¿Qué necesitas apostillar? -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          ¿Qué Tipo de Documento Necesitas Apostillar?
-        </h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Selecciona el tipo de documento para conocer el proceso específico, requisitos y tiempos de entrega
-        </p>
-      </div>
-
-      <!-- Cards Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {servicios.map((servicio) => (
-          <a 
-            href={servicio.url}
-            class="group block bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2"
-          >
-            {/* Header con gradiente */}
-              <div class="text-5xl mb-3">{servicio.icon}</div>
-              <h3 class="text-2xl font-bold">{servicio.titulo}</h3>
-            </div>
-
-            {/* Contenido */}
-            <div class="p-6 space-y-4">
-              <p class="text-gray-600 leading-relaxed">
-                {servicio.descripcion}
-              </p>
-
-              {/* Proceso */}
-              <div class="space-y-2">
-                <p class="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span class="text-blue-500">📋</span> Proceso incluye:
-                </p>
-                <ul class="space-y-1">
-
-                </ul>
-              </div>
-
-              {/* Tiempo estimado */}
-              <div class="bg-blue-50 text-blue-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
-                <span>⏱</span>
-                <span>
-                  <strong>Tiempo:</strong> {servicio.tiempo}
-                </span>
-              </div>
-
-              {/* CTA */}
-              <div class="pt-2">
-                <span class="text-blue-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Ver información completa
-                  <span class="text-xl">→</span>
-                </span>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   
 
 <!-- ¿Qué necesitas apostillar? -->
