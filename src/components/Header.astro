@@ -1,39 +1,13 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
 import ApostillaSelect from "./ApostillaSelect.astro"
-
-const navItems = [
-  {
-    title: "Inicio",
-    label: "Inicio",
-    // url: "#home", uso correcto para rutas adicionales en la base ej: "v2"
-    url: "/#home",
-
-  },
-  {
-    title: "Traducción",
-    label: "traduccion",
-    url: "/#traduccion",
-  },
-  {
-    title: "Otros servicios",
-    label: "otros_servicios",
-    url: "/#otros_servicios",
-  },
-  {
-    title: "Quiénes somos",
-    label: "quienes_somos",
-    url: "/#quienes_somos",
-  },
-  
-]
 ---
 
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
 <nav id="nav-bar" class="flex px-2 text-sm font-medium rounded-full justify-center items-center">
-  <a href="/#home" class="px-2 py-2">Inicio</a>
+  <a href="/" class="px-2 py-2">Inicio</a>
   <ApostillaSelect class="top-link-color" />
   <a href="/#traduccion" class="px-2 py-2">Traducción</a>
   <a href="/#otros_servicios" class="px-2 py-2">Otros servicios</a>
