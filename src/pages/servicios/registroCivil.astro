@@ -5,58 +5,53 @@ const servicios = [
   {
     titulo: "Títulos Universitarios",
     icon: "🎓",
-    descripcion: "Apostilla de diplomas, actas de grado, certificados de notas y planes de estudio de educación superior.",
-    proceso: ["Legalización MEN", "Apostilla MRE"],
+    descripcion: "Apostilla de diplomas y certificados de educación superior",
     url: "/servicios/titulos-universidad",
     tiempo: "3-5 días hábiles",
-    color: "from-blue-500 to-blue-700"
+    gradient: "from-blue-500 via-blue-600 to-indigo-600"
   },
   {
     titulo: "Título de Bachiller",
     icon: "📚",
-    descripcion: "Legalización de diplomas de bachillerato, actas de grado y certificados académicos de educación media.",
-    proceso: ["Legalización SED/SAC", "Apostilla MRE"],
+    descripcion: "Legalización de diplomas de bachillerato y actas de grado",
     url: "/servicios/titulo-bachiller",
     tiempo: "15 días calendario",
-    color: "from-purple-500 to-purple-700"
+    gradient: "from-purple-500 via-purple-600 to-pink-600"
   },
   {
     titulo: "Antecedentes",
     icon: "✅",
-    descripcion: "Certificados de antecedentes judiciales (Policía), disciplinarios (Procuraduría) y fiscales (Contraloría).",
-    proceso: ["Solicitud y validación", "Apostilla MRE"],
+    descripcion: "Certificados judiciales, disciplinarios y fiscales",
     url: "/servicios/antecedentes",
     tiempo: "1-3 días hábiles",
-    color: "from-green-500 to-green-700"
+    gradient: "from-green-500 via-emerald-600 to-teal-600"
   },
   {
     titulo: "Registro Civil",
     icon: "📄",
-    descripcion: "Apostilla de registros de nacimiento, matrimonio y defunción expedidos por notaría o Registraduría.",
-    proceso: ["Validación SNR/RNEC", "Apostilla MRE"],
+    descripcion: "Nacimiento, matrimonio y defunción apostillados",
     url: "/servicios/registro-civil",
-    tiempo: "1-15 días según origen",
-    color: "from-orange-500 to-orange-700"
+    tiempo: "1-15 días",
+    gradient: "from-orange-500 via-orange-600 to-red-500"
   },
   {
     titulo: "Certificados Médicos",
     icon: "🏥",
-    descripcion: "Legalización y apostilla de certificados médicos, historias clínicas y documentos de salud.",
-    proceso: ["Validación institucional", "Apostilla MRE"],
+    descripcion: "Documentos médicos e historias clínicas legalizadas",
     url: "/servicios/certificados-medicos",
-    tiempo: "Variable según caso",
-    color: "from-red-500 to-red-700"
+    tiempo: "Variable",
+    gradient: "from-red-500 via-rose-600 to-pink-600"
   },
   {
     titulo: "Traducción Oficial",
     icon: "🌐",
-    descripcion: "Traducción oficial certificada y apostillada de documentos a diferentes idiomas por traductor autorizado.",
-    proceso: ["Traducción oficial", "Legalización SNR", "Apostilla MRE"],
+    descripcion: "Traducción certificada y apostillada por traductor autorizado",
     url: "/servicios/traduccion-oficial",
     tiempo: "1-2 días hábiles",
-    color: "from-indigo-500 to-indigo-700"
+    gradient: "from-indigo-500 via-violet-600 to-purple-600"
   },
 ];
+
 
 const beneficios = [
   { icon: "⚡", titulo: "Proceso Rápido", descripcion: "Gestión eficiente de todos tus trámites" },
@@ -130,7 +125,6 @@ const beneficios = [
             class="group block bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2"
           >
             {/* Header con gradiente */}
-            <div class={`bg-gradient-to-r ${servicio.color} p-6 text-white`}>
               <div class="text-5xl mb-3">{servicio.icon}</div>
               <h3 class="text-2xl font-bold">{servicio.titulo}</h3>
             </div>
@@ -147,11 +141,7 @@ const beneficios = [
                   <span class="text-blue-500">📋</span> Proceso incluye:
                 </p>
                 <ul class="space-y-1">
-                  {servicio.proceso.map((paso) => (
-                    <li class="text-sm text-gray-600 flex items-center gap-2">
-                      <span class="text-green-500">✓</span> {paso}
-                    </li>
-                  ))}
+
                 </ul>
               </div>
 
@@ -176,6 +166,106 @@ const beneficios = [
       </div>
     </div>
   </section>
+
+  
+
+<!-- ¿Qué necesitas apostillar? -->
+<section class="py-16 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        ¿Qué Documento Necesitas Apostillar?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Selecciona tu trámite y descubre el proceso completo
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {servicios.map((servicio) => (
+        <a 
+          href={servicio.url}
+          class="group relative bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden"
+        >
+          <!-- Gradiente de fondo animado -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${servicio.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+          
+          <!-- Borde brillante -->
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"></div>
+          
+          <!-- Contenido -->
+          <div class="relative bg-white rounded-3xl p-8 h-full flex flex-col">
+            
+            <!-- Icono con fondo circular -->
+            <div class="mb-6">
+              <div class={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${servicio.gradient} shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                <span class="text-4xl">{servicio.icon}</span>
+              </div>
+            </div>
+
+            <!-- Título -->
+            <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+              {servicio.titulo}
+            </h3>
+
+            <!-- Descripción -->
+            <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+              {servicio.descripcion}
+            </p>
+
+            <!-- Footer con tiempo y CTA -->
+            <div class="space-y-4 mt-auto">
+              <!-- Tiempo estimado -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class={`flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${servicio.gradient} opacity-10`}>
+                  <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-700 font-medium">{servicio.tiempo}</span>
+              </div>
+
+              <!-- Botón CTA -->
+              <div class={`relative overflow-hidden rounded-2xl bg-gradient-to-r ${servicio.gradient} p-[2px] group-hover:shadow-lg transition-all duration-300`}>
+                <div class="bg-white rounded-2xl px-6 py-3 group-hover:bg-transparent transition-colors duration-300">
+                  <div class="flex items-center justify-between text-gray-900 group-hover:text-white transition-colors duration-300">
+                    <span class="font-semibold">Ver detalles</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Efecto de luz al hover -->
+          <div class="absolute top-0 -right-full w-full h-full bg-gradient-to-l from-white/50 to-transparent group-hover:right-0 transition-all duration-700 pointer-events-none"></div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA adicional -->
+    <div class="text-center mt-16">
+      <p class="text-gray-600 mb-6 text-lg">
+        ¿No encuentras tu tipo de documento?
+      </p>
+      <a
+        href="https://wa.me/573213254326?text=Hola%2C%20necesito%20información%20sobre%20apostilla"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-10 py-5 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consulta por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
 
   <!-- Información sobre Apostilla vs Legalización -->
   <section class="py-16 bg-white">
