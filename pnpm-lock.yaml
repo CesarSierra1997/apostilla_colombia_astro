@@ -35,6 +35,9 @@ importers:
       fuse.js:
         specifier: ^7.1.0
         version: 7.1.0
+      glob:
+        specifier: ^11.0.3
+        version: 11.0.3
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
