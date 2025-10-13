@@ -1,0 +1,918 @@
+---
+import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
+import Layout from "../../layouts/Layout.astro";
+
+const serviciosTraduccion = [
+  {
+    titulo: "Traducción Simple",
+    valor: "Desde $40.000",
+    documentos: [
+      "Documentos personales",
+      "Certificados de estudio",
+      "Cartas y comunicaciones",
+      "Documentos comerciales básicos",
+    ],
+    tramites: [
+      "Traducción profesional",
+      "Revisión de calidad",
+      "Entrega en PDF",
+    ],
+    tiempo: "1 a 2 días hábiles",
+    icon: "📄",
+    requisitos: ["Documento en PDF de alta calidad", "Idioma origen y destino"],
+  },
+  {
+    titulo: "Traducción Oficial",
+    valor: "Desde $80.000",
+    documentos: [
+      "Diplomas y títulos",
+      "Actas de nacimiento",
+      "Certificados de matrimonio",
+      "Documentos legales",
+      "Certificados médicos",
+    ],
+    tramites: [
+      "Traducción certificada",
+      "Firma de traductor oficial",
+      "Sello de autenticidad",
+    ],
+    tiempo: "2 a 3 días hábiles",
+    icon: "📋",
+    requisitos: ["Documento original en PDF", "Copia clara y legible"],
+  },
+  {
+    titulo: "Traducción + Apostilla",
+    valor: "Desde $150.000",
+    documentos: [
+      "Documentos académicos",
+      "Actas de registro civil",
+      "Certificados laborales",
+      "Documentos notariales",
+    ],
+    tramites: [
+      "Traducción oficial",
+      "Apostilla de la traducción",
+      "Legalización completa",
+    ],
+    tiempo: "5 a 7 días hábiles",
+    icon: "🎯",
+    requisitos: ["Documento original en PDF", "Para uso internacional"],
+  },
+  {
+    titulo: "Paquete Múltiples Documentos",
+    valor: "Desde $300.000",
+    documentos: [
+      "Ideal para 5 o más documentos",
+      "Expedientes completos",
+      "Documentación corporativa",
+    ],
+    tramites: [
+      "Traducción oficial de todos los documentos",
+      "Descuento por volumen",
+      "Gestión personalizada",
+    ],
+    tiempo: "7 a 10 días hábiles",
+    icon: "📚",
+    requisitos: ["Mínimo 5 documentos", "Envío en formato PDF"],
+  },
+  {
+    titulo: "Traducción Urgente",
+    valor: "Desde $120.000",
+    documentos: [
+      "Cualquier documento",
+      "Servicio exprés 24 horas",
+      "Prioridad máxima",
+    ],
+    tramites: [
+      "Traducción inmediata",
+      "Atención prioritaria",
+      "Entrega en 24 horas",
+    ],
+    tiempo: "24 horas",
+    icon: "⚡",
+    requisitos: ["Documento en PDF", "Recargo por urgencia"],
+  },
+  {
+    titulo: "Traducción Técnica/Especializada",
+    valor: "Desde $100.000",
+    documentos: [
+      "Documentos médicos",
+      "Manuales técnicos",
+      "Contratos legales complejos",
+      "Patentes y certificaciones",
+    ],
+    tramites: [
+      "Traductor especializado",
+      "Terminología técnica precisa",
+      "Revisión por expertos",
+    ],
+    tiempo: "3 a 5 días hábiles",
+    icon: "🔬",
+    requisitos: ["Documento en PDF", "Glosario si está disponible"],
+  },
+];
+
+const idiomasPopulares = [
+  { idioma: "Inglés", emoji: "🇬🇧", demanda: "Alta" },
+  { idioma: "Español", emoji: "🇪🇸", demanda: "Alta" },
+  { idioma: "Francés", emoji: "🇫🇷", demanda: "Media" },
+  { idioma: "Alemán", emoji: "🇩🇪", demanda: "Media" },
+  { idioma: "Italiano", emoji: "🇮🇹", demanda: "Media" },
+  { idioma: "Portugués", emoji: "🇵🇹", demanda: "Alta" },
+  //   { idioma: "Chino", emoji: "🇨🇳", demanda: "Media" },
+  //   { idioma: "Japonés", emoji: "🇯🇵", demanda: "Baja" },
+];
+
+const tiposDocumentos = [
+  "Diplomas y certificados académicos",
+  "Actas de registro civil",
+  "Documentos de identidad",
+  "Certificados laborales",
+  "Contratos y documentos legales",
+  "Certificados médicos",
+  "Estados financieros",
+  "Poderes notariales",
+  "Y cualquier documento oficial",
+];
+---
+
+<Layout
+  title="Traducción Oficial Certificada en Colombia | Apostilla Colombia"
+  description="Servicio profesional de traducción oficial certificada y apostillada. Traductores oficiales autorizados. Inglés, francés, alemán y más idiomas. Servicio rápido y confiable."
+>
+  <!-- HERO SECTION -->
+  <section
+    class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-700 text-white py-8 text-center"
+  >
+    <div class="max-w-6xl mx-auto px-4 space-y-6 pt-10">
+      <div
+        class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-4"
+      >
+        <span class="text-sm font-semibold"
+          >🌐 TRADUCTORES OFICIALES AUTORIZADOS</span
+        >
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+        Traducción Oficial Certificada<br />para Documentos Legales
+      </h1>
+
+      <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
+        Traducciones oficiales certificadas y apostilladas por traductores
+        autorizados. Validez internacional garantizada.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">✅</span>
+          <span class="font-semibold">Traductores certificados</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">🌍</span>
+          <span class="font-semibold">+15 idiomas disponibles</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">⚡</span>
+          <span class="font-semibold">Entrega en 24-48h</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-6">
+        <a
+          id="wp-top"
+          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20una%20traducción%20oficial.%20¿Me%20pueden%20ayudar%3F"
+          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-[#20ba57] transition-all transform hover:scale-105 hover:-translate-y-1 animate-pulse"
+          target="_blank"
+        >
+          <Wp /> ¡Cotizar traducción!
+        </a>
+      </div>
+
+      <p class="text-sm opacity-80 pt-4">
+        ⏰ Respuesta inmediata • 🌐 Todos los idiomas • 📄 Formato digital y
+        físico
+      </p>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Por qué elegir nuestro <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >servicio de traducción</span
+        >?
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Traductores oficiales autorizados con años de experiencia en documentos
+        legales y académicos
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-gradient-to-br from-emerald-100 to-teal-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Traductores Certificados
+          </h3>
+          <p class="text-gray-600">
+            Todos nuestros traductores están oficialmente autorizados y
+            registrados. Tus traducciones tienen validez legal nacional e
+            internacional.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-br from-cyan-100 to-blue-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-language"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Múltiples Idiomas
+          </h3>
+          <p class="text-gray-600">
+            Ofrecemos traducciones en más de 15 idiomas: inglés, francés,
+            alemán, italiano, portugués, chino y muchos más.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-br from-teal-100 to-emerald-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Servicio Rápido</h3>
+          <p class="text-gray-600">
+            Entrega en 24 a 48 horas para documentos estándar. Servicio urgente
+            disponible para casos especiales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS DE TRADUCCIÓN -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Nuestros <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >Servicios de Traducción</span
+        >
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Traducción profesional para todos tus documentos legales, académicos y
+        corporativos
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        {
+          serviciosTraduccion.map((servicio) => (
+            <div class="bg-gray-100/80 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 p-6 border-t-4 border-emerald-500">
+              <div class="text-5xl mb-3">{servicio.icon}</div>
+
+              <h3 class="text-2xl font-bold mb-2">{servicio.titulo}</h3>
+
+              <div class="text-2xl font-bold text-[#25D366] mb-4">
+                {servicio.valor}
+              </div>
+
+              <div class="mb-4">
+                <ul class="space-y-1">
+                  {servicio.documentos.map((doc) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span class="text-[#25D366] font-bold mt-0.5">•</span>
+                      <span>{doc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <hr class="my-4 border-gray-200" />
+
+              <div class="mb-4">
+                <p class="text-sm font-semibold text-gray-700 mb-2">Incluye:</p>
+                <ul class="space-y-1">
+                  {servicio.tramites.map((tramite) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span class="text-emerald-500 font-bold mt-0.5">✓</span>
+                      <span>{tramite}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="mb-4">
+                <p class="text-sm font-semibold text-gray-700 mb-2">
+                  Requisitos:
+                </p>
+                <ul class="space-y-1">
+                  {servicio.requisitos.map((req) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span>{req}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+                <span class="text-xl">⏱</span>
+                <div>
+                  <span class="font-semibold">Tiempo:</span> {servicio.tiempo}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA EL PROCESO -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Cómo funciona el <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >proceso</span
+        >?
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Solo 4 pasos para obtener tu traducción oficial certificada
+        <strong>servicio 100% en línea</strong>
+      </p>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-emerald-500 to-emerald-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_3px_rgba(16,185,129,0.7),0_0_20px_8px_rgba(16,185,129,0.5)]"
+          >
+            1
+          </div>
+          <h3 class="font-bold text-xl mb-2">Envía tu documento</h3>
+          <p>
+            Contáctanos por WhatsApp y envíanos el documento que necesitas
+            traducir en formato PDF
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-teal-500 to-teal-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(20,184,166,0.7),0_0_20px_8px_rgba(20,184,166,0.5)]"
+          >
+            2
+          </div>
+          <h3 class="font-bold text-xl mb-2">Cotización inmediata</h3>
+          <p>
+            Te enviamos el precio exacto según el tipo de documento e idioma
+            requerido
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-cyan-500 to-cyan-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(6,182,212,0.7),0_0_20px_8px_rgba(6,182,212,0.5)]"
+          >
+            3
+          </div>
+          <h3 class="font-bold text-xl mb-2">Traducción oficial</h3>
+          <p>
+            Nuestros traductores certificados realizan la traducción con validez
+            legal
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-green-500 to-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(34,197,94,0.7),0_0_20px_8px_rgba(34,197,94,0.5)]"
+          >
+            4
+          </div>
+          <h3 class="font-bold text-xl mb-2">Entrega certificada</h3>
+          <p>
+            Recibes tu traducción oficial con firma y sello del traductor
+            autorizado
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="#contenedor-final-traduccion"
+          rel="noopener noreferrer"
+          aria-label="Iniciar proceso de traducción"
+          class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-105 focus:outline-none group"
+        >
+          <span
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-100 via-teal-100 to-cyan-100 dark:from-emerald-500 dark:via-teal-500 dark:to-cyan-400"
+          ></span>
+
+          <span
+            class="absolute -inset-2 rounded-full bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-200 dark:from-emerald-500 dark:via-teal-500 dark:to-cyan-400 opacity-50 blur-md animate-pulse"
+          ></span>
+
+          <span
+            class="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-white/30"
+          ></span>
+
+          <span
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gray-400 dark:bg-white/70 opacity-80"
+          ></span>
+          <span
+            class="absolute right-6 top-1/3 w-2.5 h-2.5 rounded-full bg-teal-300 dark:bg-white/80 opacity-70 animate-bounce"
+          ></span>
+
+          <span
+            class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white dark:bg-black/20 shadow-lg"
+          >
+            <Wp />
+          </span>
+
+          <span class="relative z-10 leading-tight text-left text-black">
+            <span class="block">
+              ✨ <span class="font-black">Solicitar Traducción</span>
+            </span>
+            <span class="block text-sm opacity-90">
+              Cotización gratuita • Respuesta inmediata
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDIOMAS DISPONIBLES -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Traducimos a <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >todos los idiomas</span
+        >
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Contamos con traductores certificados en los principales idiomas del
+        mundo
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {
+          idiomasPopulares.map((idioma) => (
+            <div class="bg-gradient-to-r from-emerald-300/30 to-cyan-300/30 rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center transform hover:scale-105">
+              <div class="text-5xl text-gray-800 mb-3">{idioma.emoji}</div>
+              <h3 class="font-bold mb-2">{idioma.idioma}</h3>
+              <span class="inline-block bg-emerald-100 text-emerald-700 text-sm font-semibold px-3 py-1 rounded-full">
+                Demanda {idioma.demanda}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-2xl p-8 text-white text-center"
+      >
+        <p class="text-xl font-bold mb-2">¿Necesitas otro idioma diferente?</p>
+        <p class="text-lg opacity-90 mb-6">
+          También trabajamos con árabe, ruso, coreano, japonés y muchos más
+        </p>
+        <a
+          href="#contenedor-final-traduccion"
+          class="inline-block bg-white text-emerald-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all transform hover:scale-105"
+        >
+          Consultar mi idioma
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS QUE TRADUCIMOS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Traducimos <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >todo tipo de documentos</span
+        >
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Especialistas en documentos legales, académicos y corporativos
+      </p>
+
+      <div
+        class="bg-gradient-to-br from-emerald-300/10 to-cyan-500/30 rounded-2xl p-8"
+      >
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          {
+            tiposDocumentos.slice(0, -1).map((documento) => (
+              <div class="flex items-center gap-3 bg-gray-400/30 rounded-lg p-3 shadow-sm">
+                <i class="fa-solid fa-file-lines text-emerald-600" />
+                <span class="font-semibold">{documento}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="text-center">
+          <div
+            class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white rounded-lg px-6 py-3 font-bold text-lg"
+          >
+            <span>✨</span>
+            <span>{tiposDocumentos[tiposDocumentos.length - 1]}</span>
+            <span>✨</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Preguntas <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >Frecuentes</span
+        >
+      </h2>
+
+      <div class="space-y-4">
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Qué es una traducción oficial certificada?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Es una traducción realizada por un traductor autorizado y registrado
+            oficialmente. Incluye firma y sello del traductor, lo que le otorga
+            validez legal para ser presentada ante entidades gubernamentales,
+            universidades y embajadas.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Cuánto tiempo tarda una traducción?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Las traducciones estándar se entregan en 24 a 48 horas hábiles. Para
+            documentos urgentes ofrecemos servicio exprés. El tiempo puede
+            variar según la extensión y complejidad del documento.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿La traducción necesita apostilla?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Depende del país y la entidad donde vayas a usar el documento. Para
+            países del Convenio de La Haya, la traducción certificada debe
+            apostillarse. Te asesoramos sobre qué necesitas en tu caso
+            específico y podemos gestionar la apostilla por ti.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Cómo se calcula el precio de una traducción?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            El precio se calcula según el número de palabras o páginas del
+            documento original, el idioma de origen y destino, y la complejidad
+            técnica del contenido. Documentos especializados (médicos, legales,
+            técnicos) tienen un costo adicional. Te enviamos una cotización
+            exacta al ver tu documento.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Qué idiomas ofrecen?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Trabajamos con más de 15 idiomas incluyendo inglés, francés, alemán,
+            italiano, portugués, chino, japonés, árabe, ruso, coreano y más. Si
+            necesitas un idioma específico que no ves listado, consúltanos y te
+            conectamos con el traductor apropiado.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿La traducción tiene validez internacional?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Sí, nuestras traducciones son realizadas por traductores
+            oficialmente autorizados y tienen validez legal en Colombia y en el
+            exterior. Para uso internacional, la traducción debe ser apostillada
+            o legalizada según el país de destino.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Puedo enviar documentos escaneados?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Sí, aceptamos documentos en formato PDF. Es importante que el
+            escaneo sea de alta calidad y que el texto sea completamente
+            legible. Si tienes dudas sobre la calidad de tu escaneo, envíanoslo
+            y te confirmamos si es adecuado.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE TESTIMONIOS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Nuestros clientes nos califican con
+        <span
+          class="text-yellow-400 bg-clip-text drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]"
+        >
+          4.9/5 en Google
+        </span>
+      </h2>
+      <p class="text-gray-600 mb-12 text-lg">
+        Servicio de traducción oficial más confiable de Colombia
+      </p>
+
+      <a
+        href="https://g.page/r/CevWgjAI6b1oEAE/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-yellow-600 drop-shadow-[0_0_4px_rgba(250,204,21,0.8)] text-white rounded-2xl px-8 py-6 shadow-lg transition transform hover:scale-105 hover:shadow-xl"
+      >
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          class="w-10 h-10"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Google</title>
+          <path
+            fill="currentColor"
+            d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147
+                1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72
+                8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747
+                1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12
+                12.173 12c3.573 0 6.267-1.173 8.373-3.36
+                2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+          ></path>
+        </svg>
+
+        <div class="text-left">
+          <p class="text-3xl font-extrabold leading-none">
+            4.9/5 <span class="text-5xl text-sm">⭐⭐⭐⭐⭐</span>
+          </p>
+          <p class="text-sm font-medium">Basado en reseñas de Google</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- INFORMACIÓN IMPORTANTE -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div
+        class="bg-gradient-to-br from-emerald-100/60 to-cyan-100/60 rounded-2xl p-8 md:p-12"
+      >
+        <h2
+          class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800"
+        >
+          Información importante sobre traducciones oficiales
+        </h2>
+
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+          <p class="text-justify leading-relaxed">
+            Las <strong>traducciones oficiales certificadas</strong>
+            son aquellas realizadas por traductores autorizados y registrados ante
+            las autoridades competentes. Estas traducciones tienen
+            <strong>validez legal</strong> y son aceptadas por entidades gubernamentales,
+            universidades, embajadas y consulados tanto en Colombia como en el exterior.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Para que una traducción sea válida internacionalmente, debe cumplir
+            con ciertos requisitos: debe ser realizada por un <strong
+              >traductor oficial certificado</strong
+            >, incluir la firma y sello del traductor, y en muchos casos, debe
+            ser <strong>apostillada o legalizada</strong> según el país de destino.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Los países que forman parte del <a
+              href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-emerald-600 hover:text-emerald-800 font-semibold underline"
+            >
+              Convenio de La Haya de 1961
+            </a> requieren que las traducciones certificadas sean <strong
+              >apostilladas</strong
+            >. Para países que no son parte de este convenio, se requiere un
+            proceso de <strong>legalización consular</strong>.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Es importante que el documento original esté en buen estado y sea
+            completamente legible antes de ser traducido. Si el documento
+            original requiere apostilla, esta debe realizarse <strong
+              >antes</strong
+            > de la traducción. Sin embargo, la traducción misma también deberá apostillarse
+            posteriormente para tener validez internacional.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Ofrecemos <strong>asesoría personalizada</strong> para determinar exactamente
+            qué documentos necesitas traducir según tu situación específica, el país
+            de destino y el propósito de uso (estudios, trabajo, migración, trámites
+            legales, etc.). Nuestro equipo te guía en cada paso del proceso para
+            asegurar que tus documentos cumplan con todos los requisitos legales
+            necesarios.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTAJAS ADICIONALES -->
+  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Beneficios de trabajar <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >con nosotros</span
+        >
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Más que traducción, ofrecemos un servicio integral para tus necesidades
+        internacionales
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">💼</div>
+          <h3 class="font-bold text-lg mb-2">Servicio Integral</h3>
+          <p class="text-gray-600 text-sm">
+            Traducción + apostilla + envío en un solo paquete
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">🔒</div>
+          <h3 class="font-bold text-lg mb-2">Confidencialidad</h3>
+          <p class="text-gray-600 text-sm">
+            Tratamiento seguro y confidencial de tus documentos
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">📱</div>
+          <h3 class="font-bold text-lg mb-2">100% Digital</h3>
+          <p class="text-gray-600 text-sm">
+            Proceso completamente en línea, sin salir de casa
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">👨‍💼</div>
+          <h3 class="font-bold text-lg mb-2">Asesoría Experta</h3>
+          <p class="text-gray-600 text-sm">
+            Te guiamos sobre qué documentos necesitas
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">🌍</div>
+          <h3 class="font-bold text-lg mb-2">Alcance Global</h3>
+          <p class="text-gray-600 text-sm">
+            Traducciones válidas en más de 120 países
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">⚡</div>
+          <h3 class="font-bold text-lg mb-2">Entrega Rápida</h3>
+          <p class="text-gray-600 text-sm">
+            Servicio urgente disponible en 24 horas
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">💰</div>
+          <h3 class="font-bold text-lg mb-2">Precios Justos</h3>
+          <p class="text-gray-600 text-sm">
+            Tarifas competitivas con calidad garantizada
+          </p>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-shadow"
+        >
+          <div class="text-4xl mb-3">✅</div>
+          <h3 class="font-bold text-lg mb-2">Garantía Total</h3>
+          <p class="text-gray-600 text-sm">
+            Revisión y corrección sin costo adicional
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINAL -->
+  <section
+    id="contenedor-final-traduccion"
+    class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-700 text-white py-16"
+  >
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        ¿Necesitas una traducción<br />oficial certificada?
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        Traductores oficiales con más de 18 años de experiencia. Servicio
+        rápido, confiable y con validez internacional.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a
+          id="wp-btm"
+          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20una%20traducción%20oficial.%20¿Me%20pueden%20enviar%20información%3F"
+          class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
+          target="_blank"
+        >
+          <Wp /> Solicitar traducción ahora
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >⚡</span
+          >
+          <span class="text-lg">Cotización inmediata</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >🌐</span
+          >
+          <span class="text-lg">Todos los idiomas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >✅</span
+          >
+          <span class="text-lg">Validez internacional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
