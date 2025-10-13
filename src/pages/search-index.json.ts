@@ -3,7 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { globSync } from "glob";
 
-export const prerender = false;
+// export const prerender = false;
 
 // __dirname en módulos ESM
 const __filename = fileURLToPath(import.meta.url);
