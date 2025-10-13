@@ -1,0 +1,263 @@
+---
+/**
+ * Página de búsqueda profesional con resultados en vivo usando Fuse.js
+ * Compatible con Astro 5 + TypeScript
+ */
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Buscar resultados" description="Resultados de búsqueda">
+  <section
+    class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4"
+  >
+    <div class="max-w-4xl mx-auto mt-8">
+      <!-- Encabezado -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">
+          🔍 Buscador del Sitio
+        </h1>
+        <p class="text-gray-600">Encuentra lo que necesitas rápidamente</p>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <div class="relative mb-8">
+        <input
+          id="liveSearch"
+          type="text"
+          placeholder="Buscar artículos, páginas, contenido..."
+          class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-xl shadow-lg focus:ring-4 focus:ring-blue-300 focus:border-blue-500 focus:outline-none transition-all"
+          autocomplete="off"
+        />
+        <div
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Indicador de estado -->
+      <div id="searchStatus" class="text-center mb-4">
+        <span
+          class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
+        >
+          ⏳ Cargando índice de búsqueda...
+        </span>
+      </div>
+
+      <!-- Contador de resultados -->
+      <div id="resultCount" class="mb-4 text-gray-600 font-medium hidden">
+        <span id="countText"></span>
+      </div>
+
+      <!-- Contenedor de resultados -->
+      <div id="resultados" class="space-y-4">
+        <!-- Los resultados se insertan aquí -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import Fuse from "fuse.js";
+
+    let fuse: Fuse<any> | null = null;
+    let data: any[] = [];
+
+    const input = document.getElementById("liveSearch") as HTMLInputElement;
+    const container = document.getElementById("resultados") as HTMLDivElement;
+    const searchStatus = document.getElementById(
+      "searchStatus"
+    ) as HTMLDivElement;
+    const resultCount = document.getElementById(
+      "resultCount"
+    ) as HTMLDivElement;
+    const countText = document.getElementById("countText") as HTMLSpanElement;
+
+    // Limpia etiquetas HTML y espacios innecesarios
+    function cleanText(text: string): string {
+      if (!text) return "";
+      return text
+        .replace(/<[^>]+>/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    // Resalta los términos de búsqueda
+    function highlightText(text: string, query: string): string {
+      if (!query.trim()) return text;
+      const regex = new RegExp(`(${query.split(" ").join("|")})`, "gi");
+      return text.replace(
+        regex,
+        "<mark class='bg-yellow-200 px-1 rounded'>$1</mark>"
+      );
+    }
+
+    // Muestra un mensaje de estado
+    function showStatus(
+      message: string,
+      type: "info" | "success" | "error" = "info"
+    ) {
+      const colors = {
+        info: "bg-blue-100 text-blue-700",
+        success: "bg-green-100 text-green-700",
+        error: "bg-red-100 text-red-700",
+      };
+
+      searchStatus.innerHTML = `
+        <span class="inline-block px-4 py-2 ${colors[type]} rounded-full text-sm font-medium">
+          ${message}
+        </span>
+      `;
+    }
+
+    // Carga del índice de búsqueda
+    async function cargarIndice() {
+      try {
+        const res = await fetch("/search-index.json");
+
+        if (!res.ok) {
+          throw new Error(`Error HTTP: ${res.status}`);
+        }
+
+        data = await res.json();
+
+        // Validar que data sea un array
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error("El índice de búsqueda está vacío o es inválido");
+        }
+
+        // Limpieza del contenido
+        data = data.map((item) => ({
+          ...item,
+          title: cleanText(item.title || "Sin título"),
+          content: cleanText(item.content || ""),
+          url: item.url || "#",
+        }));
+
+        // Configuración de Fuse.js
+        fuse = new Fuse(data, {
+          keys: [
+            { name: "title", weight: 2 },
+            { name: "content", weight: 1 },
+          ],
+          threshold: 0.4,
+          minMatchCharLength: 2,
+          includeScore: true,
+          ignoreLocation: true,
+        });
+
+        showStatus(
+          `✅ ${data.length} elementos indexados - Listo para buscar`,
+          "success"
+        );
+        searchStatus.classList.add("hidden");
+        input.focus();
+      } catch (error) {
+        console.error("Error cargando índice:", error);
+        showStatus("❌ Error cargando el índice de búsqueda", "error");
+        container.innerHTML = `
+          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 text-center">
+            <p class="text-red-700 font-semibold mb-2">No se pudo cargar el índice de búsqueda</p>
+            <p class="text-red-600 text-sm">Por favor, verifica que el archivo /search-index.json existe</p>
+          </div>
+        `;
+      }
+    }
+
+    // Ejecuta búsqueda según lo que escriba el usuario
+    function buscar(query: string) {
+      if (!fuse) {
+        container.innerHTML = `
+          <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 text-center">
+            <p class="text-yellow-700">⚠️ El índice aún se está cargando...</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (!query.trim()) {
+        container.innerHTML = "";
+        resultCount.classList.add("hidden");
+        searchStatus.classList.remove("hidden");
+        showStatus("💡 Escribe algo para comenzar a buscar", "info");
+        return;
+      }
+
+      searchStatus.classList.add("hidden");
+      const resultados = fuse.search(query);
+
+      // Actualizar contador
+      resultCount.classList.remove("hidden");
+      countText.textContent = `${resultados.length} resultado${resultados.length !== 1 ? "s" : ""} encontrado${resultados.length !== 1 ? "s" : ""}`;
+
+      if (resultados.length === 0) {
+        container.innerHTML = `
+          <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-8 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-gray-700 font-semibold text-lg mb-1">No se encontraron resultados</p>
+            <p class="text-gray-500 text-sm">Intenta con otras palabras clave</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Render de resultados con score y highlight
+      container.innerHTML = resultados
+        .map((r) => {
+          const relevance = Math.round((1 - (r.score || 0)) * 100);
+          const excerpt = r.item.content.slice(0, 200);
+
+          return `
+            <article class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-200">
+              <div class="flex items-start justify-between mb-2">
+                <a href="${r.item.url}" class="text-xl font-bold text-blue-600 hover:text-blue-800 hover:underline flex-1">
+                  ${highlightText(r.item.title, query)}
+                </a>
+                <span class="ml-4 px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full whitespace-nowrap">
+                  ${relevance}% relevante
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-3">
+                ${highlightText(excerpt, query)}${excerpt.length >= 200 ? "..." : ""}
+              </p>
+              <a href="${r.item.url}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
+                Leer más
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    // Buscar mientras se escribe con debounce
+    let timeoutId: ReturnType<typeof setTimeout>;
+    input?.addEventListener("input", (e) => {
+      clearTimeout(timeoutId);
+      const query = (e.target as HTMLInputElement).value;
+
+      timeoutId = setTimeout(() => {
+        buscar(query);
+      }, 300); // Espera 300ms después de que el usuario deje de escribir
+    });
+    // ...existing code...
+
+    // Inicializar
+    cargarIndice();
+  </script>
+</Layout>
