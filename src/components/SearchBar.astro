@@ -1,0 +1,39 @@
+---
+/**
+ * Componente de búsqueda funcional para Astro 5
+ * Sin dependencias de React y compatible con TypeScript
+ * Redirige a /buscar?query=palabra
+ */
+---
+
+<div class="search-box">
+  <form id="searchForm">
+    <input
+      type="text"
+      id="query"
+      placeholder="Buscar..."
+      class="border px-3 py-2 rounded w-full"
+    />
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">
+      Buscar
+    </button>
+  </form>
+</div>
+
+<script is:inline>
+  // Esperamos al evento DOM listo
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("query");
+
+    if (!form || !input) return; // Seguridad
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = /** @type {HTMLInputElement} */ (input).value.trim();
+      if (q) {
+        window.location.href = `/buscar?query=${encodeURIComponent(q)}`;
+      }
+    });
+  });
+</script>
