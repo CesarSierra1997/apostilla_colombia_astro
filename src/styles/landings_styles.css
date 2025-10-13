@@ -94,3 +94,73 @@
       0 0 25px rgba(18, 140, 126, 0.3);
   }
 }
+
+
+/* APOSTILLA LEGALIZACION HOME */
+/* ✨ BRILLO PREMIUM PARA LAS CARDS DE APOSTILLA */
+.card-anim {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: radial-gradient(circle at top left, #b168ff, #d0bfff, #ddb9e6);
+  box-shadow:
+    0 0 12px rgba(184, 192, 255, 0.35),
+    0 0 28px rgba(208, 191, 255, 0.25),
+    inset 0 0 6px rgba(255, 255, 255, 0.15);
+  transition: all 0.35s ease;
+  animation: pulse-glow-card 4s infinite ease-in-out;
+}
+
+/* === EFECTO DE BRILLO DESLIZANTE === */
+.card-anim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(240, 14, 14, 0) 20%,
+    rgba(255, 255, 255, 0.397) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  animation: shimmer-card 5s infinite linear;
+  pointer-events: none;
+}
+
+/* === EFECTO DE PULSO CONSTANTE (BRILLO SUAVE) === */
+@keyframes pulse-glow-card {
+  0% {
+    box-shadow:
+      0 0 10px rgba(184, 192, 255, 0.35),
+      0 0 25px rgba(208, 191, 255, 0.25),
+      inset 0 0 6px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(184, 192, 255, 0.5),
+      0 0 40px rgba(208, 191, 255, 0.35),
+      inset 0 0 10px rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    box-shadow:
+      0 0 10px rgba(184, 192, 255, 0.35),
+      0 0 25px rgba(208, 191, 255, 0.25),
+      inset 0 0 6px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* === EFECTO DE DESLIZAMIENTO BRILLANTE === */
+@keyframes shimmer-card {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: -150%;
+  }
+}
+
