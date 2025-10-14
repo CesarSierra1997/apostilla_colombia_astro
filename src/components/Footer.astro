@@ -1,5 +1,7 @@
 ---
 import apostillaLogo from "../assets/images/logo_claro.webp";
+
+import logo_hallowen from "../assets/images/logo_hallowen.webp";
 ---
 
 <div class="flex-grow">
@@ -16,15 +18,18 @@ import apostillaLogo from "../assets/images/logo_claro.webp";
       <!-- Información de la empresa -->
       <div class="lg:col-span-1">
         <div class="mb-4">
-          <div class="text-center">
+          <a
+            href="/"
+            class="inline-block hover:opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none transition"
+          >
             <img
-              src={apostillaLogo.src}
-              alt="Logo de Apostilla Colombia"
+              src={logo_hallowen.src}
+              alt="Logo de Apostilla Colombia - Hallowen"
               class="w-32 h-auto mb-2"
               loading="lazy"
               title="Logo Apostilla Colombia Traducciones Oficiales"
             />
-          </div>
+          </a>
           <h2
             class="text-xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-800 via-violet-700 bg-clip-text text-transparent"
           >
