@@ -1,86 +1,684 @@
 ---
+import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
 import Layout from "../../layouts/Layout.astro";
+
+const serviciosRegistros = [
+  {
+    titulo: "Expedidos en Notaría",
+    valor: "Desde $80.000",
+    documentos: [
+      "Registro Civil de Nacimiento",
+      "Registro Civil de Matrimonio",
+      "Registro Civil de Defunción",
+    ],
+    tramites: ["Validación SNR", "Apostilla ante el MRE"],
+    tiempo: "1 día hábil",
+    icon: "📃",
+    requisitos: ["Gestionar copia y código de pre-apostilla en la respectiva notaria"],
+  },
+  {
+    titulo: "Expedidos en Registraduría",
+    valor: "Desde $120.000",
+    documentos: [
+      "Registro Civil de Nacimiento",
+      "Registro Civil de Matrimonio",
+      "Registro Civil de Defunción",
+    ],
+    tramites: ["Validación RGN", "Apostilla ante el MRE"],
+    tiempo: "10-15 días calendario",
+    icon: "📜",
+    requisitos: ["Gestionar copia reciente en la Registraduría Nacional del Estado Civil", "Enviar copia en PDF" ],
+  },
+  {
+    titulo: "Gestión Completa",
+    valor: "Desde $250.000",
+    documentos: [
+      "Cualquier tipo de Registro Civil",
+      "Expedido en Notaría o Registraduría",
+      "Cualquier parte de Colombia"
+    ],
+    tramites: ["Solicitud de registro","Validación RGN - SNR", "Apostilla ante el MRE"],
+    tiempo: "15 días calendario",
+    icon: "✨",
+    requisitos: ["Enviar copia de CC en PDF", "Para menores de edad debe enviar autorización"],
+  },
+];
+
+const paisesDestino = [
+  { pais: "España", emoji: "🇪🇸", proceso: "Apostilla" },
+  { pais: "Estados Unidos", emoji: "🇺🇸", proceso: "Apostilla" },
+  { pais: "Canadá", emoji: "🇨🇦", proceso: "Apostilla" },
+  { pais: "Australia", emoji: "🇦🇺", proceso: "Apostilla" },
+  { pais: "Alemania", emoji: "🇩🇪", proceso: "Apostilla" },
+  { pais: "Francia", emoji: "🇫🇷", proceso: "Apostilla" },
+  { pais: "Italia", emoji: "🇮🇹", proceso: "Apostilla" },
+  { pais: "Emiratos Árabes Unidos ", emoji: "🇦🇪", proceso: "Legalización" },
+];
 ---
 
 <Layout
-  title="Apostilla y Legalización de Documentos en Colombia"
-  description="Servicios especializados de apostilla y legalización de documentos colombianos para uso en el exterior"
+  title="Apostilla de Registro Civil"
+  description="Especialistas en apostilla de registros civiles expedidos en Colombia. Servicio rápido y confiable para estudiar o trabajar en el exterior."
 >
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section
-    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16"
+    class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-8 text-center"
   >
-    <div class="max-w-6xl mx-auto px-4 space-y-6">
-      <h1 class="text-4xl md:text-5xl font-bold text-center">
-        Apostilla de Documentos Colombianos
+    <div class="max-w-6xl mx-auto px-4 space-y-6 pt-10">
+      <div
+        class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full"
+      >
+        <small class="text-sm font-semibold"
+          >📜 ESPECIALISTAS EN REGISTROS CIVILES</small
+        >
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+        Apostilla de Registro Civil <br />Expedido en Colombia 🇨🇴
       </h1>
-      <p class="text-xl md:text-2xl text-center opacity-95">
-        Servicios profesionales de legalización para uso internacional
+
+      <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
+        Gestionamos la apostilla de tus registos de nacimiento, matrimonio o defunción, para estudiar o trabajar en el exterior
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">⚡</span>
+          <span class="font-semibold">Proceso rápido</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">✅</span>
+          <span class="font-semibold">+18 años de experiencia</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">🎯</span>
+          <span class="font-semibold">100% Efectividad</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-6">
+        <a
+          id="wp-top"
+          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20apostillar%20mi%20Registro%20Civil.%20¿Me%20pueden%20ayudar%3F"
+          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-[#20ba57] transition-all transform hover:scale-105 hover:-translate-y-1 animate-pulse"
+          target="_blank"
+        >
+          <Wp /> ¡Consultar ahora!
+        </a>
+      </div>
+
+      <p class="text-sm opacity-80 pt-4">
+        ⏰ Respuesta inmediata • 📍 Servicio en toda Colombia • 🚀 Envío a
+        domicilio
       </p>
     </div>
   </section>
 
-  <!-- ¿Qué necesitas apostillar? -->
-  <section
-    class="py-16 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30"
-  >
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-          ¿Qué Documento Necesitas Apostillar?
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Selecciona tu trámite y descubre el proceso completo
-        </p>
-      </div>
-
-      <!-- CTA adicional -->
-      <div class="text-center mt-16">
-        <p class="text-gray-600 mb-6 text-lg">
-          ¿No encuentras tu tipo de documento?
-        </p>
-        <a
-          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20información%20sobre%20apostilla"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-10 py-5 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-        >
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-            ></path>
-          </svg>
-          Consulta por WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Final -->
-  <section
-    class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-12"
-  >
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
-      <h2 class="text-3xl font-bold">
-        ¿Tienes Dudas Sobre Tu Caso Específico?
+  <!-- POR QUÉ SOMOS ESPECIALISTAS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Por qué somos <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >especialistas</span
+        > en Registros Civiles?
       </h2>
-      <p class="text-xl opacity-95">
-        Contáctanos y recibe asesoría personalizada sin compromiso
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Conocemos cada detalle del proceso de apostilla de registros civiles
+        expedidos en Colombia, para que tú no tengas que preocuparte por nada.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-gradient-to-br from-blue-100 to-indigo-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Conocemos el proceso a la perfección
+          </h3>
+          <p class="text-gray-600">
+            Gestionamos directamente ante la cancillería y entidades correspondientes
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-br from-blue-100 to-indigo-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Experiencia con RGN y SNR
+          </h3>
+          <p class="text-gray-600">
+            Gestionamos sus documentos ante la Registraduria General de la Nación, respectivas notarias y la Superintendencia de Notariado y Registro.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-br from-blue-100 to-indigo-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Conocemos requisitos internacionales
+          </h3>
+          <p class="text-gray-600">
+            Te asesoramos sobre qué documentos específicos necesitas según el
+            país y motivo de viaje.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS DE APOSTILLA REGISTRO CIVIL -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Servicios de <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >Registro Civil</span
+        >
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Apostillamos y gestionamos tus registros civiles ante,
+        <strong>RGN</strong>, <strong>NOTARIAS</strong>, y la<strong> SNR</strong>
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        {
+          serviciosRegistros.map((servicio) => (
+            <div class="bg-gray-100/80 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 p-6 border-t-4 border-blue-500">
+              <div class="text-5xl mb-3">{servicio.icon}</div>
+
+              <h3 class="text-2xl font-bold mb-2">{servicio.titulo}</h3>
+
+              <div class="text-2xl font-bold text-[#25D366] mb-4">
+                {servicio.valor}
+              </div>
+
+              <div class="mb-4">
+                <ul class="space-y-1">
+                  {servicio.documentos.map((doc) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span class="text-[#25D366] font-bold mt-0.5">•</span>
+                      <span>{doc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <hr class="my-4 border-gray-200" />
+
+              <div class="mb-4">
+                <p class="text-sm font-semibold text-gray-700 mb-2">Incluye:</p>
+                <ul class="space-y-1">
+                  {servicio.tramites.map((tramite) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span class="text-blue-500 font-bold mt-0.5">✓</span>
+                      <span>{tramite}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="mb-4">
+                <p class="text-sm font-semibold text-gray-700 mb-2">
+                  Requisitos previos:
+                </p>
+                <ul class="space-y-1">
+                  {servicio.requisitos.map((tramite) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span>{tramite}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="bg-blue-50 text-blue-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+                <span class="text-xl">⏱</span>
+                <div>
+                  <span class="font-semibold">Tiempo:</span> {servicio.tiempo}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA EL PROCESO -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Cómo funciona el <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >proceso</span
+        >?
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Solo 4 pasos para tener tu registro civil apostillado <strong
+        >
+          servicio 100% en linea
+        </strong>
+      </p>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-blue-500 to-blue-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_3px_rgba(59,130,246,0.7),0_0_20px_8px_rgba(59,130,246,0.5)]"
+          >
+            1
+          </div>
+          <h3 class="font-bold text-xl mb-2">Contacto</h3>
+          <p>
+            Nos escribes por WhatsApp y nos cuentas qué registro necesitas
+            apostillar
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-purple-500 to-purple-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(168,85,247,0.7),0_0_20px_8px_rgba(168,85,247,0.5)]"
+          >
+            2
+          </div>
+          <h3 class="font-bold text-xl mb-2">Cotización</h3>
+          <p>Te enviamos el precio exacto y los pasos a seguir según tu caso</p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-orange-300 to-orange-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(253,186,106,0.7),0_0_20px_8px_rgba(250,190,70,0.5)]"
+          >
+            3
+          </div>
+          <h3 class="font-bold text-xl mb-2">Gestión</h3>
+          <p>
+            Nosotros nos encargamos de la validación y apostilla o la solicitud completa del registro civil.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-green-500 to-green-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(34,197,94,0.7),0_0_20px_8px_rgba(34,197,94,0.5)]"
+          >
+            4
+          </div>
+          <h3 class="font-bold text-xl mb-2">Entrega</h3>
+          <p>
+            Recibes tu registro civil apostillado listo para usar en el
+            exterior, en formato fisico y digital.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
         <a
-          href="https://wa.me/573213254326?text=Necesito%20asesoría%20sobre%20apostilla%20de%20documentos"
-          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-[#20ba57] transition-all transform hover:scale-105 inline-flex items-center gap-2"
+          href="#contenedor-final"
+          rel="noopener noreferrer"
+          aria-label="Abrir chat de WhatsApp — Iniciar Proceso"
+          class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-105 focus:outline-none group"
+        >
+          <!-- Fondo base con gradiente -->
+          <span
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 via-purple-100 to-cyan-100 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400"
+          ></span>
+
+          <!-- Glow exterior - simplificado para móvil -->
+          <span
+            class="absolute -inset-2 rounded-full bg-gradient-to-r from-pink-200 via-purple-200 to-cyan-200 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400 opacity-50 blur-md animate-pulse"
+          ></span>
+
+          <!-- Borde visible -->
+          <span
+            class="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-white/30"
+          ></span>
+
+          <!-- Decoración: puntos -->
+          <span
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gray-400 dark:bg-white/70 opacity-80"
+          ></span>
+          <span
+            class="absolute right-6 top-1/3 w-2.5 h-2.5 rounded-full bg-purple-300 dark:bg-white/80 opacity-70 animate-bounce"
+          ></span>
+
+          <!-- Icono de WhatsApp -->
+          <span
+            class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white dark:bg-black/20 shadow-lg"
+          >
+            <Wp />
+          </span>
+
+          <!-- Texto del botón -->
+          <span class="relative z-10 leading-tight text-left text-black">
+            <span class="block">
+              ✨ <span class="font-black">Iniciar Proceso</span>
+            </span>
+            <span class="block text-sm opacity-90">
+              Respuesta prioritaria • 100% en línea
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE TESTIMONIOS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Nuestros clientes nos califican con
+        <span
+          class="text-yellow-400 bg-clip-text drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]"
+        >
+          4.9/5 en Google
+        </span>
+      </h2>
+      <p class="text-gray-600 mb-12 text-lg">
+        La mejor puntuación en servicios de apostilla y legalización en Colombia
+      </p>
+
+      <!-- Enlace envolviendo el bloque -->
+      <a
+        href="https://g.page/r/CevWgjAI6b1oEAE/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-yellow-600 drop-shadow-[0_0_4px_rgba(250,204,21,0.8)] text-white rounded-2xl px-8 py-6 shadow-lg transition transform hover:scale-105 hover:shadow-xl"
+      >
+        <!-- SVG de Google -->
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          class="w-10 h-10"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Google</title>
+          <path
+            fill="currentColor"
+            d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147
+                1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72
+                8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747
+                1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12
+                12.173 12c3.573 0 6.267-1.173 8.373-3.36
+                2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+          ></path>
+        </svg>
+
+        <!-- Texto calificación -->
+        <div class="text-left">
+          <p class="text-3xl font-extrabold leading-none">
+            4.9/5 <span class="text-5xl text-sm">⭐⭐⭐⭐⭐</span>
+          </p>
+          <p class="text-sm font-medium">Basado en reseñas de Google</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PAÍSES DE DESTINO -->
+  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Apostilla para <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >cualquier país</span
+        > del mundo
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Conocemos los requisitos específicos de cada país para casos de estudios
+        o trabajo profesional
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {
+          paisesDestino.map((destino) => (
+            <div class="bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center transform hover:scale-105">
+              <div class="text-5xl text-gray-800 mb-3">{destino.emoji}</div>
+              <h3 class="font-bold mb-2">{destino.pais}</h3>
+              <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">
+                {destino.proceso}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center"
+      >
+        <p class="text-xl font-bold mb-2">¿Vas a otro país?</p>
+        <p class="text-lg opacity-90 mb-6">
+          También apostillamos documentos para cualquier otro país del mundo
+        </p>
+        <a
+          href="#contenedor-final"
+          class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all transform hover:scale-105"
+        >
+          Consultar mi país de destino
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Preguntas <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >Frecuentes</span
+        >
+      </h2>
+
+    <div class="space-y-4">
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Qué tipos de registros civiles puedo apostillar?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          Podemos apostillar registros civiles de <strong>nacimiento</strong>, <strong>matrimonio</strong> y <strong>defunción</strong> expedidos en <strong>Notarías</strong> o en la <strong>Registraduría Nacional</strong>, sin importar la ciudad o municipio de Colombia.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Cuál es la diferencia entre registros expedidos en Notaría y en Registraduría?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          Los <strong>registros notariales</strong> suelen tener una validación más rápida (1 día hábil), mientras que los <strong>registros de la Registraduría</strong> requieren validación RGN y pueden tardar de <strong>10 a 15 días calendario</strong>. También ofrecemos una opción de <strong>gestión completa</strong> si no cuentas con el documento.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Cuánto tiempo tarda el proceso?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          El tiempo depende del tipo de documento:
+          <br />📃 <strong>Notaría</strong>: <strong>1 día hábil</strong>.
+          <br />📜 <strong>Registraduría</strong>: <strong>10 a 15 días calendario</strong>.
+          <br />✨ <strong>Gestión completa</strong>: <strong>15 días calendario</strong>.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Necesito tener el documento físico?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          No necesariamente. Si no tienes el documento, podemos ayudarte con la <strong>gestión completa</strong>, que incluye la solicitud ante notaría o registraduría, validación y apostilla.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Qué requisitos debo cumplir?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          Depende del servicio:
+          <br />📃 Notaría: <strong>Debes gestionar el código de pre-apostilla</strong>.
+          <br />📜 Registraduría: <strong>Copia reciente del registro</strong> y <strong>envío en PDF</strong>.
+          <br />✨ Gestión completa: <strong>Copia de cédula en PDF</strong>. Si es para un menor de edad, se requiere <strong>autorización firmada</strong>.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿Puedo usar un registro civil apostillado en cualquier país?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          Sí. Si el país destino es firmante del <strong>Convenio de La Haya</strong>, como <strong>España 🇪🇸, Estados Unidos 🇺🇸, Canadá 🇨🇦 o Italia 🇮🇹</strong>, el documento apostillado es válido. Para países como <strong>Emiratos Árabes 🇦🇪</strong> es necesario un proceso de <strong>legalización</strong>.
+        </p>
+      </details>
+
+      <details
+        class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+      >
+        <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+          ¿La apostilla tiene fecha de vencimiento?
+        </summary>
+        <p class="mt-4 leading-relaxed">
+          La <strong>apostilla no vence</strong>, pero algunas instituciones extranjeras pueden exigir que el documento tenga menos de <strong>3 o 6 meses de expedido</strong>. Si lo necesitas, te ayudamos a renovarlo.
+        </p>
+      </details>
+    </div>
+
+    </div>
+  </section>
+
+  <!-- INFORMACIÓN IMPORTANTE REGISTRO CIVIL-->
+  <section class="bgdark:bg-wthite/30 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div
+        class="bg-gradient-to-br from-blue-100/60 to-purple-100/60 rounded-2xl p-8 md:p-12"
+      >
+        <h2
+          class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800"
+        >
+          Información importante sobre apostilla de Registro civil
+        </h2>
+
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+          <p class="text-justify leading-relaxed">
+            Si necesitas usar tu <strong
+              >Registro civil colombiano en el exterior</strong
+            >, ya sea para estudiar un posgrado, convalidar tu título o trabajar
+            como profesional, nosotros te ayudamos con todo el proceso de <strong
+              >apostilla</strong
+            >
+            ante Notaría (SNR), Registraduria (RGN) y el Ministerio de Relaciones
+            Exteriores (MRE).
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Para países que hacen parte del <a
+              href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:text-blue-800 font-semibold underline"
+            >
+              Convenio de La Haya
+            </a>, se realiza el proceso de <strong>apostilla</strong>. Para
+            otros países, aplicamos el proceso de <strong
+              >legalización consular</strong
+            >.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Todos los Registros requieren una <strong
+              >Gestión previa ante las diferentes entidades</strong
+            > antes de poder ser apostillados. Este proceso incluye la verificación
+            de la autenticidad del documento. Nosotros gestionamos este paso completo
+            por ti, ¡sí lo requieres!.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Nuestro servicio incluye la gestión de la apostilla o todo el proceso: desde la solicitud de
+            documentos ante notaría y registraduría, la gestión, validación, hasta la apostilla final ante el MRE. Tú solo nos
+            envías los documentos y nosotros nos encargamos de todo el trámite,
+            sin complicaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINAL -->
+  <section
+    id="contenedor-final"
+    class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-16"
+  >
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        ¿Listo para apostillar tu<br />
+        <strong>Registro Civil 📜</strong>?
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        Más de 18 años ayudando a colombianos a cumplir sus sueños en el
+        exterior
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a
+          id="wp-btm"
+          href="https://wa.me/573213254326?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20de%20apostilla%20de%20mi%20Registro%20Civil"
+          class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
           target="_blank"
         >
-          <span>💬</span> Chatear por WhatsApp
+          <Wp /> Escribir por WhatsApp
         </a>
-        <a
-          href="tel:+573213254326"
-          class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2"
-        >
-          <span>📞</span> Llamar Ahora
-        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >⚡</span
+          >
+          <span class="text-lg">Respuesta inmediata</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >🎯</span
+          >
+          <span class="text-lg">100% Efectividad</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >🚀</span
+          >
+          <span class="text-lg">Proceso rápido y seguro</span>
+        </div>
       </div>
     </div>
   </section>
