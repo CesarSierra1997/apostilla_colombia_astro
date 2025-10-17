@@ -4,140 +4,82 @@ import Layout from "../../layouts/Layout.astro";
 
 const serviciosTraduccion = [
   {
-    titulo: "Traducción Simple",
+    titulo: "Traducción Oficial",
     valor: "Desde $40.000",
     documentos: [
       "Documentos personales",
       "Certificados de estudio",
       "Cartas y comunicaciones",
-      "Documentos comerciales básicos",
+      "Documentos comerciales",
     ],
-    tramites: [
-      "Traducción profesional",
-      "Revisión de calidad",
-      "Entrega en PDF",
+    servicios: [
+      "Traducción Oficial",
+      "Entrega en fisico y digital",
     ],
-    tiempo: "1 a 2 días hábiles",
-    icon: "📄",
+    icon: "📃",
     requisitos: ["Documento en PDF de alta calidad", "Idioma origen y destino"],
   },
   {
-    titulo: "Traducción Oficial",
-    valor: "Desde $80.000",
-    documentos: [
-      "Diplomas y títulos",
-      "Actas de nacimiento",
-      "Certificados de matrimonio",
-      "Documentos legales",
-      "Certificados médicos",
-    ],
-    tramites: [
-      "Traducción certificada",
-      "Firma de traductor oficial",
-      "Sello de autenticidad",
-    ],
-    tiempo: "2 a 3 días hábiles",
-    icon: "📋",
-    requisitos: ["Documento original en PDF", "Copia clara y legible"],
-  },
-  {
-    titulo: "Traducción + Apostilla",
-    valor: "Desde $150.000",
+    titulo: "Traducción Oficial Apostillada",
+    valor: "Desde $120.000",
     documentos: [
       "Documentos académicos",
-      "Actas de registro civil",
+      "Registros civiles",
       "Certificados laborales",
-      "Documentos notariales",
     ],
-    tramites: [
+    servicios: [
       "Traducción oficial",
       "Apostilla de la traducción",
-      "Legalización completa",
+      "Entrega en fisico y digital",
     ],
-    tiempo: "5 a 7 días hábiles",
-    icon: "🎯",
-    requisitos: ["Documento original en PDF", "Para uso internacional"],
+    icon: "📜",
+    requisitos: ["Documento en PDF de alta calidad", "Idioma origen y destino"],
   },
+
   {
-    titulo: "Paquete Múltiples Documentos",
-    valor: "Desde $300.000",
-    documentos: [
-      "Ideal para 5 o más documentos",
-      "Expedientes completos",
-      "Documentación corporativa",
-    ],
-    tramites: [
-      "Traducción oficial de todos los documentos",
-      "Descuento por volumen",
-      "Gestión personalizada",
-    ],
-    tiempo: "7 a 10 días hábiles",
-    icon: "📚",
-    requisitos: ["Mínimo 5 documentos", "Envío en formato PDF"],
-  },
-  {
-    titulo: "Traducción Urgente",
+    titulo: "Traducción Oficial Urgente",
     valor: "Desde $120.000",
     documentos: [
       "Cualquier documento",
       "Servicio exprés 24 horas",
       "Prioridad máxima",
     ],
-    tramites: [
+    servicios: [
       "Traducción inmediata",
       "Atención prioritaria",
       "Entrega en 24 horas",
     ],
     tiempo: "24 horas",
     icon: "⚡",
-    requisitos: ["Documento en PDF", "Recargo por urgencia"],
-  },
-  {
-    titulo: "Traducción Técnica/Especializada",
-    valor: "Desde $100.000",
-    documentos: [
-      "Documentos médicos",
-      "Manuales técnicos",
-      "Contratos legales complejos",
-      "Patentes y certificaciones",
-    ],
-    tramites: [
-      "Traductor especializado",
-      "Terminología técnica precisa",
-      "Revisión por expertos",
-    ],
-    tiempo: "3 a 5 días hábiles",
-    icon: "🔬",
-    requisitos: ["Documento en PDF", "Glosario si está disponible"],
+    requisitos: ["Documento en PDF de alta calidad", "Idioma origen y destino"],
   },
 ];
 
 const idiomasPopulares = [
-  { idioma: "Inglés", emoji: "🇬🇧", demanda: "Alta" },
-  { idioma: "Español", emoji: "🇪🇸", demanda: "Alta" },
-  { idioma: "Francés", emoji: "🇫🇷", demanda: "Media" },
-  { idioma: "Alemán", emoji: "🇩🇪", demanda: "Media" },
+  { idioma: "Inglés", emoji: "🇺🇸", demanda: "Alta" },
+  { idioma: "Español", emoji: "🇨🇴", demanda: "Alta" },
+  { idioma: "Alemán", emoji: "🇩🇪", demanda: "Alta" },
   { idioma: "Italiano", emoji: "🇮🇹", demanda: "Media" },
   { idioma: "Portugués", emoji: "🇵🇹", demanda: "Alta" },
+  { idioma: "Francés", emoji: "🇫🇷", demanda: "Media" },
   //   { idioma: "Chino", emoji: "🇨🇳", demanda: "Media" },
   //   { idioma: "Japonés", emoji: "🇯🇵", demanda: "Baja" },
 ];
 
 const tiposDocumentos = [
   "Diplomas y certificados académicos",
-  "Actas de registro civil",
+  "Registros civiles",
   "Documentos de identidad",
   "Certificados laborales",
   "Contratos y documentos legales",
   "Certificados médicos",
   "Estados financieros",
   "Poderes notariales",
-  "Y cualquier documento oficial",
 ];
 ---
 
 <Layout
-  title="Traducción Oficial Certificada en Colombia | Apostilla Colombia"
+  title="Traducciones Oficiales"
   description="Servicio profesional de traducción oficial certificada y apostillada. Traductores oficiales autorizados. Inglés, francés, alemán y más idiomas. Servicio rápido y confiable."
 >
   <!-- HERO SECTION -->
@@ -148,17 +90,17 @@ const tiposDocumentos = [
       <div
         class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-4"
       >
-        <span class="text-sm font-semibold"
-          >🌐 TRADUCTORES OFICIALES AUTORIZADOS</span
+        <small class="text-sm font-semibold"
+          >🌐 Expertos en traducción de documentos</small
         >
       </div>
 
       <h1 class="text-3xl md:text-5xl font-bold leading-tight">
-        Traducción Oficial Certificada<br />para Documentos Legales
+        Traducciones Oficiales Certificadas y Apostilladas
       </h1>
 
       <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
-        Traducciones oficiales certificadas y apostilladas por traductores
+        Realizamos traducciones oficiales certificadas y apostilladas por traductores
         autorizados. Validez internacional garantizada.
       </p>
 
@@ -173,7 +115,7 @@ const tiposDocumentos = [
           class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
         >
           <span class="text-2xl">🌍</span>
-          <span class="font-semibold">+15 idiomas disponibles</span>
+          <span class="font-semibold">+8  idiomas disponibles</span>
         </div>
         <div
           class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
@@ -242,8 +184,8 @@ const tiposDocumentos = [
             Múltiples Idiomas
           </h3>
           <p class="text-gray-600">
-            Ofrecemos traducciones en más de 15 idiomas: inglés, francés,
-            alemán, italiano, portugués, chino y muchos más.
+            Ofrecemos traducciones en los siguientes idiomas: inglés, español,
+            alemán, italiano, portugués, francés y muchos más.
           </p>
         </div>
 
@@ -256,7 +198,7 @@ const tiposDocumentos = [
           <h3 class="text-xl font-bold mb-3 text-gray-800">Servicio Rápido</h3>
           <p class="text-gray-600">
             Entrega en 24 a 48 horas para documentos estándar. Servicio urgente
-            disponible para casos especiales.
+            disponible para idioma inglés. Te entregamos en fisico y digital.
           </p>
         </div>
       </div>
@@ -305,7 +247,7 @@ const tiposDocumentos = [
               <div class="mb-4">
                 <p class="text-sm font-semibold text-gray-700 mb-2">Incluye:</p>
                 <ul class="space-y-1">
-                  {servicio.tramites.map((tramite) => (
+                  {servicio.servicios.map((tramite) => (
                     <li class="flex items-start gap-2 text-sm text-gray-600">
                       <span class="text-emerald-500 font-bold mt-0.5">✓</span>
                       <span>{tramite}</span>
@@ -325,13 +267,6 @@ const tiposDocumentos = [
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
-                <span class="text-xl">⏱</span>
-                <div>
-                  <span class="font-semibold">Tiempo:</span> {servicio.tiempo}
-                </div>
               </div>
             </div>
           ))
@@ -533,7 +468,7 @@ const tiposDocumentos = [
             class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white rounded-lg px-6 py-3 font-bold text-lg"
           >
             <span>✨</span>
-            <span>{tiposDocumentos[tiposDocumentos.length - 1]}</span>
+            <span>Cotiza tus documentos</span>
             <span>✨</span>
           </div>
         </div>
@@ -583,13 +518,28 @@ const tiposDocumentos = [
           class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
         >
           <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Debo apostillar el documento original antes de traducirlo?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Depende el tipo de doucumento, para documentos académicos es necesario legalizarlos y apostillarlos, ya que se deben incluir la legalización en la traducción. consulte aquí servicios de apostilla y legalización según su tipo de documento:
+            <a
+              href="https://apostillacolombia.com.co/servicios/apostilla_legalizacion"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-emerald-600 hover:text-emerald-800 font-semibold underline"
+              >Apostilla y Legalización</a>
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
             ¿La traducción necesita apostilla?
           </summary>
           <p class="mt-4 leading-relaxed">
             Depende del país y la entidad donde vayas a usar el documento. Para
-            países del Convenio de La Haya, la traducción certificada debe
-            apostillarse. Te asesoramos sobre qué necesitas en tu caso
-            específico y podemos gestionar la apostilla por ti.
+            países del Convenio de La Haya, la traducción certificada es sucifiente. Te asesoramos sobre qué necesitas en tu caso específico y podemos gestionar la apostilla por ti.
           </p>
         </details>
 
@@ -600,11 +550,10 @@ const tiposDocumentos = [
             ¿Cómo se calcula el precio de una traducción?
           </summary>
           <p class="mt-4 leading-relaxed">
-            El precio se calcula según el número de palabras o páginas del
-            documento original, el idioma de origen y destino, y la complejidad
+            El precio se calcula según el documento, el idioma de origen y destino, y la complejidad
             técnica del contenido. Documentos especializados (médicos, legales,
             técnicos) tienen un costo adicional. Te enviamos una cotización
-            exacta al ver tu documento.
+            exacta al ver tu documento. <span class="font-blod text-sm text-zinc-900">(No trabajamos con número de palabras o páginas, para garantizar el valor del trabajo)</span> 
           </p>
         </details>
 
@@ -615,10 +564,9 @@ const tiposDocumentos = [
             ¿Qué idiomas ofrecen?
           </summary>
           <p class="mt-4 leading-relaxed">
-            Trabajamos con más de 15 idiomas incluyendo inglés, francés, alemán,
+            Trabajamos con varios idiomas incluyendo inglés, francés, alemán,
             italiano, portugués, chino, japonés, árabe, ruso, coreano y más. Si
-            necesitas un idioma específico que no ves listado, consúltanos y te
-            conectamos con el traductor apropiado.
+            necesitas un idioma específico que no ves listado, ¡consúltanos!.
           </p>
         </details>
 
@@ -665,7 +613,7 @@ const tiposDocumentos = [
         </span>
       </h2>
       <p class="text-gray-600 mb-12 text-lg">
-        Servicio de traducción oficial más confiable de Colombia
+        Uno de los servicios de traducción oficial más confiable de Colombia
       </p>
 
       <a
@@ -768,7 +716,7 @@ const tiposDocumentos = [
   </section>
 
   <!-- VENTAJAS ADICIONALES -->
-  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+  <!-- <section class="bg-gradient-to-b from-gray-50 to-white py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
         Beneficios de trabajar <span
@@ -863,7 +811,7 @@ const tiposDocumentos = [
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CALL TO ACTION FINAL -->
   <section
@@ -882,7 +830,7 @@ const tiposDocumentos = [
       <div class="flex flex-wrap justify-center gap-4 mb-8">
         <a
           id="wp-btm"
-          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20una%20traducción%20oficial.%20¿Me%20pueden%20enviar%20información%3F"
+          href="https://wa.me/573213254326?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20para%20cotizar%20una%20traducción%20oficial%20al%20idioma:%20"
           class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
           target="_blank"
         >

@@ -1,90 +1,67 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
 
-const tramites = [
+const otrosDocumentos = [
   {
-    titulo: "Certificados medicos",
+    titulo: "Documentos de Notaria",
     valor: "Desde $80.000",
     documentos: [
-      "Diploma de grado",
-      "Acta de grado",
-      "Certificado de Calificaciones",
-      "Plan de Estudios",
+      "Declaración extraproceso",
+      "Declaración de soltería",
+      "Permiso Salida de Menor",
+      "Escrituras",
     ],
-    tramites: ["Legalización ante el MEN", "Apostilla ante el MRE"],
-    tiempo: "3 a 5 días hábiles",
+    requisitos: [
+      "Gestionar documento en notaria",
+      "Solicitar codigo de pre-apostilla"
+    ],
+    tramites: ["Validación SNR", "Apostilla ante el MRE"],
+    tiempo: "1 día hábil",
+    url: "https://api.whatsapp.com/send/?phone=573213254326&text=Hola%2C+necesito+apostillar+mi+documento+de+Notaría+%C2%BFMe+pueden+ayudar%3F&type=phone_number&app_absent=0",
   },
   {
-    titulo: "Título de Bachiller",
+    titulo: "Licencia de conducción",
     valor: "Desde $120.000",
     documentos: [
-      "Diploma de bachiller",
-      "Acta de grado",
-      "Certificado de Notas",
-      "Constancia de Estudios",
+      "Informe General de conductor",
     ],
     tramites: [
-      "Tramite de legalización Sec. Edu Distrital",
-      "Tramite de legalización SAC",
+      "Tramite Min. Transporte",
       "Apostilla ante el MRE",
     ],
+    requisitos: [
+      "Enviar licencia en PDF",
+    ],
+    tiempo: "8 días calendario",
+    url: "https://api.whatsapp.com/send/?phone=573213254326&text=Hola%2C+necesito+apostillar+mi+Licencia+de+trancito.+%C2%BFMe+pueden+ayudar%3F&type=phone_number&app_absent=0",
+  },
+  {
+    titulo: "Certificados medicos",
+    valor: "Desde $150.000",
+    documentos: [
+      "Certificado medicó",
+      "Contancia Medicá laboral"
+    ],
+    tramites: ["Legalización ante el Min Salud", "Apostilla ante el MRE"],
+    requisitos: [
+      "Escaner con buena resolución",
+      "Enviar documento en PDF",
+    ],
     tiempo: "15 días calendario",
-  },
-  {
-    titulo: "Antecedentes",
-    valor: "Desde $80.000",
-    documentos: [
-      "Antecedentes Judiciales - Policía",
-      "Antecedentes Disciplinarios - Procuraduría",
-      "Antecedentes Fiscales - Contraloría",
-    ],
-    tramites: ["Solicitud y Validación", "Trámite de apostilla MRE"],
-    tiempo: "1 día hábil (Policía)",
-  },
-  {
-    titulo: "Registro Civil",
-    valor: "Desde $80.000",
-    documentos: [
-      "Registro Civil: Nacimiento, Matrimonio, Defunción",
-      "Expedidos por notaria (Código)",
-      "Expedidos por Registraduría (PDF)",
-    ],
-    tramites: [
-      "Validación SNR",
-      "Legalización RNEC",
-      "Trámite de apostilla MRE",
-    ],
-    tiempo: ["1 día hábil (Notaria)", "\n15 días calendario (Registraduría)"],
-  },
-  {
-    titulo: "Otros Servicios de Apostilla",
-    valor: "Desde $120.000",
-    documentos: [
-      "Certificado Medico",
-      "Partida de Bautismo",
-      "Informe General de Conductor",
-      "Escrituras, sentencias",
-    ],
-    tramites: [
-      "Solicitud, Validación y Legalización",
-      "Trámite de apostilla MRE",
-    ],
-    tiempo: "Depende del documento",
-  },
-  {
-    titulo: "Traduccion Oficial",
-    valor: "Desde $120.000",
-    documentos: [
-      "Traduccion Oficial Apostillada",
-      "Traduccion Oficial Certificada",
-    ],
-    tramites: [
-      "Gestión y Validación",
-      "Legalización SNR",
-      "Trámite de apostilla MRE",
-    ],
-    tiempo: "1 a 2 días hábiles",
-  },
+    url: "https://api.whatsapp.com/send/?phone=573213254326&text=Hola%2C+necesito+apostillar+mi+Certificado+Medico.+%C2%BFMe+pueden+ayudar%3F&type=phone_number&app_absent=0",
+  }
+];
+
+const paisesDestino = [
+  { pais: "España", emoji: "🇪🇸", proceso: "Apostilla" },
+  { pais: "Estados Unidos", emoji: "🇺🇸", proceso: "Apostilla" },
+  { pais: "Canadá", emoji: "🇨🇦", proceso: "Apostilla" },
+  { pais: "Australia", emoji: "🇦🇺", proceso: "Apostilla" },
+  { pais: "Alemania", emoji: "🇩🇪", proceso: "Apostilla" },
+  { pais: "Francia", emoji: "🇫🇷", proceso: "Apostilla" },
+  { pais: "Italia", emoji: "🇮🇹", proceso: "Apostilla" },
+  { pais: "Emiratos Árabes Unidos ", emoji: "🇦🇪", proceso: "Legalización" },
 ];
 ---
 
@@ -92,80 +69,71 @@ const tramites = [
   title="Apostilla Legalización de Documentos"
   description="Legalización y apostilla de documentos en Colombia"
 >
+  <!-- HERO SECTION -->
   <section
-    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-10 text-center"
+    class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-8 text-center"
   >
-    <div class="max-w-6xl mx-auto px-4 space-y-4">
-      <h1 class="text-5xl font-bold text-center mb-10 mt-10">
-        Apostilla de Documentos Expedidos en Colombia 🇨🇴
+    <div class="max-w-6xl mx-auto px-4 space-y-6 pt-10">
+      <div
+        class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full"
+      >
+        <small class="text-sm font-semibold"
+          >📑 ESPECIALISTAS EN TODO TIPO DE DOCUMENTOS</small
+        >
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+        Apostilla Legalización <br>Otros Documentos <br />Expedidos en Colombia 🇨🇴
       </h1>
-      <p class="text-lg md:text-xl opacity-90">
-        ✅ Servicio Rápido | ✅ +18 Años de Experiencia | ✅ Asesoría
-        Personalizada
+
+      <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
+        Gestionamos la apostilla de cualquier tipo de documento colombiano
       </p>
 
-      <div class="flex flex-wrap justify-center gap-4 mt-6">
-        <a
-          href="https://wa.me/573213254326?text=Hola%2C%20necesito%20apostillar%20documentos.%20¿Me%20pueden%20ayudar%3F"
-          class="bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
-          target="_blank"
+      <!-- <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
         >
-          📱 WhatsApp - CONSULTA GRATIS
-        </a>
-        <a
-          href="tel:+573213254326"
-          class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-[#1e3c72] transition"
+          <span class="text-2xl">⚡</span>
+          <span class="font-semibold">Servicio rápido</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
         >
-          📞 Llamar: 321 325 4326
-        </a>
-      </div>
+          <span class="text-2xl">✅</span>
+          <span class="font-semibold">+18 años de experiencia</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        >
+          <span class="text-2xl">🎯</span>
+          <span class="font-semibold">100% Efectividad</span>
+        </div>
+      </div> -->
 
-      <div class="flex flex-wrap justify-center gap-6 mt-8">
-        <div class="flex items-center gap-2">
-          <span
-            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
-            >⚡</span
-          >
-          <span>Respuesta en 5 minutos</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
-            >🎯</span
-          >
-          <span>100% Efectividad</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="bg-[#25D366] text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm"
-            >🚀</span
-          >
-          <span>Entrega en 24-48h</span>
-        </div>
-      </div>
+      <p class="text-sm opacity-80 pt-4">
+        ⏰ Respuesta inmediata • 📍 Servicio en toda Colombia • 🚀 Envío a
+        domicilio
+      </p>
     </div>
   </section>
 
-  <!-- Apostilla y legalización de documentos -->
-  <section class="bg-gray-100 py-16 text-center">
+  <!-- SELECCION Y CONSULTA -->
+  <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16 text-center">
     <div class="max-w-6xl mx-auto px-4">
       <h2
         class="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent mb-5"
       >
-        Servicios de Apostilla y Legalización
+        Seleccione el tipo de documento
       </h2>
       <p class="text-lg md:text-xl opacity-90 mb-10 text-center">
-        Realizamos el trámite completo de <strong>apostilla</strong> y <strong
-          >legalización</strong
-        > de tus documentos colombianos, según el país donde los necesites. Te ayudamos
-        desde la validación previa, si aplica, hasta la entrega lista para uso en
-        el exterior. ¡Contáctanos y evita complicaciones!
+        Valide el tipo de documento que necesita gestionar y haga clic en consultar para obtener más información.
       </p>
 
       <div class="flex flex-wrap justify-center gap-6">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-5">
           {
-            tramites.map((item) => (
+            otrosDocumentos.map((item) => (
               <div class="bg-stone-50/30 rounded-xl shadow-lg p-6 max-w-sm w-full">
                 <h3 class="text-2xl font-semibold text-blue-500 mb-2">
                   {item.titulo}
@@ -192,46 +160,500 @@ const tramites = [
                   ))}
                 </ul>
 
+                <hr class="m-5" />
+
+                <p class="text-left text-sm font-semibold text-gray-700 mb-2">
+                  Requisitos previos:
+                </p>
+                <ul class="space-y-1">
+                  {item.requisitos.map((tramite) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <span>{tramite}</span>
+                    </li>
+                  ))}
+                </ul>
+
                 <div class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 mt-5">
                   ⏱{" "}
                   <span>
                     Tiempo estimado: <strong>{item.tiempo}</strong>
                   </span>
                 </div>
+
+                {item.url && (
+                  <a
+                    id="wp-top"
+                    href={item.url}
+                    target="_blank"
+                    class="bg-[#25D366] text-white px-8 h-12 w-full mt-5 py-2 rounded-full font-bold text-lg shadow-xl hover:bg-[#20ba57] transition-all transform hover:scale-105 hover:-translate-y-1 animate-pulse"
+                  >
+                    <Wp/>Consultar
+                  </a>
+                )}
               </div>
             ))
           }
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="m-10">
+    <!-- POR QUÉ SOMOS ESPECIALISTAS -->
+  <!-- <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Por qué somos <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >especialistas</span
+        > en todo tio de documentos?
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Conocemos cada detalle del proceso de apostilla, legalización y validaciones previas o adcionales segun el tipo de documento y entidad.
+      </p>
+
+        <div
+          class="bg-gradient-to-br from-blue-100 to-indigo-50/60 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="text-5xl text-gray-500 mb-4">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">
+            Experiencia con RGN y SNR
+          </h3>
+          <p class="text-gray-600">
+            Gestionamos sus documentos ante la Registraduria General de la Nación, respectivas notarias y la Superintendencia de Notariado y Registro.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section> -->
+
+
+  <!-- COMO FUNCIONA EL PROCESO -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        ¿Cómo funciona el <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >proceso</span
+        >?
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Solo 4 pasos para tener tu documento apostillado<strong
+        >
+          servicio 100% en linea
+        </strong>
+      </p>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-blue-500 to-blue-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_3px_rgba(59,130,246,0.7),0_0_20px_8px_rgba(59,130,246,0.5)]"
+          >
+            1
+          </div>
+          <h3 class="font-bold text-xl mb-2">Selección y consulta</h3>
+          <p>
+            Seleccionas el tipo de documento que necesitas apostillar y das clic en constultar
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-purple-500 to-purple-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(168,85,247,0.7),0_0_20px_8px_rgba(168,85,247,0.5)]"
+          >
+            2
+          </div>
+          <h3 class="font-bold text-xl mb-2">Cotización</h3>
+          <p>Te enviamos el precio exacto y los pasos a seguir según tu caso</p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-orange-300 to-orange-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(253,186,106,0.7),0_0_20px_8px_rgba(250,190,70,0.5)]"
+          >
+            3
+          </div>
+          <h3 class="font-bold text-xl mb-2">Gestión</h3>
+          <p>
+            Nosotros nos encargamos de todo el proceso y cualquier validación
+            previa
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div
+            class="relative bg-gradient-to-br from-green-500 to-green-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4
+                             shadow-[0_0_10px_5px_rgba(34,197,94,0.7),0_0_20px_8px_rgba(34,197,94,0.5)]"
+          >
+            4
+          </div>
+          <h3 class="font-bold text-xl mb-2">Entrega</h3>
+          <p>
+            Recibes tu documento apostillado listo para usar en el
+            exterior
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
         <a
-          href="https://wa.me/573213254326?text=Quiero%20conocer%20precios%20exactos%20para%20apostillar%20mis%20documentos"
-          class="bg-[#25D366] text-white px-2 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-[#20ba57] transition-transform transform hover:-translate-y-1 animate-pulse"
+          href="#contenedor-final"
+          rel="noopener noreferrer"
+          aria-label="Abrir chat de WhatsApp — Iniciar Proceso"
+          class="relative inline-flex items-center gap-4 justify-center w-full sm:w-auto px-8 py-4 rounded-full overflow-visible transform transition duration-150 hover:-translate-y-1 hover:scale-105 focus:outline-none group"
+        >
+          <!-- Fondo base con gradiente -->
+          <span
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-100 via-purple-100 to-cyan-100 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400"
+          ></span>
+
+          <!-- Glow exterior - simplificado para móvil -->
+          <span
+            class="absolute -inset-2 rounded-full bg-gradient-to-r from-pink-200 via-purple-200 to-cyan-200 dark:from-pink-500 dark:via-violet-500 dark:to-cyan-400 opacity-50 blur-md animate-pulse"
+          ></span>
+
+          <!-- Borde visible -->
+          <span
+            class="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-white/30"
+          ></span>
+
+          <!-- Decoración: puntos -->
+          <span
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gray-400 dark:bg-white/70 opacity-80"
+          ></span>
+          <span
+            class="absolute right-6 top-1/3 w-2.5 h-2.5 rounded-full bg-purple-300 dark:bg-white/80 opacity-70 animate-bounce"
+          ></span>
+
+          <!-- Icono de WhatsApp -->
+          <span
+            class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white dark:bg-black/20 shadow-lg"
+          >
+            <Wp />
+          </span>
+
+          <!-- Texto del botón -->
+          <span class="relative z-10 leading-tight text-left text-black">
+            <span class="block">
+              ✨ <span class="font-black">Seleccionar tipo de coumento</span>
+            </span>
+            <span class="block text-sm opacity-90">
+              Respuesta prioritaria • 100% en línea
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE TESTIMONIOS -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Nuestros clientes nos califican con
+        <span
+          class="text-yellow-400 bg-clip-text drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]"
+        >
+          4.9/5 en Google
+        </span>
+      </h2>
+      <p class="text-gray-600 mb-12 text-lg">
+        La mejor puntuación en servicios de apostilla y legalización en Colombia
+      </p>
+
+      <!-- Enlace envolviendo el bloque -->
+      <a
+        href="https://g.page/r/CevWgjAI6b1oEAE/review"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-yellow-600 drop-shadow-[0_0_4px_rgba(250,204,21,0.8)] text-white rounded-2xl px-8 py-6 shadow-lg transition transform hover:scale-105 hover:shadow-xl"
+      >
+        <!-- SVG de Google -->
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          class="w-10 h-10"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Google</title>
+          <path
+            fill="currentColor"
+            d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147
+                1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72
+                8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747
+                1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12
+                12.173 12c3.573 0 6.267-1.173 8.373-3.36
+                2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+          ></path>
+        </svg>
+
+        <!-- Texto calificación -->
+        <div class="text-left">
+          <p class="text-3xl font-extrabold leading-none">
+            4.9/5 <span class="text-5xl text-sm">⭐⭐⭐⭐⭐</span>
+          </p>
+          <p class="text-sm font-medium">Basado en reseñas de Google</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PAÍSES DE DESTINO -->
+  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Apostilla para <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >cualquier país</span
+        > del mundo
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
+        Conocemos los requisitos específicos de cada país para casos de estudios
+        o trabajo profesional
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {
+          paisesDestino.map((destino) => (
+            <div class="bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center transform hover:scale-105">
+              <div class="text-5xl text-gray-800 mb-3">{destino.emoji}</div>
+              <h3 class="font-bold mb-2">{destino.pais}</h3>
+              <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">
+                {destino.proceso}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center"
+      >
+        <p class="text-xl font-bold mb-2">¿Vas a otro país?</p>
+        <p class="text-lg opacity-90 mb-6">
+          También apostillamos documentos para cualquier otro país del mundo
+        </p>
+        <a
+          href="#contenedor-final"
+          class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all transform hover:scale-105"
+        >
+          Consultar mi país de destino
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <!-- <section class="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Preguntas <span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >Frecuentes</span
+        >
+      </h2>
+
+      <div class="space-y-4">
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Qué tipo de antecedentes puedo apostillar?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Puedes apostillar los certificados de <strong
+              >Antecedentes Judiciales</strong
+            >,
+            <strong>Procuraduría</strong> y <strong>Contraloría</strong>. Cada
+            uno se emite por una entidad diferente, pero nosotros gestionamos
+            todo el proceso ante las instituciones correspondientes y el
+            Ministerio de Relaciones Exteriores (MRE).
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Cuánto tarda el proceso de apostilla de antecedentes?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            El tiempo depende del tipo de antecedente:
+            <br />🧾 Judiciales y Procuraduría: <strong>1 día hábil</strong>.
+            <br />📇 Contraloría: <strong>hasta 5 días hábiles</strong>.
+            <br />Nos encargamos de todo el trámite y te enviamos el documento
+            apostillado en formato digital.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Necesito ir personalmente a alguna oficina?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            No. Todo el proceso se realiza de manera digital. Solo necesitas
+            enviarnos una copia escaneada de tu cédula en PDF, y nosotros
+            realizamos las gestiones ante cada entidad y el MRE.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Sirven estos antecedentes para cualquier país?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Sí. Los documentos apostillados en Colombia son válidos en todos los
+            países firmantes del <strong>Convenio de La Haya</strong>, como
+            España, Estados Unidos, Canadá, Australia, entre otros.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿Qué requisitos debo cumplir?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            Solo necesitas un escáner o una foto nítida de tu <strong
+              >cédula por ambos lados</strong
+            > en formato PDF. Nosotros nos encargamos del resto del proceso y te
+            enviamos el resultado directamente.
+          </p>
+        </details>
+
+        <details
+          class="bg-gray-100/60 rounded-xl shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-gray-800 cursor-pointer">
+            ¿El certificado apostillado vence?
+          </summary>
+          <p class="mt-4 leading-relaxed">
+            No. La apostilla no tiene vencimiento. Sin embargo, algunas
+            instituciones o embajadas pueden solicitar un documento con menos de <strong
+              >3 o 6 meses de antigüedad</strong
+            >. Si es tu caso, te orientamos para renovarlo sin complicaciones.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- INFORMACIÓN IMPORTANTE ANTECEDENTES -->
+  <!-- <section class="bgdark:bg-wthite/30 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div
+        class="bg-gradient-to-br from-blue-100/60 to-purple-100/60 rounded-2xl p-8 md:p-12"
+      >
+        <h2
+          class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800"
+        >
+          Información importante sobre apostilla de antecedentes judiciales
+        </h2>
+
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+          <p class="text-justify leading-relaxed">
+            Si necesitas usar tus <strong
+              >antecedentes judiciales colombianos en el exterior</strong
+            >, ya sea para estudiar un posgrado, convalidar tu título o trabajar
+            como profesional, nosotros te ayudamos con todo el proceso de <strong
+              >apostilla</strong
+            >
+            ante Policía (PONAL), Procuraduría (PGN), Contraloría (CGN) y el Ministerio de Relaciones
+            Exteriores (MRE).
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Para países que hacen parte del <a
+              href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:text-blue-800 font-semibold underline"
+            >
+              Convenio de La Haya
+            </a>, se realiza el proceso de <strong>apostilla</strong>. Para
+            otros países, aplicamos el proceso de <strong
+              >legalización consular</strong
+            >.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Todos los documentos antecedentes requieren una <strong
+              >Gestión previa ante las diferentes entidades</strong
+            > antes de poder ser apostillados. Este proceso incluye la verificación
+            de la autenticidad del documento. Nosotros gestionamos este paso completo
+            por ti.
+          </p>
+
+          <p class="text-justify leading-relaxed">
+            Nuestro servicio incluye todo el proceso: desde la solicitud de
+            documentos ante la contraloría y procuraduría, la gestión, validación, hasta la apostilla final ante el MRE. Tú solo nos
+            envías los documentos y nosotros nos encargamos de todo el trámite,
+            sin complicaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- CALL TO ACTION FINAL -->
+  <section
+    id="contenedor-final"
+    class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-16"
+  >
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        ¿Listo para apostillar tus<br />
+        <strong>Documentos 📑</strong>?
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        Más de 18 años ayudando a colombianos a cumplir sus sueños en el
+        exterior
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a
+          id="wp-btm"
+          href="https://wa.me/573213254326?text=Hola%2C%20quiero%20iniciar%20el%20proceso%20de%20apostilla%20de%20mi%20Documento%20de:"
+          class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-xl shadow-2xl hover:bg-[#20ba57] transition-all transform hover:scale-110 animate-pulse"
           target="_blank"
         >
-          💬 Cotizar Mi Caso Específico
+          <Wp /> Escribir por WhatsApp
         </a>
       </div>
 
-      <p class="text-lg md:text-xl opacity-90 mb-10 text-justify">
-        Si necesitas usar tus documentos colombianos en el exterior, nosotros te
-        ayudamos con todo el proceso de <strong>apostilla</strong> y <strong
-          >legalización</strong
-        >, según el país donde los vayas a presentar. Para países que hacen
-        parte del <a
-          href="https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
-          target="_blank"
-          rel="noopener noreferrer">Convenio de La Haya</a
-        >, se realiza el proceso de apostilla; para otros países, aplicamos el
-        proceso de legalización.
-        <br /><br />
-        Además, algunos documentos requieren validaciones previas, como títulos universitarios
-        o de bachillerato, registros civiles, certificados médicos, partidas de bautismo,
-        antecedentes, escrituras o sentencias, entre otros. Nosotros te guiamos y
-        gestionamos cada paso necesario para que tu documento esté completamente
-        listo para ser usado fuera del país, sin complicaciones.
-      </p>
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >⚡</span
+          >
+          <span class="text-lg">Respuesta inmediata</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >🎯</span
+          >
+          <span class="text-lg">100% Efectividad</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl"
+            >🚀</span
+          >
+          <span class="text-lg">Proceso rápido y seguro</span>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
