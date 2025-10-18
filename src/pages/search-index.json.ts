@@ -1,242 +1,249 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { globSync } from "glob";
+// import fs from "fs";
+// import path from "path";
+// import { fileURLToPath } from "url";
+// import { globSync } from "glob";
 
-// export const prerender = false;
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
-// __dirname en módulos ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// /**
+//  * Mapeo manual de rutas a títulos y URLs correctas
+//  */
+// const PAGE_CONFIG: Record<string, { title: string; url: string; keywords?: string }> = {
+//   // Páginas principales
+//   "index.astro": {
+//     title: "Inicio Apostilla Colombia",
+//     url: "/index",
+//     keywords: "apostilla colombia tramites documentos legalizacion empresa quienes somos contacto"
+//   },
+//   "condiciones-de-uso.astro": {
+//     title: "Condiciones de Uso",
+//     url: "/condiciones-de-uso"
+//   },
+//   "politica-de-privacidad.astro": {
+//     title: "Política de Privacidad",
+//     url: "/politica-de-privacidad"
+//   },
+//   "webSite-map.astro": {
+//     title: "Mapa del Sitio",
+//     url: "/website-map"
+//   },
 
-/**
- * Limpia el contenido para extraer solo texto legible
- * Elimina: frontmatter, imports, scripts, estilos, HTML, clases, etc.
- */
-function cleanContent(content: string): string {
-  let cleaned = content;
+//   // Servicios
+//   "servicios/apostilla_legalizacion.astro": {
+//     title: "Apostilla y Legalización",
+//     url: "/servicios/apostilla_legalizacion",
+//     keywords: "apostilla legalizacion documentos tramite"
+//   },
+//   "servicios/universidad.astro": {
+//     title: "Apostillar Documentos Universitarios",
+//     url: "/servicios/universidad",
+//     keywords: "universidad titulos diploma grado acta notas"
+//   },
+//   "servicios/bachiller.astro": {
+//     title: "Apostillar Documentos de Colegio",
+//     url: "/servicios/bachiller",
+//     keywords: "colegio bachiller diploma secundaria"
+//   },
+//   "servicios/registroCivil.astro": {
+//     title: "Apostillar Registro Civil",
+//     url: "/servicios/registroCivil",
+//     keywords: "registro civil nacimiento matrimonio defuncion"
+//   },
+//   "servicios/antecedentes.astro": {
+//     title: "Apostillar Antecedentes",
+//     url: "/servicios/antecedentes",
+//     keywords: "antecedentes judiciales penales policia"
+//   },
+//   "servicios/otros-documentos.astro": {
+//     title: "Apostillar Otros Documentos",
+//     url: "/servicios/otros-documentos",
+//     keywords: "documentos poder notarial carta"
+//   },
+//   // "servicios/hijosVen.astro": {
+//   //   title: "Documentos para Hijos de Venezolanos",
+//   //   url: "/servicios/hijosVen",
+//   //   keywords: "hijos venezolanos nacionalidad registro"
+//   // },
 
-  // 1. Eliminar frontmatter (---...---)
-  cleaned = cleaned.replace(/---[\s\S]*?---/g, " ");
+//   // Traducciones
+//   "traduccion/traduccionOficial.astro": {
+//     title: "Traducciones Oficiales",
+//     url: "/traduccion/traduccionOficial",
+//     keywords: "traduccion oficial certificada traductor idiomas ingles italiano frances"
+//   }
+// };
 
-  // 2. Eliminar imports y exports
-  cleaned = cleaned.replace(/import\s+.*?from\s+["'].*?["'];?/g, " ");
-  cleaned = cleaned.replace(
-    /export\s+(default\s+)?(const|let|var|function|class)\s+.*?[{;]/g,
-    " "
-  );
+// /**
+//  * Limpia el contenido para búsqueda
+//  */
+// function cleanContent(content: string): string {
+//   let cleaned = content;
 
-  // 3. Eliminar bloques <script> y <style> completos
-  cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ");
-  cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ");
+//   // Eliminar frontmatter, imports, scripts, estilos
+//   cleaned = cleaned.replace(/---[\s\S]*?---/g, " ");
+//   cleaned = cleaned.replace(/import\s+.*?from\s+["'].*?["'];?/g, " ");
+//   cleaned = cleaned.replace(/export\s+(default\s+)?(const|let|var|function|class)\s+.*?[{;]/g, " ");
+//   cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ");
+//   cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ");
+//   cleaned = cleaned.replace(/<!--[\s\S]*?-->/g, " ");
+//   cleaned = cleaned.replace(/\/\*[\s\S]*?\*\//g, " ");
+//   cleaned = cleaned.replace(/\/\/.*/g, " ");
 
-  // 4. Eliminar comentarios HTML y JavaScript
-  cleaned = cleaned.replace(/<!--[\s\S]*?-->/g, " ");
-  cleaned = cleaned.replace(/\/\*[\s\S]*?\*\//g, " ");
-  cleaned = cleaned.replace(/\/\/.*/g, " ");
+//   // Eliminar etiquetas HTML preservando contenido
+//   cleaned = cleaned.replace(/<[^>]+>/g, " ");
 
-  // 5. Eliminar todas las etiquetas HTML pero preservar el contenido
-  cleaned = cleaned.replace(/<[^>]+>/g, " ");
+//   // Eliminar markdown
+//   cleaned = cleaned.replace(/```[\s\S]*?```/g, " ");
+//   cleaned = cleaned.replace(/`[^`]+`/g, " ");
+//   cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, "$1");
+//   cleaned = cleaned.replace(/\*([^*]+)\*/g, "$1");
+//   cleaned = cleaned.replace(/#{1,6}\s+/g, "");
 
-  // 6. Eliminar sintaxis de código y markdown
-  cleaned = cleaned.replace(/```[\s\S]*?```/g, " ");
-  cleaned = cleaned.replace(/`[^`]+`/g, " ");
-  cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, "$1"); // **bold** → bold
-  cleaned = cleaned.replace(/\*([^*]+)\*/g, "$1"); // *italic* → italic
-  cleaned = cleaned.replace(/#{1,6}\s+/g, ""); // # headers
+//   // Eliminar URLs y atributos
+//   cleaned = cleaned.replace(/https?:\/\/[^\s]+/g, " ");
+//   cleaned = cleaned.replace(/(src|href|class|id|style)=["'][^"']*["']/g, " ");
 
-  // 7. Eliminar URLs y paths
-  cleaned = cleaned.replace(/https?:\/\/[^\s]+/g, " ");
-  cleaned = cleaned.replace(/src=["'][^"']+["']/g, " ");
-  cleaned = cleaned.replace(/href=["'][^"']+["']/g, " ");
+//   // Eliminar símbolos
+//   cleaned = cleaned.replace(/[{}[\]()=><;:.,!?'"]/g, " ");
+//   cleaned = cleaned.replace(/[\\\/|@#$%^&*_+=~`]/g, " ");
 
-  // 8. Eliminar clases CSS y atributos
-  cleaned = cleaned.replace(/class(Name)?=["'][^"']*["']/g, " ");
-  cleaned = cleaned.replace(/id=["'][^"']*["']/g, " ");
-  cleaned = cleaned.replace(/style=["'][^"']*["']/g, " ");
+//   // Normalizar espacios
+//   cleaned = cleaned.replace(/\s+/g, " ").trim();
 
-  // 9. Eliminar caracteres especiales y símbolos comunes en código
-  cleaned = cleaned.replace(/[{}[\]()=><;:.,!?'"]/g, " ");
-  cleaned = cleaned.replace(/[\\\/|@#$%^&*_+=~`]/g, " ");
+//   // Eliminar palabras muy cortas
+//   cleaned = cleaned
+//     .split(" ")
+//     .filter((word) => word.length > 2)
+//     .join(" ");
 
-  // 10. Normalizar espacios en blanco
-  cleaned = cleaned.replace(/\s+/g, " ");
-  cleaned = cleaned.trim();
+//   return cleaned;
+// }
 
-  // 11. Eliminar números sueltos (opcional, descomenta si lo necesitas)
-  // cleaned = cleaned.replace(/\b\d+\b/g, " ");
+// /**
+//  * Extrae descripción del contenido
+//  */
+// function extractDescription(content: string, cleanedContent: string): string {
+//   // Buscar meta description
+//   const metaMatch = content.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+//   if (metaMatch?.[1]) {
+//     return metaMatch[1].trim();
+//   }
 
-  // 12. Limpieza final: eliminar palabras muy cortas (1-2 letras)
-  cleaned = cleaned
-    .split(" ")
-    .filter((word) => word.length > 2)
-    .join(" ");
+//   // Buscar description en frontmatter
+//   const frontmatterMatch = content.match(/---[\s\S]*?description:\s*["']?([^"'\n]+)["']?\n[\s\S]*?---/);
+//   if (frontmatterMatch?.[1]) {
+//     return frontmatterMatch[1].trim();
+//   }
 
-  return cleaned;
-}
+//   // Usar primeras palabras del contenido limpio
+//   const words = cleanedContent.split(" ").slice(0, 25).join(" ");
+//   return words + (cleanedContent.split(" ").length > 25 ? "..." : "");
+// }
 
-/**
- * Extrae el título de diferentes formatos
- */
-function extractTitle(content: string, filePath: string): string {
-  // Intentar encontrar título en diferentes formatos
+// /**
+//  * Obtiene la configuración de la página
+//  */
+// function getPageConfig(filePath: string): { title: string; url: string; keywords: string } | null {
+//   // Extraer ruta relativa
+//   const relativePath = filePath
+//     .split("pages/")[1]
+//     ?.replace(/\\/g, "/");
 
-  // 1. Tag <title>
-  const titleTagMatch = content.match(/<title[^>]*>(.*?)<\/title>/i);
-  if (titleTagMatch?.[1]) {
-    return titleTagMatch[1].trim();
-  }
+//   if (!relativePath) return null;
 
-  // 2. Frontmatter title
-  const frontmatterMatch = content.match(
-    /---[\s\S]*?title:\s*["']?(.*?)["']?\n[\s\S]*?---/
-  );
-  if (frontmatterMatch?.[1]) {
-    return frontmatterMatch[1].trim();
-  }
+//   // Buscar en configuración
+//   const config = PAGE_CONFIG[relativePath];
+//   if (!config) return null;
 
-  // 3. Primera etiqueta <h1>
-  const h1Match = content.match(/<h1[^>]*>(.*?)<\/h1>/i);
-  if (h1Match?.[1]) {
-    return h1Match[1].replace(/<[^>]+>/g, "").trim();
-  }
+//   return {
+//     title: config.title,
+//     url: config.url,
+//     keywords: config.keywords || ""
+//   };
+// }
 
-  // 4. Markdown # Título
-  const mdTitleMatch = content.match(/^#\s+(.+)$/m);
-  if (mdTitleMatch?.[1]) {
-    return mdTitleMatch[1].trim();
-  }
+// export async function GET() {
+//   try {
+//     const pagesDir = path.join(__dirname, "..");
+//     console.log("📁 Directorio base:", pagesDir);
 
-  // 5. Fallback: nombre del archivo
-  return path
-    .basename(filePath)
-    .replace(/\.(astro|md|mdx)$/, "")
-    .replace(/[-_]/g, " ")
-    .replace(/\b\w/g, (l) => l.toUpperCase());
-}
+//     // Buscar SOLO en pages/ (excluir components)
+//     const pattern = path.join(pagesDir, "pages/**/*.{astro,md,mdx}");
+//     const files = globSync(pattern, {
+//       windowsPathsNoEscape: true,
+//       ignore: [
+//         "**/search-index.json.ts",
+//         "**/buscar.astro",
+//         "**/404.astro",
+//         "**/500.astro",
+//         "**/api/**"
+//       ],
+//     });
 
-/**
- * Genera la URL limpia basada en la ruta del archivo
- */
-function generateUrl(filePath: string): string {
-  // Calcular ruta relativa desde src/pages
-  const rel = filePath.includes("src/pages")
-    ? filePath.split("src/pages")[1]
-    : filePath.split("pages")[1] || filePath;
+//     console.log(`🔍 Archivos encontrados: ${files.length}`);
 
-  if (!rel) {
-    console.warn("⚠️ Ruta sin 'src/pages':", filePath);
-    return "/";
-  }
+//     const pages = files
+//       .map((filePath) => {
+//         try {
+//           // Obtener configuración
+//           const config = getPageConfig(filePath);
+//           if (!config) {
+//             console.warn(`⚠️ Sin configuración: ${filePath}`);
+//             return null;
+//           }
 
-  // Normalizar la URL
-  let url = rel
-    .replace(/\\/g, "/") // Windows paths
-    .replace(/index\.(astro|md|mdx)$/, "") // index.astro → /
-    .replace(/\.(astro|md|mdx)$/, ""); // about.astro → /about
+//           // Leer y limpiar contenido
+//           const content = fs.readFileSync(filePath, "utf-8");
+//           const cleanedContent = cleanContent(content);
 
-  // Asegurar que empiece con /
-  if (!url.startsWith("/")) {
-    url = "/" + url;
-  }
+//           // Validar contenido mínimo
+//           if (!cleanedContent || cleanedContent.length < 10) {
+//             console.warn(`⚠️ Contenido insuficiente: ${filePath}`);
+//             return null;
+//           }
 
-  // Remover trailing slash excepto para root
-  if (url.length > 1 && url.endsWith("/")) {
-    url = url.slice(0, -1);
-  }
+//           const description = extractDescription(content, cleanedContent);
 
-  return url;
-}
+//           // Combinar contenido + keywords para búsqueda
+//           const searchableContent = `${cleanedContent} ${config.keywords}`.toLowerCase();
 
-export async function GET() {
-  const pagesDir = path.join(__dirname, ".."); // /src/pages/..
-  console.log("📁 Buscando en:", pagesDir);
+//           return {
+//             title: config.title,
+//             url: config.url,
+//             description,
+//             content: searchableContent,
+//             originalPath: filePath.replace(/\\/g, "/")
+//           };
+//         } catch (err) {
+//           console.error(`❌ Error procesando: ${filePath}`, err);
+//           return null;
+//         }
+//       })
+//       .filter(Boolean);
 
-  // Buscar .astro, .md, .mdx recursivamente
-  const pattern = path.join(pagesDir, "**/*.{astro,md,mdx}");
-  const files = globSync(pattern, {
-    windowsPathsNoEscape: true,
-    ignore: [
-      "**/buscar.astro",
-      "**/search*.astro",
-      "**/404.astro",
-      "**/500.astro",
-      "**/Layout*.astro",
-      "**/_*.astro",
-      "**/api/**",
-      // "**/components/**",
-      "**/layouts/**",
-    ],
-  });
+//     console.log(`✅ Páginas indexadas: ${pages.length}`);
 
-  console.log("🧾 Archivos encontrados:", files.length);
+//     // Log detallado
+//     pages.forEach(page => {
+//       console.log(`  📄 ${page?.title}: ${page?.url}`);
+//     });
 
-  if (files.length === 0) {
-    console.warn("⚠️ No se encontraron archivos para indexar");
-    return new Response(JSON.stringify([]), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-
-  const pages = files
-    .map((filePath) => {
-      try {
-        // Validar archivo
-        if (!filePath || !fs.existsSync(filePath)) {
-          console.warn("⚠️ Archivo inválido o no encontrado:", filePath);
-          return null;
-        }
-
-        // Leer contenido
-        const content = fs.readFileSync(filePath, "utf-8");
-
-        // Extraer título
-        const title = extractTitle(content, filePath);
-
-        // Limpiar contenido para búsqueda
-        const cleanedContent = cleanContent(content);
-
-        // Validar que haya contenido útil
-        if (!cleanedContent || cleanedContent.length < 20) {
-          console.warn("⚠️ Contenido insuficiente en:", filePath);
-          return null;
-        }
-
-        // Generar URL
-        const url = generateUrl(filePath);
-
-        // Limitar longitud del contenido (opcional)
-        const maxLength = 1500;
-        const finalContent =
-          cleanedContent.length > maxLength
-            ? cleanedContent.slice(0, maxLength) + "..."
-            : cleanedContent;
-
-        return {
-          title,
-          url,
-          content: finalContent,
-          words: finalContent.split(" ").length,
-        };
-      } catch (err) {
-        console.error("❌ Error procesando archivo:", filePath, err);
-        return null;
-      }
-    })
-    .filter(Boolean); // Elimina nulos
-
-  console.log("✅ Páginas procesadas:", pages.length);
-  console.log(
-    "📊 Total de palabras indexadas:",
-    pages.reduce((sum, p) => sum + (p?.words || 0), 0)
-  );
-
-  return new Response(JSON.stringify(pages, null, 2), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=3600", // Cache por 1 hora
-    },
-  });
-}
+//     return new Response(JSON.stringify(pages, null, 2), {
+//       status: 200,
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Cache-Control": "public, max-age=3600",
+//       },
+//     });
+//   } catch (error) {
+//     console.error("❌ Error generando índice:", error);
+//     return new Response(
+//       JSON.stringify({ error: "Error generando índice de búsqueda" }),
+//       {
+//         status: 500,
+//         headers: { "Content-Type": "application/json" },
+//       }
+//     );
+//   }
+// }
