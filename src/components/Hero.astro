@@ -2,6 +2,8 @@
 import apostillaLogo from "../assets/images/logo_claro.webp";
 import backgroundastro from "../assets/background.svg";
 import SliderHero from "../components/Slider.astro";
+import SearchBar from "../components/SearchBar.astro";
+
 ---
 
 <section
@@ -12,7 +14,7 @@ import SliderHero from "../components/Slider.astro";
     <div class="max-w-6xl mx-auto text-center">
       <!-- Logo + Background SVG superposition -->
       <div
-        class="mb-8 relative flex justify-center items-center w-full max-w-sm mx-auto aspect-square"
+        class="relative flex justify-center items-center w-full max-w-sm mx-auto aspect-square"
         id="logo-container"
       >
         <img
@@ -53,40 +55,52 @@ import SliderHero from "../components/Slider.astro";
       </p>
 
       <div
-        class="flex flex-col md:flex-row gap-4 justify-center mb-12 opacity-0"
+        class="flex flex-col gap-4 justify-center mb-12 opacity-0"
         id="cta-buttons"
       >
-        <a
-          href="#tramitesyservicios"
-          class="inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          Nuestros tramites y servicios
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 ml-2"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+        <!-- Botones en fila horizontal en pantallas medianas o más -->
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+          <a
+            href="#tramitesyservicios"
+            class="inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-        <a
-          href="#formulario1"
-          class="inline-flex items-center px-8 py-3 text-lg font-semibold text-blue-600 border-2 hover:bg-transparent border-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl dark:bg-transparent dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-900/30"
-        >
-          Cotizar Ahora
-        </a>
-        <a
-          href="#garantia"
-          class="inline-flex inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-yellow-600 rounded-full hover:from-purple-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          Garantia de Satisfacción
-        </a>
+            Nuestros trámites y servicios
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 ml-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="#contacto"
+            class="inline-flex items-center px-8 py-3 text-lg font-semibold text-blue-600 border-2 hover:bg-transparent border-blue-600 rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl dark:bg-transparent dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-900/30"
+          >
+            Cotizar Ahora
+          </a>
+          <a
+            href="#garantia"
+            class="inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-yellow-600 rounded-full hover:from-purple-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Garantía de Satisfacción
+          </a>
+        </div>
+
+        <!-- Barra de búsqueda debajo -->
+        <div class="w-full max-w-2xl px-4 self-center">
+          <SearchBar 
+            placeholder="Buscar trámites, servicios o información..."
+          />
+        </div>
       </div>
 
+      </div>
       <SliderHero />
     </div>
   </div>
