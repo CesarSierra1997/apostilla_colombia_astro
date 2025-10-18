@@ -1,8 +1,9 @@
 ---
 const APOSTILLA_OPTIONS = [
   {
-    label: "Apostilla Legalización",
+    label: "Apostilla Legalización Inicio",
     url: "/servicios/apostilla_legalizacion",
+    class: "destacar-opcion",
   },
   {
     label: "Apostillar Documentos Académicos",
@@ -106,7 +107,7 @@ const APOSTILLA_OPTIONS = [
                 id="lista-apostilla"
                 role="menuitem"
                 href={item.url}
-                class="block px-3 py-2 rounded-sm hover:bg-red-600/30 transition-colors"
+                class={`block px-3 py-2 rounded-sm hover:bg-red-600/30 transition-colors ${item.class ?? ""}`}
               >
                 {item.label}
               </a>
@@ -162,6 +163,12 @@ const APOSTILLA_OPTIONS = [
       transform: translateY(0);
     }
   }
+
+.destacar-opcion {
+  font-weight: 600;
+  font-size: 15px; 
+}
+
 </style>
 
 <script>

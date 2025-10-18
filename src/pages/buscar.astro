@@ -1,263 +1,286 @@
 ---
-/**
- * Página de búsqueda profesional con resultados en vivo usando Fuse.js
- * Compatible con Astro 5 + TypeScript
- */
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+import apostillaLogo from "../assets/images/logo_claro.webp";
+
+const url = Astro.url;
+const query = url.searchParams.get('query') || '';
 ---
 
-<Layout title="Buscar resultados" description="Resultados de búsqueda">
-  <section
-    class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4"
-  >
-    <div class="max-w-4xl mx-auto mt-8">
-      <!-- Encabezado -->
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">
-          🔍 Buscador del Sitio
-        </h1>
-        <p class="text-gray-600">Encuentra lo que necesitas rápidamente</p>
-      </div>
-
-      <!-- Barra de búsqueda -->
-      <div class="relative mb-8">
-        <input
-          id="liveSearch"
-          type="text"
-          placeholder="Buscar artículos, páginas, contenido..."
-          class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-xl shadow-lg focus:ring-4 focus:ring-blue-300 focus:border-blue-500 focus:outline-none transition-all"
-          autocomplete="off"
-        />
-        <div
-          class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Indicador de estado -->
-      <div id="searchStatus" class="text-center mb-4">
-        <span
-          class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
-        >
-          ⏳ Cargando índice de búsqueda...
-        </span>
-      </div>
-
-      <!-- Contador de resultados -->
-      <div id="resultCount" class="mb-4 text-gray-600 font-medium hidden">
-        <span id="countText"></span>
-      </div>
-
-      <!-- Contenedor de resultados -->
-      <div id="resultados" class="space-y-4">
-        <!-- Los resultados se insertan aquí -->
-      </div>
+<Layout title={`Buscar: ${query}`} description="Buscador del sitio para encontrar contenido rápidamente">
+  <main class="max-w-5xl mx-auto px-4 py-8 mt-8">
+    <div class="text-center mb-8">
+      <img src={apostillaLogo.src} alt="Logo Apostilla Colombia" class="w-50 h-50 scale-50 mx-auto" loading="lazy" />
+      <h1 class="text-4xl font-bold mb-2">🔍 Buscador del Sitio</h1>
+      <p class="text-gray-600 dark:text-gray-400">Encuentra lo que necesitas rápidamente</p>
     </div>
-  </section>
+    
+    <div class="mb-8">
+      <form id="searchForm" class="flex gap-2 max-w-3xl mx-auto">
+        <input
+          type="text"
+          id="query"
+          name="query"
+          value={query}
+          placeholder="Buscar apostilla, traducción, universidad..."
+          class="flex-1 border border-gray-300 dark:border-gray-600 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 "
+          autofocus
+        />
+        <button
+          type="submit"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+        >
+          Buscar
+        </button>
+      </form>
+    </div>
 
-  <script>
-    import Fuse from "fuse.js";
+    <div id="loading" class="hidden text-center py-4">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <p class="mt-2">Buscando...</p>
+    </div>
 
-    let fuse: Fuse<any> | null = null;
-    let data: any[] = [];
+    <div id="results-container">
+      <div id="results-count" class="text-sm mb-4"></div>
+      <div id="results" class="space-y-4"></div>
+    </div>
 
-    const input = document.getElementById("liveSearch") as HTMLInputElement;
-    const container = document.getElementById("resultados") as HTMLDivElement;
-    const searchStatus = document.getElementById(
-      "searchStatus"
-    ) as HTMLDivElement;
-    const resultCount = document.getElementById(
-      "resultCount"
-    ) as HTMLDivElement;
-    const countText = document.getElementById("countText") as HTMLSpanElement;
-
-    // Limpia etiquetas HTML y espacios innecesarios
-    function cleanText(text: string): string {
-      if (!text) return "";
-      return text
-        .replace(/<[^>]+>/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-    }
-
-    // Resalta los términos de búsqueda
-    function highlightText(text: string, query: string): string {
-      if (!query.trim()) return text;
-      const regex = new RegExp(`(${query.split(" ").join("|")})`, "gi");
-      return text.replace(
-        regex,
-        "<mark class='bg-yellow-200 px-1 rounded'>$1</mark>"
-      );
-    }
-
-    // Muestra un mensaje de estado
-    function showStatus(
-      message: string,
-      type: "info" | "success" | "error" = "info"
-    ) {
-      const colors = {
-        info: "bg-blue-100 text-blue-700",
-        success: "bg-green-100 text-green-700",
-        error: "bg-red-100 text-red-700",
-      };
-
-      searchStatus.innerHTML = `
-        <span class="inline-block px-4 py-2 ${colors[type]} rounded-full text-sm font-medium">
-          ${message}
-        </span>
-      `;
-    }
-
-    // Carga del índice de búsqueda
-    async function cargarIndice() {
-      try {
-        const res = await fetch("/search-index.json");
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        data = await res.json();
-
-        // Validar que data sea un array
-        if (!Array.isArray(data) || data.length === 0) {
-          throw new Error("El índice de búsqueda está vacío o es inválido");
-        }
-
-        // Limpieza del contenido
-        data = data.map((item) => ({
-          ...item,
-          title: cleanText(item.title || "Sin título"),
-          content: cleanText(item.content || ""),
-          url: item.url || "#",
-        }));
-
-        // Configuración de Fuse.js
-        fuse = new Fuse(data, {
-          keys: [
-            { name: "title", weight: 2 },
-            { name: "content", weight: 1 },
-          ],
-          threshold: 0.4,
-          minMatchCharLength: 2,
-          includeScore: true,
-          ignoreLocation: true,
-        });
-
-        showStatus(
-          `✅ ${data.length} elementos indexados - Listo para buscar`,
-          "success"
-        );
-        searchStatus.classList.add("hidden");
-        input.focus();
-      } catch (error) {
-        console.error("Error cargando índice:", error);
-        showStatus("❌ Error cargando el índice de búsqueda", "error");
-        container.innerHTML = `
-          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 text-center">
-            <p class="text-red-700 font-semibold mb-2">No se pudo cargar el índice de búsqueda</p>
-            <p class="text-red-600 text-sm">Por favor, verifica que el archivo /search-index.json existe</p>
-          </div>
-        `;
-      }
-    }
-
-    // Ejecuta búsqueda según lo que escriba el usuario
-    function buscar(query: string) {
-      if (!fuse) {
-        container.innerHTML = `
-          <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 text-center">
-            <p class="text-yellow-700">⚠️ El índice aún se está cargando...</p>
-          </div>
-        `;
-        return;
-      }
-
-      if (!query.trim()) {
-        container.innerHTML = "";
-        resultCount.classList.add("hidden");
-        searchStatus.classList.remove("hidden");
-        showStatus("💡 Escribe algo para comenzar a buscar", "info");
-        return;
-      }
-
-      searchStatus.classList.add("hidden");
-      const resultados = fuse.search(query);
-
-      // Actualizar contador
-      resultCount.classList.remove("hidden");
-      countText.textContent = `${resultados.length} resultado${resultados.length !== 1 ? "s" : ""} encontrado${resultados.length !== 1 ? "s" : ""}`;
-
-      if (resultados.length === 0) {
-        container.innerHTML = `
-          <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-8 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p class="text-gray-700 font-semibold text-lg mb-1">No se encontraron resultados</p>
-            <p class="text-gray-500 text-sm">Intenta con otras palabras clave</p>
-          </div>
-        `;
-        return;
-      }
-
-      // Render de resultados con score y highlight
-      container.innerHTML = resultados
-        .map((r) => {
-          const relevance = Math.round((1 - (r.score || 0)) * 100);
-          const excerpt = r.item.content.slice(0, 200);
-
-          return `
-            <article class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-200">
-              <div class="flex items-start justify-between mb-2">
-                <a href="${r.item.url}" class="text-xl font-bold text-blue-600 hover:text-blue-800 hover:underline flex-1">
-                  ${highlightText(r.item.title, query)}
-                </a>
-                <span class="ml-4 px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full whitespace-nowrap">
-                  ${relevance}% relevante
-                </span>
-              </div>
-              <p class="text-gray-700 leading-relaxed mb-3">
-                ${highlightText(excerpt, query)}${excerpt.length >= 200 ? "..." : ""}
-              </p>
-              <a href="${r.item.url}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
-                Leer más
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </article>
-          `;
-        })
-        .join("");
-    }
-
-    // Buscar mientras se escribe con debounce
-    let timeoutId: ReturnType<typeof setTimeout>;
-    input?.addEventListener("input", (e) => {
-      clearTimeout(timeoutId);
-      const query = (e.target as HTMLInputElement).value;
-
-      timeoutId = setTimeout(() => {
-        buscar(query);
-      }, 300); // Espera 300ms después de que el usuario deje de escribir
-    });
-    // ...existing code...
-
-    // Inicializar
-    cargarIndice();
-  </script>
+    <div id="no-results" class="hidden text-center py-12">
+      <div class="text-6xl mb-4">😕</div>
+      <p class="text-xl mb-2">
+        No se encontraron resultados para "<span id="search-term" class="font-semibold"></span>"
+      </p>
+      <p>
+        Intenta con otras palabras clave como: apostilla, traducción, universidad, registro civil
+      </p>
+    </div>
+  </main>
 </Layout>
+
+<script>
+  interface SearchResult {
+    title: string;
+    url: string;
+    description: string;
+    content: string;
+  }
+
+  // Función para normalizar texto (quitar acentos, minúsculas)
+  function normalizeText(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  // Función para calcular relevancia
+  function calculateRelevance(page: SearchResult, query: string): number {
+    const normalizedQuery = normalizeText(query);
+    const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 2);
+    
+    let score = 0;
+    
+    queryWords.forEach(word => {
+      const titleNorm = normalizeText(page.title);
+      const descNorm = normalizeText(page.description);
+      const contentNorm = normalizeText(page.content);
+      
+      // Título tiene más peso
+      if (titleNorm.includes(word)) score += 10;
+      
+      // Descripción tiene peso medio
+      if (descNorm.includes(word)) score += 5;
+      
+      // Contenido tiene peso menor
+      const contentMatches = (contentNorm.match(new RegExp(word, 'g')) || []).length;
+      score += Math.min(contentMatches, 10);
+    });
+    
+    return score;
+  }
+
+  // Función para resaltar términos
+  function highlightText(text: string, query: string): string {
+    if (!query.trim()) return text;
+    
+    const words = query.split(/\s+/).filter(w => w.length > 2);
+    let highlighted = text;
+    
+    words.forEach(word => {
+      const regex = new RegExp(`(${word})`, 'gi');
+      highlighted = highlighted.replace(
+        regex, 
+        '<mark class="bg-yellow-400 font-semibold px-1 rounded">$1</mark>'
+      );
+    });
+    
+    return highlighted;
+  }
+
+  // Función para extraer snippet relevante
+  function getRelevantSnippet(content: string, query: string, maxLength: number = 200): string {
+    const normalized = normalizeText(content);
+    const normalizedQuery = normalizeText(query);
+    const words = normalizedQuery.split(/\s+/).filter(w => w.length > 2);
+    
+    // Buscar la primera aparición de cualquier palabra
+    let bestIndex = -1;
+    for (const word of words) {
+      const index = normalized.indexOf(word);
+      if (index !== -1 && (bestIndex === -1 || index < bestIndex)) {
+        bestIndex = index;
+      }
+    }
+    
+    if (bestIndex === -1) {
+      return content.slice(0, maxLength) + '...';
+    }
+    
+    // Extraer contexto alrededor de la palabra
+    const start = Math.max(0, bestIndex - 80);
+    const end = Math.min(content.length, bestIndex + 120);
+    
+    let snippet = content.slice(start, end);
+    if (start > 0) snippet = '...' + snippet;
+    if (end < content.length) snippet = snippet + '...';
+    
+    return snippet;
+  }
+
+  // Función principal de búsqueda
+  async function performSearch(query: string) {
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+    const resultsCount = document.getElementById('results-count');
+    const noResults = document.getElementById('no-results');
+    const searchTerm = document.getElementById('search-term');
+
+    if (!query.trim()) {
+      if (results) results.innerHTML = '';
+      if (resultsCount) resultsCount.textContent = '';
+      if (noResults) noResults.classList.add('hidden');
+      return;
+    }
+
+    // Mostrar loading
+    if (loading) loading.classList.remove('hidden');
+    if (results) results.innerHTML = '';
+    if (resultsCount) resultsCount.textContent = '';
+    if (noResults) noResults.classList.add('hidden');
+
+    try {
+      const response = await fetch('/search-index.json');
+      if (!response.ok) throw new Error('Error cargando índice');
+      
+      const pages: SearchResult[] = await response.json();
+
+      // Filtrar y calcular relevancia
+      const resultsWithScore = pages
+        .map(page => ({
+          ...page,
+          relevance: calculateRelevance(page, query)
+        }))
+        .filter(page => page.relevance > 0)
+        .sort((a, b) => b.relevance - a.relevance);
+
+      if (loading) loading.classList.add('hidden');
+
+      if (resultsWithScore.length === 0) {
+        if (searchTerm) searchTerm.textContent = query;
+        if (noResults) noResults.classList.remove('hidden');
+        return;
+      }
+
+      // Mostrar conteo
+      if (resultsCount) {
+        resultsCount.textContent = `${resultsWithScore.length} resultado${resultsWithScore.length !== 1 ? 's' : ''} encontrado${resultsWithScore.length !== 1 ? 's' : ''}`;
+      }
+
+      // Renderizar resultados
+      if (results) {
+        results.innerHTML = resultsWithScore
+          .map((page, index) => {
+            const snippet = page.description || getRelevantSnippet(page.content, query);
+            const titleHighlighted = highlightText(page.title, query);
+            const snippetHighlighted = highlightText(snippet, query);
+            
+            // Calcular porcentaje de relevancia
+            const maxScore = resultsWithScore[0].relevance;
+            const percentage = Math.round((page.relevance / maxScore) * 100);
+            
+            return `
+              <article class="border border-gray-200 dark:border-gray-700 rounded-lg p-5 hover:shadow-xl transition-all bg-gray-100/20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs px-3 py-1 rounded-bl-lg">
+                  ${percentage}% relevante
+                </div>
+                <a href="${page.url}" class="block">
+                  <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mb-3 pr-20">
+                    ${titleHighlighted}
+                  </h2>
+                  <p class="mb-3 leading-relaxed">
+                    ${snippetHighlighted}
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">${page.url}</span>
+                    <span class="text-blue-600 dark:text-blue-400 text-sm font-medium">
+                      Ver más →
+                    </span>
+                  </div>
+                </a>
+              </article>
+            `;
+          })
+          .join('');
+      }
+    } catch (error) {
+      console.error('Error en búsqueda:', error);
+      if (loading) loading.classList.add('hidden');
+      if (results) {
+        results.innerHTML = `
+          <div class="text-red-600 dark:text-red-400 p-6 border border-red-200 dark:border-red-800 rounded-lg bg-red-50 dark:bg-red-900/20">
+            <p class="font-semibold mb-2">❌ Error al realizar la búsqueda</p>
+            <p class="text-sm">Por favor, intenta de nuevo más tarde.</p>
+          </div>
+        `;
+      }
+    }
+  }
+
+  // Inicialización
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('query') || '';
+  
+  if (initialQuery) {
+    performSearch(initialQuery);
+  }
+
+  // Manejar formulario
+  const form = document.getElementById('searchForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('query') as HTMLInputElement;
+      if (input && input.value.trim()) {
+        const newQuery = input.value.trim();
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('query', newQuery);
+        window.history.pushState({}, '', newUrl);
+        performSearch(newQuery);
+      }
+    });
+  }
+</script>
+
+<style>
+  mark {
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+</style>

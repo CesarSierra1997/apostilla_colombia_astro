@@ -1,39 +1,158 @@
 ---
 /**
- * Componente de búsqueda funcional para Astro 5
- * Sin dependencias de React y compatible con TypeScript
- * Redirige a /buscar?query=palabra
+ * Componente de búsqueda para Astro
+ * Redirige a /buscar?query=termino
  */
+interface Props {
+  placeholder?: string;
+  class?: string;
+}
+
+const { 
+  placeholder = "Buscar en el sitio...", 
+  class: className = "" 
+} = Astro.props;
 ---
 
-<div class="search-box">
-  <form id="searchForm">
+<div class={`search-bar ${className}`}>
+  <form id="searchForm" class="search-form">
     <input
       type="text"
-      id="query"
-      placeholder="Buscar..."
-      class="border px-3 py-2 rounded w-full"
+      id="searchQuery"
+      name="query"
+      placeholder={placeholder}
+      class="search-input"
+      autocomplete="off"
     />
-    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">
-      Buscar
+    <button type="submit" class="search-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <span class="sr-only">Buscar</span>
     </button>
   </form>
 </div>
 
-<script is:inline>
-  // Esperamos al evento DOM listo
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("searchForm");
-    const input = document.getElementById("query");
+<script>
+  function initSearch() {
+    const form = document.getElementById('searchForm') as HTMLFormElement | null;
+    const input = document.getElementById('searchQuery') as HTMLInputElement | null;
 
-    if (!form || !input) return; // Seguridad
+    if (!form || !input) {
+      console.warn('SearchBar: Form o input no encontrado');
+      return;
+    }
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener('submit', (e: Event) => {
       e.preventDefault();
-      const q = /** @type {HTMLInputElement} */ (input).value.trim();
-      if (q) {
-        window.location.href = `/buscar?query=${encodeURIComponent(q)}`;
+      
+      const query = input.value.trim();
+      
+      if (query) {
+        // Redirigir a la página de búsqueda
+        window.location.href = `/buscar?query=${encodeURIComponent(query)}`;
       }
     });
-  });
+
+    // Opcional: búsqueda al presionar Enter
+    input.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        form.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+    });
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+
+  // Reinicializar en navegación del lado del cliente (si usas View Transitions)
+  document.addEventListener('astro:page-load', initSearch);
 </script>
+
+<style>
+  .search-bar {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .search-form {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .search-button {
+    padding: 0.625rem 1.25rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+
+  .search-button:hover {
+    background-color: #2563eb;
+  }
+
+  .search-button:active {
+    transform: scale(0.98);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .search-input {
+      background-color: #1f2937;
+      border-color: #374151;
+      color: white;
+    }
+
+    .search-input:focus {
+      border-color: #60a5fa;
+    }
+
+    .search-button {
+      background-color: #2563eb;
+    }
+
+    .search-button:hover {
+      background-color: #1d4ed8;
+    }
+  }
+</style>
