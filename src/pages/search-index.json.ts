@@ -58,13 +58,13 @@
 //   "servicios/otros-documentos.astro": {
 //     title: "Apostillar Otros Documentos",
 //     url: "/servicios/otros-documentos",
-//     keywords: "documentos poder notarial carta"
+//     keywords: "documentos poder notarial carta licencia conducir certificado medico"
 //   },
-//   // "servicios/hijosVen.astro": {
-//   //   title: "Documentos para Hijos de Venezolanos",
-//   //   url: "/servicios/hijosVen",
-//   //   keywords: "hijos venezolanos nacionalidad registro"
-//   // },
+//   "servicios/hijosVen.astro": {
+//     title: "Documentos para Hijos de Venezolanos",
+//     url: "/servicios/hijosVen",
+//     keywords: "hijos venezolanos nacionalidad registro"
+//   },
 
 //   // Traducciones
 //   "traduccion/traduccionOficial.astro": {
