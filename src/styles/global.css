@@ -116,6 +116,10 @@ body {
   text-shadow: inherit !important;
 }
 
+#lista-otros{
+  color: inherit !important;
+  text-shadow: inherit !important;
+}
 
 #nav-bar{
   background-color: rgba(138, 138, 138, 0.5);

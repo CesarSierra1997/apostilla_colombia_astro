@@ -1,263 +1,530 @@
 ---
-/**
- * Página de búsqueda profesional con resultados en vivo usando Fuse.js
- * Compatible con Astro 5 + TypeScript
- */
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+import apostillaLogo from "../assets/images/logo_claro.webp";
+
+const url = Astro.url;
+const query = url.searchParams.get('query') || '';
 ---
 
-<Layout title="Buscar resultados" description="Resultados de búsqueda">
-  <section
-    class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4"
-  >
-    <div class="max-w-4xl mx-auto mt-8">
-      <!-- Encabezado -->
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">
-          🔍 Buscador del Sitio
+<Layout title="Buscador Apostilla Colombia" description="Buscador del sitio Apostilla Colombia Traducciones Oficiales para encontrar contenido rápidamente">
+  <main class="max-w-6xl mx-auto px-4 py-8 mt-8">
+    <!-- Header con gradiente animado -->
+    <div class="text-center mb-12 relative">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 blur-3xl opacity-20 animate-pulse"></div>
+      <div class="relative">
+        <img src={apostillaLogo.src} alt="Logo Apostilla Colombia" class="w-50 h-50 scale-50 mx-auto" loading="lazy" />
+        <h1 class="text-5xl font-bold mb-6 max-w-xl mx-auto text-center">
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Buscador
+            Inteligente
+          </span>
+          <span class="inline-block text-3xl mb-1 animate-bounce" aria-label="lupa" role="img">🔍</span>
         </h1>
-        <p class="text-gray-600">Encuentra lo que necesitas rápidamente</p>
-      </div>
 
-      <!-- Barra de búsqueda -->
-      <div class="relative mb-8">
+        <p class="text-gray-600 dark:text-gray-400 text-lg">Resultados instantáneos mientras escribes</p>
+      </div>
+    </div>
+    
+<!-- Barra de búsqueda mejorada con foco en UI/UX -->
+<div class="mb-10 relative px-4">
+  <form id="searchForm" class="max-w-4xl mx-auto w-full">
+    <div class="group relative">
+
+      <!-- Glow dinámico al hacer hover/focus -->
+      <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 blur opacity-20 group-hover:opacity-40 group-focus-within:opacity-50 transition-all duration-300 pointer-events-none"></div>
+
+      <!-- Contenedor principal -->
+      <div class="relative flex items-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 focus-within:ring-2 focus-within:ring-blue-500 transition-all">
+
+        <!-- Icono de lupa -->
+        <div class="pl-5 pr-2 text-gray-400 group-focus-within:text-blue-600 transition-colors">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <!-- Campo de búsqueda -->
         <input
-          id="liveSearch"
           type="text"
-          placeholder="Buscar artículos, páginas, contenido..."
-          class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-xl shadow-lg focus:ring-4 focus:ring-blue-300 focus:border-blue-500 focus:outline-none transition-all"
-          autocomplete="off"
+          id="query"
+          name="query"
+          value={query}
+          placeholder="Buscar apostilla, traducción, universidad..."
+          class="flex-1 bg-transparent text-gray-900 placeholder-gray-400  px-2 py-4 sm:px-4 sm:py-5 text-base sm:text-lg focus:outline-none"
+          autocomplete="on"
+          autofocus
         />
+
+        <!-- Botón para limpiar texto -->
         <div
-          class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+          id="clear-btn"
+          class="hidden px-4 cursor-pointer text-gray-400 hover:text-red-500 transition"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
           </svg>
         </div>
       </div>
 
-      <!-- Indicador de estado -->
-      <div id="searchStatus" class="text-center mb-4">
-        <span
-          class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
-        >
-          ⏳ Cargando índice de búsqueda...
-        </span>
+      <!-- Indicador de búsqueda en tiempo real -->
+      <div
+        id="search-indicator"
+        class="hidden absolute left-6 -bottom-7 text-sm flex items-center gap-2"
+      >
+        <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse"></div>
+        <span>Buscando en tiempo real...</span>
       </div>
 
-      <!-- Contador de resultados -->
-      <div id="resultCount" class="mb-4 text-gray-600 font-medium hidden">
-        <span id="countText"></span>
+    </div>
+  </form>
+</div>
+
+
+    <!-- Contenedor de resultados -->
+    <div id="results-container" class="mt-16">
+      <!-- Stats bar -->
+      <div id="stats-bar" class="hidden mb-6 flex items-center justify-between px-4">
+        <div id="results-count" class="text-sm font-medium text-gray-600 dark:text-gray-400"></div>
+        <div id="search-time" class="text-xs text-gray-500"></div>
       </div>
 
-      <!-- Contenedor de resultados -->
-      <div id="resultados" class="space-y-4">
-        <!-- Los resultados se insertan aquí -->
+      <!-- Grid de resultados -->
+      <div id="results" class="grid gap-6"></div>
+    </div>
+
+    <!-- No results -->
+    <div id="no-results" class="hidden text-center py-16">
+      <div class="text-7xl mb-4 animate-bounce">🔍</div>
+      <p class="text-2xl mb-3 font-semibold text-gray-700 dark:text-gray-300">
+        No encontramos resultados para "<span id="search-term" class="text-blue-600"></span>"
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">
+        Intenta con otras palabras clave
+      </p>
+      <div class="flex flex-wrap justify-center gap-2">
+        <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm">apostilla</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm">legalización</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm">traducción</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm">universidad</span>
+        <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm">registro civil</span>
       </div>
     </div>
-  </section>
 
-  <script>
-    import Fuse from "fuse.js";
-
-    let fuse: Fuse<any> | null = null;
-    let data: any[] = [];
-
-    const input = document.getElementById("liveSearch") as HTMLInputElement;
-    const container = document.getElementById("resultados") as HTMLDivElement;
-    const searchStatus = document.getElementById(
-      "searchStatus"
-    ) as HTMLDivElement;
-    const resultCount = document.getElementById(
-      "resultCount"
-    ) as HTMLDivElement;
-    const countText = document.getElementById("countText") as HTMLSpanElement;
-
-    // Limpia etiquetas HTML y espacios innecesarios
-    function cleanText(text: string): string {
-      if (!text) return "";
-      return text
-        .replace(/<[^>]+>/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-    }
-
-    // Resalta los términos de búsqueda
-    function highlightText(text: string, query: string): string {
-      if (!query.trim()) return text;
-      const regex = new RegExp(`(${query.split(" ").join("|")})`, "gi");
-      return text.replace(
-        regex,
-        "<mark class='bg-yellow-200 px-1 rounded'>$1</mark>"
-      );
-    }
-
-    // Muestra un mensaje de estado
-    function showStatus(
-      message: string,
-      type: "info" | "success" | "error" = "info"
-    ) {
-      const colors = {
-        info: "bg-blue-100 text-blue-700",
-        success: "bg-green-100 text-green-700",
-        error: "bg-red-100 text-red-700",
-      };
-
-      searchStatus.innerHTML = `
-        <span class="inline-block px-4 py-2 ${colors[type]} rounded-full text-sm font-medium">
-          ${message}
-        </span>
-      `;
-    }
-
-    // Carga del índice de búsqueda
-    async function cargarIndice() {
-      try {
-        const res = await fetch("/search-index.json");
-
-        if (!res.ok) {
-          throw new Error(`Error HTTP: ${res.status}`);
-        }
-
-        data = await res.json();
-
-        // Validar que data sea un array
-        if (!Array.isArray(data) || data.length === 0) {
-          throw new Error("El índice de búsqueda está vacío o es inválido");
-        }
-
-        // Limpieza del contenido
-        data = data.map((item) => ({
-          ...item,
-          title: cleanText(item.title || "Sin título"),
-          content: cleanText(item.content || ""),
-          url: item.url || "#",
-        }));
-
-        // Configuración de Fuse.js
-        fuse = new Fuse(data, {
-          keys: [
-            { name: "title", weight: 2 },
-            { name: "content", weight: 1 },
-          ],
-          threshold: 0.4,
-          minMatchCharLength: 2,
-          includeScore: true,
-          ignoreLocation: true,
-        });
-
-        showStatus(
-          `✅ ${data.length} elementos indexados - Listo para buscar`,
-          "success"
-        );
-        searchStatus.classList.add("hidden");
-        input.focus();
-      } catch (error) {
-        console.error("Error cargando índice:", error);
-        showStatus("❌ Error cargando el índice de búsqueda", "error");
-        container.innerHTML = `
-          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 text-center">
-            <p class="text-red-700 font-semibold mb-2">No se pudo cargar el índice de búsqueda</p>
-            <p class="text-red-600 text-sm">Por favor, verifica que el archivo /search-index.json existe</p>
-          </div>
-        `;
-      }
-    }
-
-    // Ejecuta búsqueda según lo que escriba el usuario
-    function buscar(query: string) {
-      if (!fuse) {
-        container.innerHTML = `
-          <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 text-center">
-            <p class="text-yellow-700">⚠️ El índice aún se está cargando...</p>
-          </div>
-        `;
-        return;
-      }
-
-      if (!query.trim()) {
-        container.innerHTML = "";
-        resultCount.classList.add("hidden");
-        searchStatus.classList.remove("hidden");
-        showStatus("💡 Escribe algo para comenzar a buscar", "info");
-        return;
-      }
-
-      searchStatus.classList.add("hidden");
-      const resultados = fuse.search(query);
-
-      // Actualizar contador
-      resultCount.classList.remove("hidden");
-      countText.textContent = `${resultados.length} resultado${resultados.length !== 1 ? "s" : ""} encontrado${resultados.length !== 1 ? "s" : ""}`;
-
-      if (resultados.length === 0) {
-        container.innerHTML = `
-          <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-8 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p class="text-gray-700 font-semibold text-lg mb-1">No se encontraron resultados</p>
-            <p class="text-gray-500 text-sm">Intenta con otras palabras clave</p>
-          </div>
-        `;
-        return;
-      }
-
-      // Render de resultados con score y highlight
-      container.innerHTML = resultados
-        .map((r) => {
-          const relevance = Math.round((1 - (r.score || 0)) * 100);
-          const excerpt = r.item.content.slice(0, 200);
-
-          return `
-            <article class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-200">
-              <div class="flex items-start justify-between mb-2">
-                <a href="${r.item.url}" class="text-xl font-bold text-blue-600 hover:text-blue-800 hover:underline flex-1">
-                  ${highlightText(r.item.title, query)}
-                </a>
-                <span class="ml-4 px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full whitespace-nowrap">
-                  ${relevance}% relevante
-                </span>
-              </div>
-              <p class="text-gray-700 leading-relaxed mb-3">
-                ${highlightText(excerpt, query)}${excerpt.length >= 200 ? "..." : ""}
-              </p>
-              <a href="${r.item.url}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
-                Leer más
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </article>
-          `;
-        })
-        .join("");
-    }
-
-    // Buscar mientras se escribe con debounce
-    let timeoutId: ReturnType<typeof setTimeout>;
-    input?.addEventListener("input", (e) => {
-      clearTimeout(timeoutId);
-      const query = (e.target as HTMLInputElement).value;
-
-      timeoutId = setTimeout(() => {
-        buscar(query);
-      }, 300); // Espera 300ms después de que el usuario deje de escribir
-    });
-    // ...existing code...
-
-    // Inicializar
-    cargarIndice();
-  </script>
+    <!-- Estado inicial -->
+    <div id="initial-state" class="text-center py-16">
+      <div class="text-6xl mb-4">✨</div>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        Comienza a escribir para ver resultados instantáneos
+      </p>
+    </div>
+  </main>
 </Layout>
+
+<script>
+  interface SearchResult {
+    title: string;
+    url: string;
+    description: string;
+    content: string;
+  }
+
+  let searchCache: SearchResult[] = [];
+  let searchTimeout: number | null = null;
+  let lastSearchTime = 0;
+
+  // Función para normalizar texto
+  function normalizeText(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  // Función para calcular relevancia mejorada (todas las palabras deben estar presentes)
+  function calculateRelevance(page: SearchResult, query: string): number {
+    const normalizedQuery = normalizeText(query);
+    const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 1);
+    
+    const titleNorm = normalizeText(page.title);
+    const descNorm = normalizeText(page.description);
+    const contentNorm = normalizeText(page.content);
+    
+    // CRÍTICO: Todas las palabras deben estar presentes en algún lugar
+    const allWordsPresent = queryWords.every(word => 
+      titleNorm.includes(word) || descNorm.includes(word) || contentNorm.includes(word)
+    );
+    
+    if (!allWordsPresent) return 0;
+    
+    let score = 0;
+    
+    queryWords.forEach(word => {
+      // Coincidencia exacta en título
+      if (titleNorm === word) score += 50;
+      // Título contiene la palabra
+      else if (titleNorm.includes(word)) score += 15;
+      
+      // Descripción
+      if (descNorm.includes(word)) score += 8;
+      
+      // Contenido (limitado para no saturar)
+      const contentMatches = (contentNorm.match(new RegExp(word, 'g')) || []).length;
+      score += Math.min(contentMatches * 2, 15);
+      
+      // Bonus por palabra completa
+      const wordBoundaryRegex = new RegExp(`\\b${word}\\b`, 'g');
+      if (titleNorm.match(wordBoundaryRegex)) score += 10;
+    });
+    
+    // Bonus adicional si todas las palabras están en el título
+    const allInTitle = queryWords.every(word => titleNorm.includes(word));
+    if (allInTitle) score += 30;
+    
+    return score;
+  }
+
+  // Función para extraer snippet con contexto preciso
+  function getContextualSnippet(content: string, query: string, maxLength: number = 250): { text: string; hasMatch: boolean } {
+    const normalized = normalizeText(content);
+    const normalizedQuery = normalizeText(query);
+    const words = normalizedQuery.split(/\s+/).filter(w => w.length > 1);
+    
+    let bestIndex = -1;
+    let bestWord = '';
+    
+    // Encontrar la mejor coincidencia
+    for (const word of words) {
+      const index = normalized.indexOf(word);
+      if (index !== -1 && (bestIndex === -1 || index < bestIndex)) {
+        bestIndex = index;
+        bestWord = word;
+      }
+    }
+    
+    if (bestIndex === -1) {
+      return {
+        text: content.slice(0, maxLength) + (content.length > maxLength ? '...' : ''),
+        hasMatch: false
+      };
+    }
+    
+    // Calcular ventana de contexto
+    const contextBefore = 100;
+    const contextAfter = 150;
+    const start = Math.max(0, bestIndex - contextBefore);
+    const end = Math.min(content.length, bestIndex + bestWord.length + contextAfter);
+    
+    // Ajustar al principio/final de palabras
+    let snippet = content.slice(start, end);
+    
+    // Buscar inicio de palabra si no estamos al principio
+    if (start > 0) {
+      const spaceIndex = snippet.indexOf(' ');
+      if (spaceIndex > 0 && spaceIndex < 20) {
+        snippet = snippet.slice(spaceIndex + 1);
+      }
+      snippet = '...' + snippet;
+    }
+    
+    // Buscar final de palabra si no estamos al final
+    if (end < content.length) {
+      const lastSpaceIndex = snippet.lastIndexOf(' ');
+      if (lastSpaceIndex > snippet.length - 20) {
+        snippet = snippet.slice(0, lastSpaceIndex);
+      }
+      snippet = snippet + '...';
+    }
+    
+    return { text: snippet, hasMatch: true };
+  }
+
+  // Función para resaltar términos con mejor precisión
+  function highlightText(text: string, query: string): string {
+    if (!query.trim()) return text;
+    
+    const words = query.split(/\s+/).filter(w => w.length > 1);
+    let highlighted = text;
+    
+    words.forEach(word => {
+      const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${escapedWord})`, 'gi');
+      highlighted = highlighted.replace(
+        regex, 
+        '<mark class="bg-gradient-to-r from-yellow-300 to-yellow-400 dark:from-yellow-600 dark:to-yellow-700 text-gray-900 dark:text-white font-semibold px-1.5 py-0.5 rounded-md">$1</mark>'
+      );
+    });
+    
+    return highlighted;
+  }
+
+  // Función principal de búsqueda con caché
+  async function performSearch(query: string, isRealtime: boolean = false) {
+    const startTime = performance.now();
+    const results = document.getElementById('results');
+    const resultsCount = document.getElementById('results-count');
+    const searchTime = document.getElementById('search-time');
+    const noResults = document.getElementById('no-results');
+    const searchTerm = document.getElementById('search-term');
+    const statsBar = document.getElementById('stats-bar');
+    const initialState = document.getElementById('initial-state');
+    const searchIndicator = document.getElementById('search-indicator');
+
+    if (!query.trim()) {
+      if (results) results.innerHTML = '';
+      if (statsBar) statsBar.classList.add('hidden');
+      if (noResults) noResults.classList.add('hidden');
+      if (initialState) initialState.classList.remove('hidden');
+      if (searchIndicator) searchIndicator.classList.add('hidden');
+      return;
+    }
+
+    if (initialState) initialState.classList.add('hidden');
+    if (isRealtime && searchIndicator) searchIndicator.classList.remove('hidden');
+
+    try {
+      // Cargar índice si no está en caché
+      if (searchCache.length === 0) {
+        const response = await fetch('/search-index.json');
+        if (!response.ok) throw new Error('Error cargando índice');
+        searchCache = await response.json();
+      }
+
+      // Filtrar y calcular relevancia
+      const resultsWithScore = searchCache
+        .map(page => ({
+          ...page,
+          relevance: calculateRelevance(page, query)
+        }))
+        .filter(page => page.relevance > 0)
+        .sort((a, b) => b.relevance - a.relevance)
+        .slice(0, 20); // Limitar a 20 resultados
+
+      const endTime = performance.now();
+      const timeTaken = ((endTime - startTime) / 1000).toFixed(3);
+
+      if (searchIndicator) searchIndicator.classList.add('hidden');
+
+      if (resultsWithScore.length === 0) {
+        if (searchTerm) searchTerm.textContent = query;
+        if (noResults) noResults.classList.remove('hidden');
+        if (statsBar) statsBar.classList.add('hidden');
+        if (results) results.innerHTML = '';
+        return;
+      }
+
+      // Mostrar stats
+      if (statsBar) statsBar.classList.remove('hidden');
+      if (noResults) noResults.classList.add('hidden');
+      
+      if (resultsCount) {
+        resultsCount.innerHTML = `
+          <span class="text-lg font-bold text-blue-600 dark:text-blue-400">${resultsWithScore.length}</span>
+          <span class="text-gray-600 dark:text-gray-400"> resultado${resultsWithScore.length !== 1 ? 's' : ''} encontrado${resultsWithScore.length !== 1 ? 's' : ''}</span>
+        `;
+      }
+
+      if (searchTime) {
+        searchTime.textContent = `⚡ ${timeTaken}s`;
+      }
+
+      // Renderizar resultados con diseño mejorado
+      if (results) {
+        results.innerHTML = resultsWithScore
+          .map((page, index) => {
+            const snippetData = page.description 
+              ? { text: page.description, hasMatch: true }
+              : getContextualSnippet(page.content, query);
+            
+            const titleHighlighted = highlightText(page.title, query);
+            const snippetHighlighted = highlightText(snippetData.text, query);
+            
+            const maxScore = resultsWithScore[0].relevance;
+            const percentage = Math.round((page.relevance / maxScore) * 100);
+            
+            // Determinar color de badge según relevancia
+            let badgeColor = 'bg-green-500';
+            if (percentage < 50) badgeColor = 'bg-yellow-500';
+            if (percentage < 30) badgeColor = 'bg-orange-500';
+            
+            return `
+              <article class="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
+                <!-- Gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <!-- Content -->
+                <div class="relative p-6">
+                  <!-- Badge de relevancia -->
+                  <div class="absolute top-4 right-4 flex items-center gap-2">
+                    <div class="${badgeColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                      </svg>
+                      ${percentage}%
+                    </div>
+                  </div>
+                  
+                  <a href="${page.url}" class="block pr-24">
+                    <!-- Título -->
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 mb-3 transition-colors duration-200 leading-tight">
+                      ${titleHighlighted}
+                    </h2>
+                    
+                    <!-- Snippet -->
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
+                      ${snippetHighlighted}
+                    </p>
+                    
+                    <!-- Footer -->
+                    <div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+                      <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                        ${page.url.replace(/^https?:\/\/[^/]+/, '')}
+                      </span>
+                      <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Ver más
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+                
+                <!-- Borde animado al hover -->
+                <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: linear-gradient(45deg, transparent 48%, rgba(59, 130, 246, 0.5) 50%, transparent 52%); background-size: 200% 200%; animation: shine 3s infinite;"></div>
+              </article>
+            `;
+          })
+          .join('');
+      }
+    } catch (error) {
+      console.error('Error en búsqueda:', error);
+      if (searchIndicator) searchIndicator.classList.add('hidden');
+      if (results) {
+        results.innerHTML = `
+          <div class="text-center py-12 px-6 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-2xl">
+            <div class="text-5xl mb-4">❌</div>
+            <p class="font-semibold text-red-600 dark:text-red-400 mb-2 text-lg">Error al realizar la búsqueda</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Por favor, intenta de nuevo más tarde.</p>
+          </div>
+        `;
+      }
+    }
+  }
+
+  // Inicialización
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('query') || '';
+  const queryInput = document.getElementById('query') as HTMLInputElement;
+  const clearBtn = document.getElementById('clear-btn');
+  
+  if (initialQuery) {
+    performSearch(initialQuery);
+  }
+
+  // Búsqueda en tiempo real mientras escribe
+  if (queryInput) {
+    queryInput.addEventListener('input', (e) => {
+      const value = (e.target as HTMLInputElement).value;
+      
+      // Mostrar/ocultar botón de limpiar
+      if (clearBtn) {
+        if (value) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+      
+      // Debounce para búsqueda en tiempo real
+      if (searchTimeout) {
+        clearTimeout(searchTimeout);
+      }
+      
+      searchTimeout = window.setTimeout(() => {
+        if (value.trim().length >= 2) {
+          performSearch(value, true);
+          
+          // Actualizar URL sin recargar
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.set('query', value);
+          window.history.replaceState({}, '', newUrl);
+        } else if (value.trim().length === 0) {
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.delete('query');
+          window.history.replaceState({}, '', newUrl);
+          
+          const initialState = document.getElementById('initial-state');
+          const results = document.getElementById('results');
+          const statsBar = document.getElementById('stats-bar');
+          const noResults = document.getElementById('no-results');
+          
+          if (initialState) initialState.classList.remove('hidden');
+          if (results) results.innerHTML = '';
+          if (statsBar) statsBar.classList.add('hidden');
+          if (noResults) noResults.classList.add('hidden');
+        }
+      }, 300);
+    });
+  }
+
+  // Botón de limpiar
+  if (clearBtn && queryInput) {
+    clearBtn.addEventListener('click', () => {
+      queryInput.value = '';
+      clearBtn.classList.add('hidden');
+      queryInput.focus();
+      
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('query');
+      window.history.replaceState({}, '', newUrl);
+      
+      const initialState = document.getElementById('initial-state');
+      const results = document.getElementById('results');
+      const statsBar = document.getElementById('stats-bar');
+      const noResults = document.getElementById('no-results');
+      
+      if (initialState) initialState.classList.remove('hidden');
+      if (results) results.innerHTML = '';
+      if (statsBar) statsBar.classList.add('hidden');
+      if (noResults) noResults.classList.add('hidden');
+    });
+  }
+
+  // Manejar formulario
+  const form = document.getElementById('searchForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (queryInput && queryInput.value.trim()) {
+        performSearch(queryInput.value.trim());
+      }
+    });
+  }
+</script>
+
+<style>
+  @keyframes shine {
+    0%, 100% { background-position: 200% 200%; }
+    50% { background-position: 0% 0%; }
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  mark {
+    animation: highlight 0.3s ease-in-out;
+  }
+
+  @keyframes highlight {
+    0% { background-color: transparent; }
+    50% { transform: scale(1.05); }
+    100% { background-color: rgb(253 224 71); }
+  }
+</style>
