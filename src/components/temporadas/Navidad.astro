@@ -1,0 +1,228 @@
+---
+// Christmas.astro
+// Componente de partículas de Navidad que solo se muestra en diciembre
+
+// Verificar si estamos en diciembre
+const month = new Date().getMonth();
+const isDecember = month === 11;
+
+// Array de emojis navideños para variedad
+const christmasEmojis = [
+  "❄️",
+  "🎄",
+  "🎅",
+  "❄️",
+  "🎁",
+  "❄️",
+  "⛄",
+  "🔔",
+  "❄️",
+  "🎀",
+  "⭐",
+  "❄️",
+];
+
+// Generar partículas (12 en total) concentradas en los laterales
+const particles = Array.from({ length: 12 }, (_, i) => {
+  // Decidir si va por la izquierda o derecha
+  const isLeft = i % 2 === 0;
+  // Posición en los laterales: 0-25% para izquierda, 75-100% para derecha
+  const left = isLeft
+    ? Math.random() * 25 // Lateral izquierdo
+    : Math.random() * 25 + 75; // Lateral derecho
+
+  return {
+    id: i,
+    emoji: christmasEmojis[Math.floor(Math.random() * christmasEmojis.length)],
+    left: left,
+    size: Math.random() * 1.3 + 0.9,
+    duration: Math.random() * 10 + 20,
+    delay: Math.random() * -30,
+    path: Math.floor(Math.random() * 3) + 1,
+  };
+});
+---
+
+{
+  isDecember && (
+    <div class="christmas-container">
+      {/* Mapear todas las partículas flotantes */}
+      {particles.map((particle) => (
+        <div
+          class={`particle path-${particle.path}`}
+          style={`
+          left: ${particle.left}%;
+          font-size: ${particle.size}rem;
+          animation-duration: ${particle.duration}s;
+          animation-delay: ${particle.delay}s;
+        `}
+        >
+          {particle.emoji}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  /* Contenedor principal - cubre toda la pantalla */
+  .christmas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* No interfiere con clicks */
+    overflow: hidden; /* Oculta elementos fuera del viewport */
+    z-index: 9999; /* Siempre visible encima */
+  }
+
+  /* Estilos base para todas las partículas */
+  .particle {
+    position: absolute;
+    opacity: 0.8;
+    will-change: transform; /* Optimización de performance */
+  }
+
+  /* Efecto rojo navideño en modo claro */
+  @media (prefers-color-scheme: light) {
+    .particle {
+      filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.6)); /* Rojo brillante */
+    }
+  }
+
+  /* Efecto rojo navideño en modo oscuro */
+  @media (prefers-color-scheme: dark) {
+    .particle {
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4)); /* Rojo más oscuro */
+    }
+  }
+
+  /* TRAYECTORIA 1: Zigzag suave hacia los costados */
+  .particle.path-1 {
+    animation: float-zigzag 25s ease-in-out infinite;
+  }
+
+  /* TRAYECTORIA 2: Onda amplia con escala variable */
+  .particle.path-2 {
+    animation: float-wave 22s ease-in-out infinite;
+  }
+
+  /* TRAYECTORIA 3: Diagonal suave hacia los extremos */
+  .particle.path-3 {
+    animation: float-diagonal 28s ease-in-out infinite;
+  }
+
+  /* Animación zigzag: de abajo hacia arriba con movimiento lateral */
+  @keyframes float-zigzag {
+    0% {
+      transform: translate(0, 110vh) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.8; /* Aparece gradualmente */
+    }
+    25% {
+      transform: translate(100px, 75vh) rotate(90deg);
+      opacity: 0.75;
+    }
+    50% {
+      transform: translate(-130px, 50vh) rotate(180deg);
+      opacity: 0.3; /* Se difumina al llegar a la mitad */
+    }
+    75% {
+      transform: translate(160px, 25vh) rotate(270deg);
+      opacity: 0.1;
+    }
+    100% {
+      transform: translate(-200px, 0vh) rotate(360deg);
+      opacity: 0; /* Desaparece al llegar arriba */
+    }
+  }
+
+  /* Animación onda: movimiento ondulante de abajo hacia arriba */
+  @keyframes float-wave {
+    0% {
+      transform: translate(0, 110vh) rotate(0deg) scale(1);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.8;
+    }
+    20% {
+      transform: translate(-110px, 80vh) rotate(72deg) scale(1.1);
+      opacity: 0.75;
+    }
+    40% {
+      transform: translate(150px, 60vh) rotate(144deg) scale(0.9);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.3; /* Difuminado en la mitad */
+    }
+    60% {
+      transform: translate(-170px, 40vh) rotate(216deg) scale(1.05);
+      opacity: 0.2;
+    }
+    80% {
+      transform: translate(190px, 20vh) rotate(288deg) scale(0.95);
+      opacity: 0.05;
+    }
+    100% {
+      transform: translate(-200px, 0vh) rotate(360deg) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* Animación diagonal: movimiento amplio de abajo hacia arriba */
+  @keyframes float-diagonal {
+    0% {
+      transform: translate(0, 110vh) rotate(0deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.8;
+    }
+    33% {
+      transform: translate(-140px, 70vh) rotate(120deg);
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.3; /* Difuminado en la mitad de la pantalla */
+    }
+    66% {
+      transform: translate(170px, 40vh) rotate(240deg);
+      opacity: 0.15;
+    }
+    85% {
+      transform: translate(-190px, 15vh) rotate(300deg);
+      opacity: 0.05;
+    }
+    100% {
+      transform: translate(200px, 0vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Respeta las preferencias de accesibilidad del usuario */
+  @media (prefers-reduced-motion: reduce) {
+    .particle {
+      animation: none; /* Desactiva animaciones */
+      opacity: 0.1;
+    }
+  }
+
+  /* Optimización para tablets */
+  @media (max-width: 768px) {
+    .particle:nth-child(n + 7) {
+      display: none; /* Muestra solo 6 partículas */
+    }
+  }
+
+  /* Para móviles pequeños */
+  @media (max-width: 480px) {
+    .particle:nth-child(n + 5) {
+      display: none; /* Solo 4 partículas */
+    }
+  }
+</style>
