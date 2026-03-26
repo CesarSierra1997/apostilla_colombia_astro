@@ -3,510 +3,625 @@ import Wp from "../../components/icons/react/WhatsAppButtom.jsx";
 import Layout from "../../layouts/Layout.astro";
 
 const opcionesServicio = [
-    {
-        titulo: "Servicio de Apostilla",
-        valor: "$120.000",
-        descripcion: "Si ya tienes el registro civil reciente de Registraduría",
-        icon: "📜",
-        incluye: [
-            "Validación del registro civil en RNEC",
-            "Gestión completa de apostilla ante el MRE",
-            "Seguimiento en tiempo real del proceso",
-            "Entrega digital + envío físico (opcional)",
-        ],
-        requisitos: [
-            "Registro civil reciente (menos de 1 mes)",
-            "Solicitado en cualquier Registraduría Nacional",
-            "Documento en formato digital PDF",
-        ],
-        tiempo: "5-8 días hábiles",
-        popular: false,
-        color: "from-blue-600 to-blue-700",
-    },
-    {
-        titulo: "Gestión Completa",
-        valor: "$250.000",
-        descripcion: "Nosotros gestionamos TODO el proceso por ti",
-        icon: "🎁",
-        incluye: [
-            "Solicitud del registro civil en Registraduría",
-            "Validación completa ante RNEC",
-            "Gestión de apostilla ante el MRE",
-            "Seguimiento especializado para tu caso",
-            "Entrega digital + envío físico opcional",
-            "Te proporcionamos el formato de poder autorizado",
-        ],
-        requisitos: [
-            "Registro en formato digital PDF",
-            "Cédula de ciudadanía de papá y mamá",
-            "Poder de autorización (te enviamos el formato)",
-            "Si el hijo es menor de edad, estos documentos son obligatorios",
-        ],
-        tiempo: "15 días calendario",
-        popular: true,
-        color: "from-green-600 to-green-700",
-    },
+  {
+    titulo: "Servicio de Apostilla",
+    valor: "$120.000",
+    descripcion: "Si ya tienes el registro civil reciente de Registraduría",
+    icon: "📜",
+    incluye: [
+      "Validación del registro civil en RNEC",
+      "Gestión completa de apostilla ante el MRE",
+      "Seguimiento en tiempo real del proceso",
+      "Entrega digital + envío físico (opcional)",
+    ],
+    requisitos: [
+      "Registro civil reciente (menos de 1 mes)",
+      "Solicitado en cualquier Registraduría Nacional",
+      "Documento en formato digital PDF",
+    ],
+    tiempo: "5-8 días hábiles",
+    popular: false,
+    color: "from-blue-600 to-blue-700",
+  },
+  {
+    titulo: "Gestión Completa",
+    valor: "$250.000",
+    descripcion: "Nosotros gestionamos TODO el proceso por ti",
+    icon: "🎁",
+    incluye: [
+      "Solicitud del registro civil en Registraduría",
+      "Validación completa ante RNEC",
+      "Gestión de apostilla ante el MRE",
+      "Seguimiento especializado para tu caso",
+      "Entrega digital + envío físico opcional",
+      "Te proporcionamos el formato de poder autorizado",
+    ],
+    requisitos: [
+      "Registro en formato digital PDF",
+      "Cédula de ciudadanía de papá y mamá",
+      "Poder de autorización (te enviamos el formato)",
+      "Si el hijo es menor de edad, estos documentos son obligatorios",
+    ],
+    tiempo: "15 días calendario",
+    popular: true,
+    color: "from-green-600 to-green-700",
+  },
 ];
 
 const beneficios = [
-    {
-        icon: "🎯",
-        titulo: "Experiencia Comprobada",
-        descripcion: "+18 años tramitando documentos de colombianos hijos de venezolanos. Conocemos cada detalle del proceso.",
-    },
-    {
-        icon: "✅",
-        titulo: "100% de Efectividad",
-        descripcion: "Todos nuestros trámites se completan exitosamente. No cobramos si no entregamos.",
-    },
-    {
-        icon: "🛡️",
-        titulo: "Garantía Total",
-        descripcion: "Seguimiento paso a paso. Sabrás exactamente en qué etapa está tu documento.",
-    },
+  {
+    icon: "🎯",
+    titulo: "Experiencia Comprobada",
+    descripcion:
+      "+18 años tramitando documentos de colombianos hijos de venezolanos. Conocemos cada detalle del proceso.",
+  },
+  {
+    icon: "✅",
+    titulo: "100% de Efectividad",
+    descripcion:
+      "Todos nuestros trámites se completan exitosamente. No cobramos si no entregamos.",
+  },
+  {
+    icon: "🛡️",
+    titulo: "Garantía Total",
+    descripcion:
+      "Seguimiento paso a paso. Sabrás exactamente en qué etapa está tu documento.",
+  },
 ];
 
 const problemasComunas = [
-    "No sé si mi documento va a ser aceptado",
-    "He contactado varios lugares y nadie me da confianza",
-    "Tengo miedo de perder mi dinero y tiempo",
+  "No sé si mi documento va a ser aceptado",
+  "He contactado varios lugares y nadie me da confianza",
+  "Tengo miedo de perder mi dinero y tiempo",
 ];
 
 const garantias = [
-    {
-        icon: "✅",
-        titulo: "Garantía de Entrega",
-        descripcion: "Si no entregamos tu documento apostillado, te devolvemos el 100% de tu dinero. Simple.",
-    },
-    {
-        icon: "📱",
-        titulo: "Comunicación Constante",
-        descripcion: "No te dejamos en la incertidumbre. Actualizaciones por WhatsApp en cada paso del proceso.",
-    },
-    {
-        icon: "🔒",
-        titulo: "Seguridad Total",
-        descripcion: "Tus documentos son manejados con máxima confidencialidad por profesionales certificados.",
-    },
-    {
-        icon: "⚡",
-        titulo: "Respuesta Rápida",
-        descripcion: "Respondemos en menos de 1 hora durante horario laboral. Tu tiempo es valioso.",
-    },
+  {
+    icon: "✅",
+    titulo: "Garantía de Entrega",
+    descripcion:
+      "Si no entregamos tu documento apostillado, te devolvemos el 100% de tu dinero. Simple.",
+  },
+  {
+    icon: "📱",
+    titulo: "Comunicación Constante",
+    descripcion:
+      "No te dejamos en la incertidumbre. Actualizaciones por WhatsApp en cada paso del proceso.",
+  },
+  {
+    icon: "🔒",
+    titulo: "Seguridad Total",
+    descripcion:
+      "Tus documentos son manejados con máxima confidencialidad por profesionales certificados.",
+  },
+  {
+    icon: "⚡",
+    titulo: "Respuesta Rápida",
+    descripcion:
+      "Respondemos en menos de 1 hora durante horario laboral. Tu tiempo es valioso.",
+  },
 ];
 ---
 
 <Layout
-    title="Apostilla Registro Civil - Hijos de Padres Venezolanos"
-    description="Especialistas en apostilla de registro civil de nacimiento para colombianos hijos de padres venezolanos. 18 años de experiencia, 100% efectividad."
+  title="Apostilla Registro Civil - Hijos de Padres Venezolanos"
+  description="Especialistas en apostilla de registro civil de nacimiento para colombianos hijos de padres venezolanos. 18 años de experiencia, 100% efectividad."
 >
-    <!-- HERO SECTION -->
-    <section
-        class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-8 text-center"
-    >
-        <div class="max-w-6xl mx-auto px-4 space-y-6 pt-10">
-        <div
-            class="inline-block bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full"
+  <!-- HERO SECTION -->
+  <section
+    class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white py-8 text-center"
+  >
+    <div class="max-w-6xl mx-auto px-4 space-y-6 pt-10">
+      <div
+        class="inline-block bg-yellow-400/90 backdrop-blur-sm px-4 py-2 rounded-full"
+      >
+        <small class="text-sm text-blue-900 font-semibold"
+          >📜 ESPECIALISTAS EN PARTIDAS DE NACIMIENTO</small
         >
-            <small class="text-sm text-blue-900 font-semibold"
-            >📜 ESPECIALISTAS EN PARTIDAS DE NACIMIENTO</small
-            >
-        </div>
+      </div>
 
-        <h1 class="text-3xl md:text-5xl font-bold leading-tight">
-            Apostilla de Partida de Nacimiento para<br /> <span class="text-yellow-300">Colombianos 🇨🇴</span> Hijos de <span class="text-yellow-300">Padres Venezolanos 🇻🇪</span> 
-    
-        </h1>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+        Apostilla de Partida de Nacimiento para<br />
+        <span class="text-yellow-300">Colombianos 🇨🇴</span> Hijos de <span
+          class="text-yellow-300">Padres Venezolanos 🇻🇪</span
+        >
+      </h1>
 
-        <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
-            Gestionamos la apostilla de la partida de nacimiento de tus hijos para que puedas presentarla en en Venezuela o en cualquier otro país sin complicaciones.
-        </p>
+      <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto">
+        Gestionamos la apostilla de la partida de nacimiento de tus hijos para
+        que puedas presentarla en en Venezuela o en cualquier otro país sin
+        complicaciones.
+      </p>
 
-        <div class="flex justify-center mt-10 px-8">
-            <a
-            href="#tipo-servicio"
-            rel="noopener noreferrer"
-            aria-label="Seleccionar tipo de documento"
-            class="relative inline-flex items-center gap-4 py-1 justify-center px-10  rounded-full overflow-visible transition-all duration-300 transform hover:scale-105 focus:outline-none group"
-            >
-            <!-- Fondo base sólido -->
-            <span
-                class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-[0_0_25px_rgba(0,255,42)] animate-[pulseGlow_3s_ease-in-out_infinite]"
-            ></span>
+      <div class="flex justify-center mt-10 px-8">
+        <a
+          href="#tipo-servicio"
+          rel="noopener noreferrer"
+          aria-label="Seleccionar tipo de documento"
+          class="relative inline-flex items-center gap-4 py-1 justify-center px-10 rounded-full overflow-visible transition-all duration-300 transform hover:scale-105 focus:outline-none group"
+        >
+          <!-- Fondo base sólido -->
+          <span
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 shadow-[0_0_25px_rgba(0,255,42)] animate-[pulseGlow_3s_ease-in-out_infinite]"
+          ></span>
 
-            <!-- Borde elegante -->
-            <span
-                class="absolute inset-0 rounded-full border border-white/30 backdrop-blur-sm"
-            ></span>
+          <!-- Borde elegante -->
+          <span
+            class="absolute inset-0 rounded-full border border-white/30 backdrop-blur-sm"
+          ></span>
 
-            <!-- Ícono -->
-            <span
-                class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white text-2xl"
-            >
-                👇🏻
+          <!-- Ícono -->
+          <span
+            class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white text-2xl"
+          >
+            👇🏻
+          </span>
+
+          <!-- Texto -->
+          <span class="relative z-10 text-left p-1">
+            <span class="block font-black text-lg tracking-tight">
+              Ver Opciones de Servicio
             </span>
-
-            <!-- Texto -->
-            <span class="relative z-10 text-left p-1">
-                <span class="block font-black text-lg tracking-tight">
-                Ver Opciones de Servicio
-                </span>
-                <span class="block text-sm opacity-90">
-                Seleccinoa el servicio según tu caso y consulta ahora mismo
-                </span>
+            <span class="block text-sm opacity-90">
+              Seleccinoa el servicio según tu caso y consulta ahora mismo
             </span>
-            </a>
-        </div>
+          </span>
+        </a>
+      </div>
 
-        <p class="text-sm opacity-80 pt-4">
-            ⏰ Respuesta inmediata • 📍 Servicio en toda Colombia • 🚀 Envío a
-            domicilio
-        </p>
-        </div>
-    </section>
+      <p class="text-sm opacity-80 pt-4">
+        ⏰ Respuesta inmediata • 📍 Servicio en toda Colombia • 🚀 Envío a
+        domicilio
+      </p>
+    </div>
+  </section>
 
-    <!-- PROBLEMA COMÚN -->
-    <section class="py-12 bg-red-50 border-y-4 border-red-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-red-700 mb-4">
-                    ⚠️ ¿Te Identificas con Esta Situación?
-                </h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-4">
-                {problemasComunas.map((problema) => (
-                    <div class="bg-white p-2 rounded-lg shadow-md border-l-4 border-red-500">
-                        <p class="text-gray-800">❌ <strong>"{problema}"</strong></p>
-                    </div>
-                ))}
-            </div>
-            <div class="text-center mt-8">
-                <p class="text-xl  text-green-600">
-                    ¡Entendemos tu preocupación! Por eso somos <span class="text-xl font-bold text-green-700" >ESPECIALISTAS</span> en estos casos.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- POR QUÉ CONFIAR -->
-    <section class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4">
-                ¿Por Qué Miles de Familias Confían en Nosotros?
-            </h2>
-            <p class="text-center text-xl text-gray-600 mb-12">
-                No somos principiantes. Llevamos <strong>más de 18 años</strong> especializándonos en casos complejos
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                {beneficios.map((beneficio) => (
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl shadow-lg text-center border-2 border-blue-200 hover:shadow-2xl transition-shadow">
-                        <div class="text-6xl mb-4">{beneficio.icon}</div>
-                        <h3 class="text-2xl font-bold text-blue-900 mb-3">{beneficio.titulo}</h3>
-                        <p class="text-gray-700 leading-relaxed">{beneficio.descripcion}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS Y PRECIOS -->
-    <section class="py-16 bg-gradient-to-br from-gray-50 to-blue-50" id="tipo-servicio">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
-                Opciones de Servicio<span
-                class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                > Partida Nacimiento</span
-                >
-            </h2>
-            <p class="text-center text-xl text-gray-600 mb-12">
-                Elige la opción que mejor se ajuste a tu situación
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                {opcionesServicio.map((opcion) => (
-                    <div class={`bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 ${opcion.popular ? 'ring-4 ring-green-400' : ''}`}>
-                        {opcion.popular && (
-                            <div class="bg-green-600 text-white text-center py-2 font-bold text-sm">
-                                ⭐ MÁS SOLICITADO - SIN PREOCUPACIONES ⭐
-                            </div>
-                        )}
-                        
-                        <div class={`bg-gradient-to-r ${opcion.color} text-white p-6`}>
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">{opcion.icon}</div>
-                                <h3 class="text-2xl font-bold mb-2">{opcion.titulo}</h3>
-                                <div class="text-4xl font-bold">{opcion.valor}</div>
-                                <p class="text-sm opacity-90 mt-2">{opcion.descripcion}</p>
-                            </div>
-                        </div>
-                        
-                        <div class="p-8 space-y-6">
-                            <div>
-                                <p class={`font-bold text-lg mb-3 ${opcion.popular ? 'text-green-900' : 'text-blue-900'}`}>
-                                    ✓ Incluye{opcion.popular ? ' TODO' : ''}:
-                                </p>
-                                <ul class="space-y-3">
-                                    {opcion.incluye.map((item) => (
-                                        <li class="flex items-start gap-3">
-                                            <span class="text-green-500 text-xl mt-1">✓</span>
-                                            <span class="text-gray-900">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div class={`${opcion.popular ? 'bg-green-50 border-green-500' : 'bg-yellow-50 border-yellow-400'} border-l-4 p-4 rounded-r`}>
-                                <p class={`font-bold text-sm mb-2 ${opcion.popular ? 'text-green-800' : 'text-yellow-800'}`}>
-                                    📌 REQUISITOS:
-                                </p>
-                                <ul class="text-sm text-gray-700 space-y-1">
-                                    {opcion.requisitos.map((req) => (
-                                        <li>• {req}</li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div class={`${opcion.popular ? 'bg-green-50' : 'bg-blue-50'} p-4 rounded-lg text-center`}>
-                                <p class={`text-sm font-bold ${opcion.popular ? 'text-green-900' : 'text-blue-900'}`}>
-                                    ⏱ TIEMPO ESTIMADO
-                                </p>
-                                <p class={`text-2xl font-bold ${opcion.popular ? 'text-green-700' : 'text-blue-700'}`}>
-                                    {opcion.tiempo}
-                                </p>
-                                {opcion.popular && (
-                                    <p class="text-xs text-gray-600 mt-1">(Incluye gestión en Registraduría)</p>
-                                )}
-                            </div>
-
-                            <a 
-                                id="wp-btm"
-                                href={`https://wa.me/573213254326?text=Quiero%20${opcion.popular ? 'la%20GESTIÓN%20COMPLETA' : 'apostillar%20mi%20registro%20civil%20(YA%20TENGO%20EL%20DOCUMENTO)'}%20de%20registro%20civil`}
-                                class={`block w-full h-14  ${opcion.popular ? "" : ""} text-white py-2 rounded-full font-bold text-lg shadow-lg transition-all`}
-                                target="_blank"
-                            >
-                                <Wp/>
-                                {opcion.popular ? 'Solicitar Gestión' : 'Solicitar Servicio'}
-                            </a>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESO PASO A PASO -->
-    <section class="py-16 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4">
-                Así Funciona Nuestro Proceso Transparente
-            </h2>
-            <p class="text-center text-xl text-gray-600 mb-12">
-                Cada paso es monitoreado y te mantenemos informado constantemente
-            </p>
-
-            <div class="space-y-6">
-                <div class="flex gap-4 items-start bg-blue-50 p-6 rounded-xl">
-                    <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Contacto y Asesoría Inicial</h3>
-                        <p class="text-gray-700">
-                            Nos escribes por WhatsApp, revisamos tu caso específico y te confirmamos los documentos necesarios según tu situación.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex gap-4 items-start bg-green-50 p-6 rounded-xl">
-                    <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-green-900 mb-2">Envío de Documentos y Pago</h3>
-                        <p class="text-gray-700">
-                            Nos envías los documentos digitalmente. Realizas el pago y comenzamos inmediatamente tu trámite.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex gap-4 items-start bg-purple-50 p-6 rounded-xl">
-                    <div class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-purple-900 mb-2">Gestión y Validación</h3>
-                        <p class="text-gray-700">
-                            Realizamos todo el proceso: solicitud en Registraduría (si aplica), validación RNEC y gestión ante el MRE. 
-                            <strong>Te enviamos actualizaciones en cada etapa.</strong>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex gap-4 items-start bg-yellow-50 p-6 rounded-xl">
-                    <div class="bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-yellow-900 mb-2">Entrega del Documento Apostillado</h3>
-                        <p class="text-gray-700">
-                            Recibes tu registro civil apostillado listo para usar internacionalmente. Formato digital inmediato + envío físico si lo necesitas.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GARANTÍAS -->
-    <section class="py-16 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">
-                🛡️ Nuestras Garantías Inquebrantables
-            </h2>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                {garantias.map((garantia) => (
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all">
-                        <div class="text-4xl mb-3">{garantia.icon}</div>
-                        <h3 class="text-xl font-bold mb-2">{garantia.titulo}</h3>
-                        <p class="opacity-90">{garantia.descripcion}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </section>
-
-    <!-- PREGUNTAS FRECUENTES -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">
-                Preguntas Frecuentes
-            </h2>
-
-            <div class="space-y-4">
-                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
-                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
-                        ¿Es diferente el trámite para hijos de venezolanos?
-                    </summary>
-                    <p class="mt-4 text-gray-700">
-                        No, los registros civiles expedidos en Colombia se validan de la misma forma. sin embago, es crucial que el documento esté correctamente emitido y cumpla con los requisitos del RNEC para evitar rechazos.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
-                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
-                        ¿Puedo confiar en enviar mis documentos?
-                    </summary>
-                    <p class="mt-4 text-gray-700">
-                        <strong>Absolutamente.</strong> Llevamos 18 años en el mercado, con miles de casos exitosos. 
-                        Todos tus documentos son manejados con protocolos de seguridad y confidencialidad. 
-                        Además, trabajamos con envíos digitales seguros y puedes verificar nuestras referencias.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
-                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
-                        ¿Qué pasa si hay algún problema con mi documento?
-                    </summary>
-                    <p class="mt-4 text-gray-700">
-                        Antes de iniciar cualquier trámite, realizamos una <strong>revisión previa gratuita</strong> de tu caso. 
-                        Si identificamos algún problema potencial, te lo comunicamos de inmediato y te asesoramos sobre cómo solucionarlo. 
-                        No cobramos hasta estar 100% seguros de que podemos completar exitosamente tu trámite.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
-                    <summary class="font-bold text-lg text-blue-900 cursor-pointer">
-                        ¿Cómo sé que mi documento está siendo procesado?
-                    </summary>
-                    <p class="mt-4 text-gray-700">
-                        Te mantenemos informado mediante WhatsApp en cada etapa: cuando recibimos tu documento, cuando iniciamos validaciones, 
-                        cuando ingresamos a apostilla en el MRE, y cuando está listo. <strong>Transparencia total.</strong>
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION FINAL -->
-    <section
-        id="contenedor-final"
-        class="relative bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white py-20 overflow-hidden"
-    >
-        <!-- Efecto de brillo de fondo -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.15),transparent_70%)]"></div>
-
-        <div class="max-w-5xl mx-auto px-6 text-center relative">
-        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
-            ¿Listo para seleccionar el tipo servicio para tu
-            <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent"> Partida de Nacimiento</span>?
+  <!-- PROBLEMA COMÚN -->
+  <section class="py-12 bg-red-50 border-y-4 border-red-200">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-red-700 mb-4">
+          ⚠️ ¿Te Identificas con Esta Situación?
         </h2>
-
-        <p class="text-lg md:text-xl mb-10 opacity-90">
-        Selecciona la opción segun tu caso y contactanos para iniciar el trámite hoy mismo.
-        </p>
-
-        <!-- BOTÓN PRINCIPAL -->
-        <div class="flex justify-center mt-10">
-            <a
-            href="#tipo-servicio"
-            rel="noopener noreferrer"
-            aria-label="Seleccionar tipo de documento"
-            class="relative inline-flex items-center gap-4 py-1 justify-center px-10  rounded-full overflow-visible transition-all duration-300 transform hover:scale-105 focus:outline-none group"
-            >
-            <!-- Fondo base sólido -->
-            <span
-                class="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-orange-600 shadow-[0_0_25px_rgba(255,150,50,0.6)] animate-[pulseGlow_3s_ease-in-out_infinite]"
-            ></span>
-
-            <!-- Borde elegante -->
-            <span
-                class="absolute inset-0 rounded-full border border-white/30 backdrop-blur-sm"
-            ></span>
-
-            <!-- Ícono -->
-            <span
-                class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white text-2xl"
-            >
-                ☝️
-            </span>
-
-            <!-- Texto -->
-            <span class="relative z-10 text-left p-1">
-                <span class="block font-black text-lg tracking-tight">
-                Seleccionar Opción
-                </span>
-                <span class="block text-sm opacity-90">
-                Elige el tipo de opción según tu caso
-                </span>
-            </span>
-            </a>
-        </div>
-
-        <!-- Beneficios secundarios -->
-        <div class="flex flex-wrap justify-center gap-8 mt-12 text-sm sm:text-base">
-            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-            <span class="text-yellow-300 text-lg">⚡</span>
-            <span>Respuesta inmediata</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        {
+          problemasComunas.map((problema) => (
+            <div class="bg-white p-2 rounded-lg shadow-md border-l-4 border-red-500">
+              <p class="text-gray-800">
+                ❌ <strong>"{problema}"</strong>
+              </p>
             </div>
-            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-            <span class="text-green-300 text-lg">✅</span>
-            <span>Trámite oficial y seguro</span>
-            </div>
-            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-            <span class="text-sky-300 text-lg">🚀</span>
-            <span>Atención personalizada</span>
-            </div>
-        </div>
-
-        <!-- Mensaje de confianza -->
-        <div class="mt-12 border-t border-white/20 pt-6">
-            <p class="text-sm md:text-base text-gray-100/80 leading-relaxed">
-            ⚖️ Somos un equipo especializado en <strong>apostilla y legalización de documentos</strong> ante el Ministerio de Relaciones Exteriores.
-            Te garantizamos un proceso <strong>seguro, rápido y completamente en línea</strong>.
-            </p>
-        </div>
-        </div>
-
-        <!-- Animación de brillo constante -->
-        <style>
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 25px rgba(80, 255, 109, 0.6); }
-            50% { box-shadow: 0 0 40px rgba(80, 255, 89, 0.9); }
+          ))
         }
-        </style>
-    </section>
+      </div>
+      <div class="text-center mt-8">
+        <p class="text-xl text-green-600">
+          ¡Entendemos tu preocupación! Por eso somos <span
+            class="text-xl font-bold text-green-700">ESPECIALISTAS</span
+          > en estos casos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ CONFIAR -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-4">
+        ¿Por Qué Miles de Familias Confían en Nosotros?
+      </h2>
+      <p class="text-center text-xl text-gray-600 mb-12">
+        No somos principiantes. Llevamos <strong>más de 18 años</strong> especializándonos
+        en casos complejos
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {
+          beneficios.map((beneficio) => (
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl shadow-lg text-center border-2 border-blue-200 hover:shadow-2xl transition-shadow">
+              <div class="text-6xl mb-4">{beneficio.icon}</div>
+              <h3 class="text-2xl font-bold text-blue-900 mb-3">
+                {beneficio.titulo}
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                {beneficio.descripcion}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS Y PRECIOS -->
+  <section
+    class="py-16 bg-gradient-to-br from-gray-50 to-blue-50"
+    id="tipo-servicio"
+  >
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+        Opciones de Servicio<span
+          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+        >
+          Partida Nacimiento</span
+        >
+      </h2>
+      <p class="text-center text-xl text-gray-600 mb-12">
+        Elige la opción que mejor se ajuste a tu situación
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {
+          opcionesServicio.map((opcion) => (
+            <div
+              class={`bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 ${opcion.popular ? "ring-4 ring-green-400" : ""}`}
+            >
+              {opcion.popular && (
+                <div class="bg-green-600 text-white text-center py-2 font-bold text-sm">
+                  ⭐ MÁS SOLICITADO - SIN PREOCUPACIONES ⭐
+                </div>
+              )}
+
+              <div class={`bg-gradient-to-r ${opcion.color} text-white p-6`}>
+                <div class="text-center">
+                  <div class="text-5xl mb-3">{opcion.icon}</div>
+                  <h3 class="text-2xl font-bold mb-2">{opcion.titulo}</h3>
+                  <div class="text-4xl font-bold">{opcion.valor}</div>
+                  <p class="text-sm opacity-90 mt-2">{opcion.descripcion}</p>
+                </div>
+              </div>
+
+              <div class="p-8 space-y-6">
+                <div>
+                  <p
+                    class={`font-bold text-lg mb-3 ${opcion.popular ? "text-green-900" : "text-blue-900"}`}
+                  >
+                    ✓ Incluye{opcion.popular ? " TODO" : ""}:
+                  </p>
+                  <ul class="space-y-3">
+                    {opcion.incluye.map((item) => (
+                      <li class="flex items-start gap-3">
+                        <span class="text-green-500 text-xl mt-1">✓</span>
+                        <span class="text-gray-900">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div
+                  class={`${opcion.popular ? "bg-green-50 border-green-500" : "bg-yellow-50 border-yellow-400"} border-l-4 p-4 rounded-r`}
+                >
+                  <p
+                    class={`font-bold text-sm mb-2 ${opcion.popular ? "text-green-800" : "text-yellow-800"}`}
+                  >
+                    📌 REQUISITOS:
+                  </p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    {opcion.requisitos.map((req) => (
+                      <li>• {req}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div
+                  class={`${opcion.popular ? "bg-green-50" : "bg-blue-50"} p-4 rounded-lg text-center`}
+                >
+                  <p
+                    class={`text-sm font-bold ${opcion.popular ? "text-green-900" : "text-blue-900"}`}
+                  >
+                    ⏱ TIEMPO ESTIMADO
+                  </p>
+                  <p
+                    class={`text-2xl font-bold ${opcion.popular ? "text-green-700" : "text-blue-700"}`}
+                  >
+                    {opcion.tiempo}
+                  </p>
+                  {opcion.popular && (
+                    <p class="text-xs text-gray-600 mt-1">
+                      (Incluye gestión en Registraduría)
+                    </p>
+                  )}
+                </div>
+
+                <a
+                  id="wp-btm"
+                  href={`https://wa.me/573125082845?text=Quiero%20${opcion.popular ? "la%20GESTIÓN%20COMPLETA" : "apostillar%20mi%20registro%20civil%20(YA%20TENGO%20EL%20DOCUMENTO)"}%20de%20registro%20civil`}
+                  class={`block w-full h-14  ${opcion.popular ? "" : ""} text-white py-2 rounded-full font-bold text-lg shadow-lg transition-all`}
+                  target="_blank"
+                >
+                  <Wp />
+                  {opcion.popular ? "Solicitar Gestión" : "Solicitar Servicio"}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO PASO A PASO -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-4">
+        Así Funciona Nuestro Proceso Transparente
+      </h2>
+      <p class="text-center text-xl text-gray-600 mb-12">
+        Cada paso es monitoreado y te mantenemos informado constantemente
+      </p>
+
+      <div class="space-y-6">
+        <div class="flex gap-4 items-start bg-blue-50 p-6 rounded-xl">
+          <div
+            class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0"
+          >
+            1
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">
+              Contacto y Asesoría Inicial
+            </h3>
+            <p class="text-gray-700">
+              Nos escribes por WhatsApp, revisamos tu caso específico y te
+              confirmamos los documentos necesarios según tu situación.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start bg-green-50 p-6 rounded-xl">
+          <div
+            class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0"
+          >
+            2
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-green-900 mb-2">
+              Envío de Documentos y Pago
+            </h3>
+            <p class="text-gray-700">
+              Nos envías los documentos digitalmente. Realizas el pago y
+              comenzamos inmediatamente tu trámite.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start bg-purple-50 p-6 rounded-xl">
+          <div
+            class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0"
+          >
+            3
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-purple-900 mb-2">
+              Gestión y Validación
+            </h3>
+            <p class="text-gray-700">
+              Realizamos todo el proceso: solicitud en Registraduría (si
+              aplica), validación RNEC y gestión ante el MRE.
+              <strong>Te enviamos actualizaciones en cada etapa.</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start bg-yellow-50 p-6 rounded-xl">
+          <div
+            class="bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl flex-shrink-0"
+          >
+            4
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-yellow-900 mb-2">
+              Entrega del Documento Apostillado
+            </h3>
+            <p class="text-gray-700">
+              Recibes tu registro civil apostillado listo para usar
+              internacionalmente. Formato digital inmediato + envío físico si lo
+              necesitas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTÍAS -->
+  <section class="py-16 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">
+        🛡️ Nuestras Garantías Inquebrantables
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {
+          garantias.map((garantia) => (
+            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all">
+              <div class="text-4xl mb-3">{garantia.icon}</div>
+              <h3 class="text-xl font-bold mb-2">{garantia.titulo}</h3>
+              <p class="opacity-90">{garantia.descripcion}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
+
+      <div class="space-y-4">
+        <details
+          class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+            ¿Es diferente el trámite para hijos de venezolanos?
+          </summary>
+          <p class="mt-4 text-gray-700">
+            No, los registros civiles expedidos en Colombia se validan de la
+            misma forma. sin embago, es crucial que el documento esté
+            correctamente emitido y cumpla con los requisitos del RNEC para
+            evitar rechazos.
+          </p>
+        </details>
+
+        <details
+          class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+            ¿Puedo confiar en enviar mis documentos?
+          </summary>
+          <p class="mt-4 text-gray-700">
+            <strong>Absolutamente.</strong> Llevamos 18 años en el mercado, con miles
+            de casos exitosos. Todos tus documentos son manejados con protocolos de
+            seguridad y confidencialidad. Además, trabajamos con envíos digitales
+            seguros y puedes verificar nuestras referencias.
+          </p>
+        </details>
+
+        <details
+          class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+            ¿Qué pasa si hay algún problema con mi documento?
+          </summary>
+          <p class="mt-4 text-gray-700">
+            Antes de iniciar cualquier trámite, realizamos una <strong
+              >revisión previa gratuita</strong
+            > de tu caso. Si identificamos algún problema potencial, te lo comunicamos
+            de inmediato y te asesoramos sobre cómo solucionarlo. No cobramos hasta
+            estar 100% seguros de que podemos completar exitosamente tu trámite.
+          </p>
+        </details>
+
+        <details
+          class="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+        >
+          <summary class="font-bold text-lg text-blue-900 cursor-pointer">
+            ¿Cómo sé que mi documento está siendo procesado?
+          </summary>
+          <p class="mt-4 text-gray-700">
+            Te mantenemos informado mediante WhatsApp en cada etapa: cuando
+            recibimos tu documento, cuando iniciamos validaciones, cuando
+            ingresamos a apostilla en el MRE, y cuando está listo. <strong
+              >Transparencia total.</strong
+            >
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINAL -->
+  <section
+    id="contenedor-final"
+    class="relative bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white py-20 overflow-hidden"
+  >
+    <!-- Efecto de brillo de fondo -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.15),transparent_70%)]"
+    >
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 text-center relative">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+        ¿Listo para seleccionar el tipo servicio para tu
+        <span
+          class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent"
+        >
+          Partida de Nacimiento</span
+        >?
+      </h2>
+
+      <p class="text-lg md:text-xl mb-10 opacity-90">
+        Selecciona la opción segun tu caso y contactanos para iniciar el trámite
+        hoy mismo.
+      </p>
+
+      <!-- BOTÓN PRINCIPAL -->
+      <div class="flex justify-center mt-10">
+        <a
+          href="#tipo-servicio"
+          rel="noopener noreferrer"
+          aria-label="Seleccionar tipo de documento"
+          class="relative inline-flex items-center gap-4 py-1 justify-center px-10 rounded-full overflow-visible transition-all duration-300 transform hover:scale-105 focus:outline-none group"
+        >
+          <!-- Fondo base sólido -->
+          <span
+            class="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-orange-600 shadow-[0_0_25px_rgba(255,150,50,0.6)] animate-[pulseGlow_3s_ease-in-out_infinite]"
+          ></span>
+
+          <!-- Borde elegante -->
+          <span
+            class="absolute inset-0 rounded-full border border-white/30 backdrop-blur-sm"
+          ></span>
+
+          <!-- Ícono -->
+          <span
+            class="relative z-10 flex items-center justify-center rounded-full p-3 bg-white text-2xl"
+          >
+            ☝️
+          </span>
+
+          <!-- Texto -->
+          <span class="relative z-10 text-left p-1">
+            <span class="block font-black text-lg tracking-tight">
+              Seleccionar Opción
+            </span>
+            <span class="block text-sm opacity-90">
+              Elige el tipo de opción según tu caso
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Beneficios secundarios -->
+      <div
+        class="flex flex-wrap justify-center gap-8 mt-12 text-sm sm:text-base"
+      >
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+        >
+          <span class="text-yellow-300 text-lg">⚡</span>
+          <span>Respuesta inmediata</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+        >
+          <span class="text-green-300 text-lg">✅</span>
+          <span>Trámite oficial y seguro</span>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+        >
+          <span class="text-sky-300 text-lg">🚀</span>
+          <span>Atención personalizada</span>
+        </div>
+      </div>
+
+      <!-- Mensaje de confianza -->
+      <div class="mt-12 border-t border-white/20 pt-6">
+        <p class="text-sm md:text-base text-gray-100/80 leading-relaxed">
+          ⚖️ Somos un equipo especializado en <strong
+            >apostilla y legalización de documentos</strong
+          > ante el Ministerio de Relaciones Exteriores. Te garantizamos un proceso
+          <strong>seguro, rápido y completamente en línea</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Animación de brillo constante -->
+    <style>
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 25px rgba(80, 255, 109, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(80, 255, 89, 0.9);
+        }
+      }
+    </style>
+  </section>
 </Layout>

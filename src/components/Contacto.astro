@@ -15,12 +15,12 @@
 
         <div class="space-y-4 text-base">
           <p>
-            <strong>📍 Dirección:</strong> Cra 10 #12-32, Mosquera, Cundinamarca
-            - Colombia (correspondencia)
+            <strong>📍 Dirección:</strong> Cra 10 #12-32, Mosquera, Cundinamarca -
+            Colombia (correspondencia)
           </p>
           <p>
             <strong>📞 Teléfono:</strong>
-            <a href="tel:+573213254326" class="text-blue-600 underline"
+            <a href="tel:+573125082845" class="text-blue-600 underline"
               >+57 321 325 4326</a
             >
           </p>
@@ -35,7 +35,7 @@
           <p>
             <strong>💬 WhatsApp:</strong>
             <a
-              href="https://wa.me/573213254326?text=Iniciar%20chat"
+              href="https://wa.me/573125082845?text=Iniciar%20chat"
               target="_blank"
               class="text-green-600 underline"
             >
@@ -82,28 +82,33 @@
             .getElementById("contactoForm")
             ?.addEventListener("submit", function (e) {
               e.preventDefault();
-        
-              const nombreInput = document.getElementById("nombre") as HTMLInputElement | null;
-              const correoInput = document.getElementById("correo") as HTMLInputElement | null;
-              const mensajeInput = document.getElementById("mensaje") as HTMLTextAreaElement | null;
-        
+
+              const nombreInput = document.getElementById(
+                "nombre",
+              ) as HTMLInputElement | null;
+              const correoInput = document.getElementById(
+                "correo",
+              ) as HTMLInputElement | null;
+              const mensajeInput = document.getElementById(
+                "mensaje",
+              ) as HTMLTextAreaElement | null;
+
               if (!nombreInput || !correoInput || !mensajeInput) {
                 alert("Por favor complete todos los campos.");
                 return;
               }
-        
+
               const nombre = nombreInput.value.trim();
               const correo = correoInput.value.trim();
               const mensaje = mensajeInput.value.trim();
-        
-              const numeroWhatsApp = "573213254326";
+
+              const numeroWhatsApp = "573125082845";
               const texto = `Hola, mi nombre es *${nombre}*\nEmail: ${correo}\n\n${mensaje}`;
               const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-        
+
               window.open(url, "_blank");
             });
         </script>
-        
       </div>
     </div>
   </div>
