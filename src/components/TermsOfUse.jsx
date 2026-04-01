@@ -107,14 +107,14 @@ const TermsOfUse = () => {
           <li>
             📞 Teléfonos:{" "}
             <a
-              href="tel:+573125082845"
+              href="tel:+573213254326"
               className="hover:underline text-blue-400"
             >
               +57 321 325 4326
             </a>
             ,{" "}
             <a
-              href="tel:+573125082845"
+              href="tel:+573213254326"
               className="hover:underline text-blue-400"
             >
               +57 312 508 2845
