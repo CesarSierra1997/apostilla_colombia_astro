@@ -97,14 +97,14 @@ const PrivacyPolicy = () => {
           <li>
             📞 Teléfonos:{" "}
             <a
-              href="tel:+573213254326"
+              href="tel:+573125082845 "
               className="hover:underline text-blue-400"
             >
-              +57 321 325 4326
+              +57 3125082845
             </a>
             ,{" "}
             <a
-              href="tel:+573213254326"
+              href="tel:+573125082845 "
               className="hover:underline text-blue-400"
             >
               +57 312 508 2845
